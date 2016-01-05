@@ -1,0 +1,327 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="OACP69rYUO" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>当DP遇见Py(十二) -- 状态模式 | 沧海一粟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="Lyh">
+  
+  
+    <meta name="description" content="定义：
+当一个对象的内在状态改变时允许改变其行为，这个对象看起来像是改变了其类。 
+
+类图：
+类型：行为型">
+  
+  <meta name="description" content="定义：
+当一个对象的内在状态改变时允许改变其行为，这个对象看起来像是改变了其类。 
+
+类图：
+类型：行为型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="当DP遇见Py(十二) -- 状态模式">
+<meta property="og:url" content="http://lyhopq.github.io/当DP遇见Py/当DP遇见Py(十二) -- 状态模式/index.html">
+<meta property="og:site_name" content="沧海一粟">
+<meta property="og:description" content="定义：
+当一个对象的内在状态改变时允许改变其行为，这个对象看起来像是改变了其类。 
+
+类图：
+类型：行为型">
+<meta property="og:image" content="http://78rbbi.com1.z0.glb.clouddn.com/状态模式.png">
+<meta property="og:image" content="http://i1.brcdn.cn/download/2012/02/02/baoruan.com_53889ae89abab9bda.gif">
+<meta property="og:updated_time" content="2016-01-05T12:20:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="当DP遇见Py(十二) -- 状态模式">
+<meta name="twitter:description" content="定义：
+当一个对象的内在状态改变时允许改变其行为，这个对象看起来像是改变了其类。 
+
+类图：
+类型：行为型">
+  
+    <link rel="alternate" href="/atom.xml" title="沧海一粟" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- //插入统计代码 -->
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">沧海一粟</a></h1>
+    <p><a href="/">在知识的海洋中翱翔</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      <li>
+    <form><input type="text" id="ts-search-input" class="ts-search-input" /></form>
+    </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/当DP遇见Py/当DP遇见Py(十二) -- 状态模式/">
+  <time datetime="2015-03-12T16:00:00.000Z">
+    3月 13 2015
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">当DP遇见Py(十二) -- 状态模式</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+        
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义："><span class="toc-text">定义：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类图："><span class="toc-text">类图：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型：行为型"><span class="toc-text">类型：行为型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例："><span class="toc-text">实例：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C++_实现"><span class="toc-text">C++ 实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python_实现"><span class="toc-text">Python 实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行结果："><span class="toc-text">执行结果：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips:"><span class="toc-text">Tips:</span></a></li></ol>
+        </div>
+    
+      <h2 id="定义：">定义：</h2><blockquote>
+<p>当一个对象的内在状态改变时允许改变其行为，这个对象看起来像是改变了其类。 </p>
+</blockquote>
+<h2 id="类图：">类图：</h2><p><img src="http://78rbbi.com1.z0.glb.clouddn.com/状态模式.png" alt=""></p>
+<h2 id="类型：行为型">类型：行为型</h2><a id="more"></a>
+<h2 id="实例：">实例：</h2><blockquote>
+<p>程序员 的一天</p>
+</blockquote>
+<h3 id="C++_实现">C++ 实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;iostream&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;string&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Work;</span><br><span class="line"><span class="keyword">class</span> State;</span><br><span class="line"><span class="keyword">class</span> ForenonnState;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> State</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">writeProgram</span><span class="params">(Work*)</span></span>=<span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Work</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> hour;</span><br><span class="line">    State *current;</span><br><span class="line">    Work();</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">writeProgram</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        current-&gt;writeProgram(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> EveningState:<span class="keyword">public</span> State</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">writeProgram</span><span class="params">(Work *w)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"当前时间: "</span>&lt;&lt;w-&gt;hour&lt;&lt;<span class="string">"点 "</span>&lt;&lt;<span class="string">"心情很好，在看《天天向上》，收获很大！"</span>&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> AfternoonState:<span class="keyword">public</span> State</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">writeProgram</span><span class="params">(Work *w)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(w-&gt;hour&lt;<span class="number">19</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">"当前时间: "</span>&lt;&lt;w-&gt;hour&lt;&lt;<span class="string">"点 "</span>&lt;&lt;<span class="string">"下午午睡后，工作还是精神百倍!"</span>&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            w-&gt;current=<span class="keyword">new</span> EveningState();</span><br><span class="line">            w-&gt;writeProgram();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> ForenonnState:<span class="keyword">public</span> State</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">writeProgram</span><span class="params">(Work *w)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(w-&gt;hour&lt;<span class="number">12</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">"当前时间: "</span>&lt;&lt;w-&gt;hour&lt;&lt;<span class="string">"点 "</span>&lt;&lt;<span class="string">"上午工作精神百倍!"</span>&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            w-&gt;current=<span class="keyword">new</span> AfternoonState();</span><br><span class="line">            w-&gt;writeProgram();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Work::Work()</span><br><span class="line">&#123;</span><br><span class="line">    current=<span class="keyword">new</span> ForenonnState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Work *w=<span class="keyword">new</span> Work();</span><br><span class="line">    w-&gt;hour=<span class="number">9</span>;</span><br><span class="line">    w-&gt;writeProgram();</span><br><span class="line">    w-&gt;hour=<span class="number">14</span>;</span><br><span class="line">    w-&gt;writeProgram();</span><br><span class="line">    w-&gt;hour=<span class="number">21</span>;</span><br><span class="line">    w-&gt;writeProgram();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Python_实现">Python 实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding=utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">State</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">writeProgram</span><span class="params">(self, w)</span>:</span></span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError(<span class="string">"Must Implement me"</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ForenonnState</span><span class="params">(State)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">writeProgram</span><span class="params">(self, w)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> w.hour &lt; <span class="number">12</span>:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">u"当前时间: %s点 上午工作精神百倍!"</span> % w.hour</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            w.current = AfternoonState()</span><br><span class="line">            w.writeProgram()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AfternoonState</span><span class="params">(State)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">writeProgram</span><span class="params">(self, w)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> w.hour &lt; <span class="number">19</span>:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">u"当前时间: %s点 下午午睡后，工作还是精神百倍!"</span> % w.hour</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            w.current = EveningState()</span><br><span class="line">            w.writeProgram()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EveningState</span><span class="params">(State)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">writeProgram</span><span class="params">(self, w)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">u"当前时间: %s点 心情很好，在看《天天向上》，收获很大！"</span> % w.hour</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Work</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.hour = <span class="number">9</span></span><br><span class="line">        self.current = ForenonnState()</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setState</span><span class="params">(self, state)</span>:</span></span><br><span class="line">        self.current = state</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">writeProgram</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.current.writeProgram(self)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    mywork = Work()</span><br><span class="line">    mywork.hour = <span class="number">9</span></span><br><span class="line">    mywork.writeProgram()</span><br><span class="line">    mywork.hour = <span class="number">14</span></span><br><span class="line">    mywork.writeProgram()</span><br><span class="line">    mywork.hour = <span class="number">21</span></span><br><span class="line">    mywork.writeProgram()</span><br></pre></td></tr></table></figure>
+<h3 id="执行结果：">执行结果：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">当前时间: <span class="number">9</span>点 上午工作精神百倍!</span><br><span class="line">当前时间: <span class="number">14</span>点 下午午睡后，工作还是精神百倍!</span><br><span class="line">当前时间: <span class="number">21</span>点 心情很好，在看《天天向上》，收获很大！</span><br></pre></td></tr></table></figure>
+<h2 id="Tips:">Tips:</h2><p><code>状态模式</code>的<code>Python</code>实现没有什么特点，在这就不在赘述了。</p>
+<p><img src="http://i1.brcdn.cn/download/2012/02/02/baoruan.com_53889ae89abab9bda.gif" alt=""></p>
+
+      
+  </div>
+  <footer>
+    
+      
+<div class="pagepart clearfix">
+  
+    <a href="/当DP遇见Py/当DP遇见Py(十一) -- 抽象工厂模式/" class="alignleft prev" title="当DP遇见Py(十一) -- 抽象工厂模式">当DP遇见Py(十一) -- 抽象工厂模式</a>
+  
+  
+    <a href="/当DP遇见Py/当DP遇见Py(十三) -- 适配器模式/" class="alignright next" title="当DP遇见Py(十三) -- 适配器模式">当DP遇见Py(十三) -- 适配器模式</a>
+    
+</div>
+
+
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/Python/">Python</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/C/">C++</a>, <a class="tags-link" href="/tags/DP/">DP</a>, <a class="tags-link" href="/tags/Python/">Python</a>
+  </div>
+
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-thread-key="当DP遇见Py/当DP遇见Py(十二) -- 状态模式/" data-title="当DP遇见Py(十二) -- 状态模式" data-url="http://lyhopq.github.io/当DP遇见Py/当DP遇见Py(十二) -- 状态模式/"></div>
+</section>
+
+</div>
+  </div>
+  
+  <div id="sidebar" class="widgets-bottom">
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C-C/">C/C++</a><small>5</small></li>
+  
+    <li><a href="/categories/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/categories/Golang/">Golang</a><small>2</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>3</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>22</small></li>
+  
+    <li><a href="/categories/UML/">UML</a><small>1</small></li>
+  
+    <li><a href="/categories/Vim/">Vim</a><small>1</small></li>
+  
+    <li><a href="/categories/业余/">业余</a><small>1</small></li>
+  
+    <li><a href="/categories/机器学习/">机器学习</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/ArchLinux/" style="font-size: 10px;">ArchLinux</a> <a href="/tags/Boot/" style="font-size: 10px;">Boot</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/C-11/" style="font-size: 16.67px;">C++11</a> <a href="/tags/Coding-Style/" style="font-size: 10px;">Coding Style</a> <a href="/tags/DP/" style="font-size: 18.33px;">DP</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Gtest/" style="font-size: 10px;">Gtest</a> <a href="/tags/Inkscape/" style="font-size: 10px;">Inkscape</a> <a href="/tags/Linux/" style="font-size: 11.67px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine Learning</a> <a href="/tags/MinGW/" style="font-size: 10px;">MinGW</a> <a href="/tags/PlantUML/" style="font-size: 10px;">PlantUML</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/Utf-8/" style="font-size: 10px;">Utf-8</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/encode/" style="font-size: 10px;">encode</a> <a href="/tags/godef/" style="font-size: 10px;">godef</a> <a href="/tags/shell/" style="font-size: 11.67px;">shell</a> <a href="/tags/vim/" style="font-size: 11.67px;">vim</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/分类器/" style="font-size: 16.67px;">分类器</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a> <a href="/tags/命令行解析/" style="font-size: 10px;">命令行解析</a> <a href="/tags/概率论/" style="font-size: 15px;">概率论</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/结构体对齐/" style="font-size: 10px;">结构体对齐</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最近发布</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记3/">《Effective Modern C++》条款3</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记2/">《Effective Modern C++》条款2</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记1/">《Effective Modern C++》条款1</a>
+      </li>
+    
+      <li>
+        <a href="/PEP-0008-Python代码风格指南/">PEP 0008 -- Python代码风格指南</a>
+      </li>
+    
+      <li>
+        <a href="/当DP遇见Py/当DP遇见Py(二十) -- 职责链模式/">当DP遇见Py(二十) -- 职责链模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+</div>
+  
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2016 <a href="/">Lyh</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://blog.dafengning.com/" target="_blank">Chong Zi</a>
+</div>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<div class="clearfix"></div>
+<script async src="http://78rbbi.com1.z0.glb.clouddn.com/busuanzi.pure.mini.js">
+</script>
+</footer>
+  <script src="//lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lyhopq"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<div id="rightfix" style="display:none;">
+
+<a href="#comment" id="gocomm" class="fix_btn" title="提问/评论"><i><i></i></i></a>
+
+
+<a href="javascript:void(0)" id="gotop" class="fix_btn" onclick="gotop();" title="回到顶部"><i></i></a>
+<script>
+  function gotop(){
+    $('html,body').animate({
+        scrollTop : '0px'
+      }, 800);
+  }
+  $(function(){
+    _rightfix = $('#rightfix');
+    $(window).scroll(function(){
+      $sollTop = document.documentElement.scrollTop + document.body.scrollTop;
+      if($sollTop > 350){
+        _rightfix.show();
+      }else{
+        _rightfix.hide();
+      }
+    });
+  });
+</script>
+
+</div>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+
+
+
+<script>
+var option = {
+  engineKey: '70e393f447ec0686ffba'
+};
+(function(w,d,t,u,n,s,e){
+  s = d.createElement(t);
+  s.src = u;
+  s.async = 1;
+  w[n] = function(r){
+    w[n].opts = r;
+  };
+  e = d.getElementsByTagName(t)[0];
+  e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+_ts(option);
+
+$("#ts-search-input").mouseenter(function(){
+  $("#ts-search-input").animate({width:'+=150px',opacity:'+=0.4'},"slow")}).stop().mouseleave(function(){
+  $("#ts-search-input").animate({width:'-=150px',opacity:'-=0.4'},"slow")});
+</script>
+
+</body>
+</html>

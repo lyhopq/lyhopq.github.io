@@ -1,0 +1,357 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="OACP69rYUO" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>PlantUML | 沧海一粟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="Lyh">
+  
+  
+    <meta name="description" content="PlantUML是一个开源的工具，使用简单的文字描述绘制UML图。它的后端使用的是Graphivz，其封装了dot语法，使得能够使用简洁的语法来绘制UML图。
+在Archlinux中配置PlantUML工具：
+
+安装依赖软件：
+sudo pacman -S graphivz jre7-openjdk
+
+下载plantuml.jar，把他放在一个方便的地方，如：~/.local/lib目录下
+
+试用">
+  
+  <meta name="description" content="PlantUML是一个开源的工具，使用简单的文字描述绘制UML图。它的后端使用的是Graphivz，其封装了dot语法，使得能够使用简洁的语法来绘制UML图。
+在Archlinux中配置PlantUML工具：
+
+安装依赖软件：
+sudo pacman -S graphivz jre7-openjdk
+
+下载plantuml.jar，把他放在一个方便的地方，如：~/.local/lib目录下
+
+试用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PlantUML">
+<meta property="og:url" content="http://lyhopq.github.io/PlantUML/index.html">
+<meta property="og:site_name" content="沧海一粟">
+<meta property="og:description" content="PlantUML是一个开源的工具，使用简单的文字描述绘制UML图。它的后端使用的是Graphivz，其封装了dot语法，使得能够使用简洁的语法来绘制UML图。
+在Archlinux中配置PlantUML工具：
+
+安装依赖软件：
+sudo pacman -S graphivz jre7-openjdk
+
+下载plantuml.jar，把他放在一个方便的地方，如：~/.local/lib目录下
+
+试用">
+<meta property="og:image" content="http://78rbbi.com1.z0.glb.clouddn.com/test.png">
+<meta property="og:image" content="http://78rbbi.com1.z0.glb.clouddn.com/ticket.png">
+<meta property="og:updated_time" content="2016-01-05T12:20:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PlantUML">
+<meta name="twitter:description" content="PlantUML是一个开源的工具，使用简单的文字描述绘制UML图。它的后端使用的是Graphivz，其封装了dot语法，使得能够使用简洁的语法来绘制UML图。
+在Archlinux中配置PlantUML工具：
+
+安装依赖软件：
+sudo pacman -S graphivz jre7-openjdk
+
+下载plantuml.jar，把他放在一个方便的地方，如：~/.local/lib目录下
+
+试用">
+  
+    <link rel="alternate" href="/atom.xml" title="沧海一粟" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- //插入统计代码 -->
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">沧海一粟</a></h1>
+    <p><a href="/">在知识的海洋中翱翔</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      <li>
+    <form><input type="text" id="ts-search-input" class="ts-search-input" /></form>
+    </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/PlantUML/">
+  <time datetime="2013-10-21T01:40:50.000Z">
+    10月 21 2013
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">PlantUML</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+        
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+        
+        </div>
+    
+      <p><a href="http://plantuml.sourceforge.net" target="_blank" rel="external">PlantUML</a>是一个开源的工具，使用简单的文字描述绘制UML图。它的后端使用的是<a href="http://www.graphviz.org" target="_blank" rel="external">Graphivz</a>，其封装了dot语法，使得能够使用简洁的语法来绘制UML图。</p>
+<p>在Archlinux中配置PlantUML工具：</p>
+<ol>
+<li><p>安装依赖软件：</p>
+<pre><code><span class="title">sudo</span> pacman -S graphivz jre7-openjdk
+</code></pre></li>
+<li><p>下载<a href="http://sourceforge.net/projects/plantuml/files/plantuml.jar/download" target="_blank" rel="external">plantuml.jar</a>，把他放在一个方便的地方，如：<code>~/.local/lib</code>目录下</p>
+</li>
+<li><p>试用：新建文件<code>test.uml</code>，输入：</p>
+ <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@startuml</span> img/test.png</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestA</span> &#123;</span></span><br><span class="line">    -<span class="type">String</span> name</span><br><span class="line">    +int id</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestB</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">TestA</span>&#123;</span></span><br><span class="line">   -<span class="type">String</span> desc</span><br><span class="line">   +<span class="type">String</span> getDesc()</span><br><span class="line">   +void setDesc(<span class="type">String</span> desc)</span><br><span class="line">&#125;</span><br><span class="line"><span class="annotation">@enduml</span></span><br></pre></td></tr></table></figure>
+<p> 注：第一行可以指定生成的图片路径。</p>
+<p> 然后运行以下命令生成UML类图：</p>
+<pre><code>java -jar ~/.<span class="keyword">local</span>/lib/plantuml.jar -tpng <span class="keyword">test</span>.uml
+</code></pre><p> <img src="http://78rbbi.com1.z0.glb.clouddn.com/test.png" alt="UML类图示例"></p>
+</li>
+<li><p>为了使用方便，写了一个shell脚本</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/usr/bin/bash</span><br><span class="line"></span></span><br><span class="line">UML=<span class="variable">$1</span></span><br><span class="line">FILE=`head -n1 <span class="variable">$UML</span> | awk <span class="string">'&#123;print $2&#125;'</span>`</span><br><span class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$FILE</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    EXT=<span class="variable">$&#123;FILE##*.&#125;</span></span><br><span class="line">    java -jar ~/.local/lib/plantuml.jar -t<span class="variable">$EXT</span> <span class="variable">$@</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$FILE</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    java -jar ~/.local/lib/plantuml.jar <span class="variable">$@</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$&#123;UML%.*&#125;</span>.png</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<pre><code>主要用来封装PlantUML的调用，并且更具输入文件第一行判断生成文件类型。
+
+使用方式：
+
+    ./uml <span class="keyword">test</span>.uml
+</code></pre><p>下面举一个比较复杂的例子：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">@startuml img/ticket.svg</span><br><span class="line"></span><br><span class="line"><span class="title">title</span> 售票机控制程序</span><br><span class="line"></span><br><span class="line"><span class="title">scale</span> <span class="number">1500</span> width</span><br><span class="line"><span class="type">Component</span> &lt;|<span class="comment">-- Keyboard : 继承关系</span></span><br><span class="line"><span class="type">Component</span> &lt;|<span class="comment">-- Screen</span></span><br><span class="line"><span class="type">Component</span> &lt;|<span class="comment">-- CardDriver</span></span><br><span class="line"><span class="type">Component</span> &lt;|<span class="comment">-- CashSlot</span></span><br><span class="line"><span class="type">Component</span> &lt;|<span class="comment">-- Printer</span></span><br><span class="line"><span class="type">Keyboard</span> &lt;|<span class="comment">-- ActionKeyboard</span></span><br><span class="line"><span class="type">Keyboard</span> &lt;|<span class="comment">-- TicketKindKeyboard</span></span><br><span class="line"><span class="type">Keyboard</span> &lt;|<span class="comment">-- DestinationKeyboard</span></span><br><span class="line"></span><br><span class="line"><span class="type">ActionKeyboard</span> &lt;--* <span class="type">TicketSoldSystem</span> : 组合关系</span><br><span class="line"><span class="type">TicketKindKeyboard</span> &lt;--* <span class="type">TicketSoldSystem</span></span><br><span class="line"><span class="type">DestinationKeyboard</span> &lt;--* <span class="type">TicketSoldSystem</span></span><br><span class="line"><span class="type">Screen</span> &lt;--* <span class="type">TicketSoldSystem</span></span><br><span class="line"><span class="type">CardDriver</span> &lt;--* <span class="type">TicketSoldSystem</span></span><br><span class="line"><span class="type">CashSlot</span> &lt;--* <span class="type">TicketSoldSystem</span></span><br><span class="line"><span class="type">Printer</span> &lt;--* <span class="type">TicketSoldSystem</span></span><br><span class="line"></span><br><span class="line"><span class="title">skinparam</span> classAttributeIconSize <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="title">note</span> top <span class="keyword">of</span> <span class="type">Component</span> : 抽象部件类，所有部件类的父类</span><br><span class="line"><span class="title">note</span> left <span class="keyword">of</span> <span class="type">Keyboard</span> : 键盘抽象类</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">Component</span> &#123;</span><br><span class="line">     +init<span class="container">()</span>:void</span><br><span class="line">      +doSelfTest<span class="container">()</span>:void</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="type">Keyboard</span> &#123;</span><br><span class="line">     +getSelectedKey<span class="container">()</span>:int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="type">Screen</span> &#123;</span><br><span class="line">     +showText<span class="container">()</span>:void</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="type">CardDriver</span> &#123;</span><br><span class="line">     +getCredit<span class="container">()</span>:<span class="type">String</span></span><br><span class="line">      +debitFare<span class="container">()</span>:double</span><br><span class="line">       +ejectMCard<span class="container">()</span>:void</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="type">CashSlot</span> &#123;</span><br><span class="line">     +getCash<span class="container">()</span>:<span class="type">String</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="type">Printer</span> &#123;</span><br><span class="line">     +printTicket<span class="container">()</span>:void</span><br><span class="line">      +ejectTicket<span class="container">()</span>:void</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="type">ActionKeyboard</span> &#123;</span><br><span class="line">     +getAction<span class="container">()</span>:int</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="type">TicketKindKeyboard</span> &#123;</span><br><span class="line">     +getTicketKind<span class="container">()</span>:<span class="type">String</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="type">DestinationKeyboard</span> &#123;</span><br><span class="line">     +getDestinationCode<span class="container">()</span>:<span class="type">String</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="type">TicketSoldSystem</span> &#123;</span><br><span class="line">     +verifyCredit<span class="container">()</span>:boolean</span><br><span class="line">      +calculateFare<span class="container">()</span>:double</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">note as <span class="type">Comment</span></span><br><span class="line">  &lt;color:royalBlue&gt;<span class="container">(1)</span> 目的地键盘用来输入行程目的地的代码（例如，200表示总站）。&lt;/color&gt;</span><br><span class="line">  <span class="container">(2)</span> 乘客可以通过车票键盘选择车票种类（单程票、多次往返票和座席种类）。</span><br><span class="line">  <span class="container">(3)</span> 继续/取消键盘上的取消按钮用于取消购票过程，继续按钮允许乘客连续购买多张票。</span><br><span class="line">  <span class="container">(4)</span> 显示屏显示所有的系统输出和用户提示信息。</span><br><span class="line">  <span class="container">(5)</span> 插卡口接受<span class="type">MCard</span>（现金卡），硬币口和纸币槽接受现金。</span><br><span class="line">  <span class="container">(6)</span> 打印机用于输出车票。</span><br><span class="line">  <span class="container">(7)</span> 所有部件均可实现自检并恢复到初始状态。</span><br><span class="line">end note</span><br><span class="line"></span><br><span class="line">@enduml</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://78rbbi.com1.z0.glb.clouddn.com/ticket.png" alt=""></p>
+
+      
+  </div>
+  <footer>
+    
+      
+<div class="pagepart clearfix">
+  
+    <a href="/gitignore妙用/" class="alignleft prev" title="gitignore妙用">gitignore妙用</a>
+  
+  
+    <a href="/C语言结构体对齐算法/" class="alignright next" title="C语言结构体对齐算法">C语言结构体对齐算法</a>
+    
+</div>
+
+
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/UML/">UML</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/ArchLinux/">ArchLinux</a>, <a class="tags-link" href="/tags/PlantUML/">PlantUML</a>, <a class="tags-link" href="/tags/UML/">UML</a>, <a class="tags-link" href="/tags/shell/">shell</a>
+  </div>
+
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-thread-key="PlantUML/" data-title="PlantUML" data-url="http://lyhopq.github.io/PlantUML/"></div>
+</section>
+
+</div>
+  </div>
+  
+  <div id="sidebar" class="widgets-bottom">
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C-C/">C/C++</a><small>5</small></li>
+  
+    <li><a href="/categories/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/categories/Golang/">Golang</a><small>2</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>3</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>22</small></li>
+  
+    <li><a href="/categories/UML/">UML</a><small>1</small></li>
+  
+    <li><a href="/categories/Vim/">Vim</a><small>1</small></li>
+  
+    <li><a href="/categories/业余/">业余</a><small>1</small></li>
+  
+    <li><a href="/categories/机器学习/">机器学习</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/ArchLinux/" style="font-size: 10px;">ArchLinux</a> <a href="/tags/Boot/" style="font-size: 10px;">Boot</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/C-11/" style="font-size: 16.67px;">C++11</a> <a href="/tags/Coding-Style/" style="font-size: 10px;">Coding Style</a> <a href="/tags/DP/" style="font-size: 18.33px;">DP</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Gtest/" style="font-size: 10px;">Gtest</a> <a href="/tags/Inkscape/" style="font-size: 10px;">Inkscape</a> <a href="/tags/Linux/" style="font-size: 11.67px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine Learning</a> <a href="/tags/MinGW/" style="font-size: 10px;">MinGW</a> <a href="/tags/PlantUML/" style="font-size: 10px;">PlantUML</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/Utf-8/" style="font-size: 10px;">Utf-8</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/encode/" style="font-size: 10px;">encode</a> <a href="/tags/godef/" style="font-size: 10px;">godef</a> <a href="/tags/shell/" style="font-size: 11.67px;">shell</a> <a href="/tags/vim/" style="font-size: 11.67px;">vim</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/分类器/" style="font-size: 16.67px;">分类器</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a> <a href="/tags/命令行解析/" style="font-size: 10px;">命令行解析</a> <a href="/tags/概率论/" style="font-size: 15px;">概率论</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/结构体对齐/" style="font-size: 10px;">结构体对齐</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最近发布</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记3/">《Effective Modern C++》条款3</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记2/">《Effective Modern C++》条款2</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记1/">《Effective Modern C++》条款1</a>
+      </li>
+    
+      <li>
+        <a href="/PEP-0008-Python代码风格指南/">PEP 0008 -- Python代码风格指南</a>
+      </li>
+    
+      <li>
+        <a href="/当DP遇见Py/当DP遇见Py(二十) -- 职责链模式/">当DP遇见Py(二十) -- 职责链模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+</div>
+  
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2016 <a href="/">Lyh</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://blog.dafengning.com/" target="_blank">Chong Zi</a>
+</div>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<div class="clearfix"></div>
+<script async src="http://78rbbi.com1.z0.glb.clouddn.com/busuanzi.pure.mini.js">
+</script>
+</footer>
+  <script src="//lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lyhopq"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<div id="rightfix" style="display:none;">
+
+<a href="#comment" id="gocomm" class="fix_btn" title="提问/评论"><i><i></i></i></a>
+
+
+<a href="javascript:void(0)" id="gotop" class="fix_btn" onclick="gotop();" title="回到顶部"><i></i></a>
+<script>
+  function gotop(){
+    $('html,body').animate({
+        scrollTop : '0px'
+      }, 800);
+  }
+  $(function(){
+    _rightfix = $('#rightfix');
+    $(window).scroll(function(){
+      $sollTop = document.documentElement.scrollTop + document.body.scrollTop;
+      if($sollTop > 350){
+        _rightfix.show();
+      }else{
+        _rightfix.hide();
+      }
+    });
+  });
+</script>
+
+</div>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+
+
+
+<script>
+var option = {
+  engineKey: '70e393f447ec0686ffba'
+};
+(function(w,d,t,u,n,s,e){
+  s = d.createElement(t);
+  s.src = u;
+  s.async = 1;
+  w[n] = function(r){
+    w[n].opts = r;
+  };
+  e = d.getElementsByTagName(t)[0];
+  e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+_ts(option);
+
+$("#ts-search-input").mouseenter(function(){
+  $("#ts-search-input").animate({width:'+=150px',opacity:'+=0.4'},"slow")}).stop().mouseleave(function(){
+  $("#ts-search-input").animate({width:'-=150px',opacity:'-=0.4'},"slow")});
+</script>
+
+</body>
+</html>

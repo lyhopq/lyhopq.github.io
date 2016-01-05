@@ -1,0 +1,372 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="OACP69rYUO" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>C++ Has Become More Pythonic | 沧海一粟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="Lyh">
+  
+  
+    <meta name="description" content="译自：http://preshing.com/20141202/cpp-has-become-more-pythonic
+近些年C++ 发生了很多变化。最新的两个版本，C++11 和 C++14引入了如此多的新特性，正如Bjarne Stroustrup所说的：“它感觉就像一门新的语言”。
+确实是这样。现代C++形成了一种全新的编程风格——使我不得不注意到它带有的更多Python的味道。基范围的f">
+  
+  <meta name="description" content="译自：http://preshing.com/20141202/cpp-has-become-more-pythonic
+近些年C++ 发生了很多变化。最新的两个版本，C++11 和 C++14引入了如此多的新特性，正如Bjarne Stroustrup所说的：“它感觉就像一门新的语言”。
+确实是这样。现代C++形成了一种全新的编程风格——使我不得不注意到它带有的更多Python的味道。基范围的f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ Has Become More Pythonic">
+<meta property="og:url" content="http://lyhopq.github.io/C-Has-Become-More-Pythonic/index.html">
+<meta property="og:site_name" content="沧海一粟">
+<meta property="og:description" content="译自：http://preshing.com/20141202/cpp-has-become-more-pythonic
+近些年C++ 发生了很多变化。最新的两个版本，C++11 和 C++14引入了如此多的新特性，正如Bjarne Stroustrup所说的：“它感觉就像一门新的语言”。
+确实是这样。现代C++形成了一种全新的编程风格——使我不得不注意到它带有的更多Python的味道。基范围的f">
+<meta property="og:image" content="http://preshing.com/images/pythonic_cpp.png">
+<meta property="og:updated_time" content="2016-01-05T12:20:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++ Has Become More Pythonic">
+<meta name="twitter:description" content="译自：http://preshing.com/20141202/cpp-has-become-more-pythonic
+近些年C++ 发生了很多变化。最新的两个版本，C++11 和 C++14引入了如此多的新特性，正如Bjarne Stroustrup所说的：“它感觉就像一门新的语言”。
+确实是这样。现代C++形成了一种全新的编程风格——使我不得不注意到它带有的更多Python的味道。基范围的f">
+  
+    <link rel="alternate" href="/atom.xml" title="沧海一粟" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- //插入统计代码 -->
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">沧海一粟</a></h1>
+    <p><a href="/">在知识的海洋中翱翔</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      <li>
+    <form><input type="text" id="ts-search-input" class="ts-search-input" /></form>
+    </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/C-Has-Become-More-Pythonic/">
+  <time datetime="2015-06-25T11:14:33.000Z">
+    6月 25 2015
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">C++ Has Become More Pythonic</h1>
+  
+
+  </header>
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      
+        <img src="http://preshing.com/images/pythonic_cpp.png">
+      
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="entry">
+    
+        
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Literals"><span class="toc-text">Literals</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Range-Based_For_Loops"><span class="toc-text">Range-Based For Loops</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Auto"><span class="toc-text">Auto</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tuples"><span class="toc-text">Tuples</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Uniform_Initialization"><span class="toc-text">Uniform Initialization</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lambda_Expressions"><span class="toc-text">Lambda Expressions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Standard_Algorithms"><span class="toc-text">Standard Algorithms</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Parameter_Packs"><span class="toc-text">Parameter Packs</span></a></li></ol>
+        </div>
+    
+      <p>译自：<a href="http://preshing.com/20141202/cpp-has-become-more-pythonic" target="_blank" rel="external">http://preshing.com/20141202/cpp-has-become-more-pythonic</a></p>
+<p>近些年C++ 发生了很多变化。最新的两个版本，<code>C++11</code> 和 <code>C++14</code>引入了如此多的新特性，正如<code>Bjarne Stroustrup</code>所说的：<a href="http://www.stroustrup.com/C++11FAQ.html#think" target="_blank" rel="external">“它感觉就像一门新的语言”</a>。</p>
+<p>确实是这样。现代C++形成了一种全新的编程风格——使我不得不注意到它带有的更多<code>Python</code>的味道。基范围的<code>for</code>循环、类型推导、vector和map的初始化、lambda表达式。随着你更深入的探索现代C++，你越会发现Python的痕迹在里面。</p>
+<p>现代C++直接受Python的影响吗？或者仅仅是Python在C++之前使用了这些设计？由你来判断。</p>
+<a id="more"></a>
+<h2 id="Literals">Literals</h2><p>Python在2008年引入了<a href="https://docs.python.org/dev/whatsnew/2.6.html#pep-3127-integer-literal-support-and-syntax" target="_blank" rel="external">二进制字面值</a>。现在<a href="http://en.cppreference.com/w/cpp/language/integer_literal" target="_blank" rel="external"><code>C++14</code>拥有了它们</a>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> primes = <span class="number">0</span>b10100000100010100010100010101100;</span><br></pre></td></tr></table></figure>
+<p>Python早在1998年引入了<a href="https://www.python.org/download/releases/1.5/whatsnew/" target="_blank" rel="external">原始字符串字面值</a>，它们在硬编码正则表达式或Windows路径时很方便。<a href="http://en.cppreference.com/w/cpp/language/string_literal" target="_blank" rel="external"><code>C++11</code></a>使用略微不同的语法加入了同样的想法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">char</span>* path = <span class="string">R"(c:\this\string\has\backslashes)"</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Range-Based_For_Loops">Range-Based For Loops</h2><p>在Python中，<code>for</code>循环总是在一个Python对象上迭代：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> myList:</span><br><span class="line">    print(x)</span><br></pre></td></tr></table></figure>
+<p>与此同时，将近30年，C++只支持C风格的<code>for</code>循环。最终，在<code>C++11</code>中，<a href="http://en.cppreference.com/w/cpp/language/range-for" target="_blank" rel="external">基于范围的<code>for</code>循环</a>被添加：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> x : myList)</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; x;</span><br></pre></td></tr></table></figure>
+<h2 id="Auto">Auto</h2><p>Python一直是一种动态类型语言。任何地方，你都不用声明变量的类型，因为类型是对象自己的属性。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="string">"Hello world!"</span></span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure>
+<p>另一方面，C++不是动态类型的，它是静态类型语言。但是从<code>C++11</code>使用<a href="http://en.cppreference.com/w/cpp/language/auto" target="_blank" rel="external">`auto’</a>关键字进行类型推导以来，你能够看起来像动态类型一样来编写代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> x = <span class="string">"Hello world!"</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; x;</span><br></pre></td></tr></table></figure>
+<p>当你调用那些被好几种类型重载的函数，例如<code>std::ostream::operator&lt;&lt;</code>，或模板函数的时候，C++就更表现出动态类型语言的特征。<code>C++14</code>更进一步扩充了对<code>auto</code>关键字的支持，增加了对<code>auto</code><a href="http://en.wikipedia.org/wiki/C%2B%2B14#Function_return_type_deduction" target="_blank" rel="external">返回值</a>和<br>lambda函数使用<code>auto</code><a href="http://en.wikipedia.org/wiki/C%2B%2B14#Generic_lambdas" target="_blank" rel="external">参数</a>的支持。</p>
+<h2 id="Tuples">Tuples</h2><p>Python几乎从开始就支持<a href="https://docs.python.org/release/1.4/ref/ref3.html" target="_blank" rel="external"><code>tuple</code></a>。当你需要把几个值打包在一起的时候表现的非常友好，而不需要命名一个类。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">triple = (<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>)</span><br><span class="line">print(triple[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<p>C++在<code>C++11</code>中把<code>tuple</code>添加到了标准库中。在<a href="http://open-std.org/jtc1/sc22/wg21/docs/papers/2002/n1403.pdf" target="_blank" rel="external">这一提议</a>中甚至提到是从Python中得到的灵感：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> triple = <span class="built_in">std</span>::<span class="keyword">make_t</span>uple(<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>);</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::get&lt;<span class="number">0</span>&gt;(triple);</span><br></pre></td></tr></table></figure>
+<p>Python可以让你解包一个<code>tuple</code>到分开的变量中：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x,y,z = triple</span><br></pre></td></tr></table></figure>
+<p>你在C++中使用<code>std::tie</code>也可以做到同样的事情：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::tie(x,y,z) = triple;</span><br></pre></td></tr></table></figure>
+<h2 id="Uniform_Initialization">Uniform Initialization</h2><p>在Python中，<a href="https://docs.python.org/2/tutorial/introduction.html#lists" target="_blank" rel="external"><code>list</code></a>是一个内建类型。这样，你可以使用单一的表达式来创建一个Python列表：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myList = [<span class="number">6</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line">myList.append(<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+<p>C++中的<code>std::vetcor</code>是Python列表的最相近的模仿。在<code>C++11</code>中新添加了<a href="http://www.stroustrup.com/C++11FAQ.html#init-list" target="_blank" rel="external">统一初始化</a>，现在也可以让我们使用单一的表达式来创建它们：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> myList = <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&#123;<span class="number">6</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">8</span>&#125;;</span><br><span class="line">myList.push_back(<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+<p>在Python中，你也可以使用单一的表达式创建一个<a href="https://docs.python.org/2/tutorial/datastructures.html#dictionaries" target="_blank" rel="external">字典</a>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myDict = &#123;<span class="number">5</span>: <span class="string">"foo"</span>, <span class="number">6</span>: <span class="string">"bar"</span>&#125;;</span><br><span class="line">print(myDict[<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+<p>同样的，统一初始化也可以工作在C++的<code>std::map</code>和<code>unordered_map</code>：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> myDict = <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">const</span> <span class="keyword">char</span>*&gt;&#123;&#123;<span class="number">5</span>, <span class="string">"foo"</span>&#125;, &#123;<span class="number">6</span>, <span class="string">"bar"</span>&#125;&#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; myDict[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
+<h2 id="Lambda_Expressions">Lambda Expressions</h2><p>自从1994年开始Python就支持了<a href="http://www.artima.com/weblogs/viewpost.jsp?thread=98196" target="_blank" rel="external">lambda函数</a>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myList.sort(key = <span class="keyword">lambda</span> x: abs(x))</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.stroustrup.com/C++11FAQ.html#lambda" target="_blank" rel="external">lambda表达式</a>在<code>C++11</code>中被添加：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::sort(myList.begin(), myList.end(), [](<span class="keyword">int</span> x, <span class="keyword">int</span> y)&#123;<span class="keyword">return</span> <span class="built_in">std</span>::<span class="built_in">abs</span>(x) &lt; <span class="built_in">std</span>::<span class="built_in">abs</span>(y);&#125;);</span><br></pre></td></tr></table></figure>
+<p>在2001年，Python增加了<a href="https://docs.python.org/2/whatsnew/2.2.html#pep-227-nested-scopes" target="_blank" rel="external">静态嵌套作用域</a>，它可以使得lambda函数捕获在外围函数中定义的变量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">adder</span><span class="params">(amount)</span>:</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">lambda</span> x: x + amount</span><br><span class="line">...</span><br><span class="line">print(adder(<span class="number">5</span>)(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
+<p>同样的，C++的lambda表达式支持一套灵活的<a href="http://en.cppreference.com/w/cpp/language/lambda#Lambda_capture" target="_blank" rel="external">捕获规则</a>，使你能够做到相似的事情：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">adder</span><span class="params">(<span class="keyword">int</span> amount)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [=](<span class="keyword">int</span> x)&#123;<span class="keyword">return</span> x + amount;&#125;;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; adder(<span class="number">5</span>)(<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Standard_Algorithms">Standard Algorithms</h2><p>Python的内建<code>filter</code>函数使你从列表有选择性的拷贝元素（但推荐使用<a href="https://docs.python.org/3/whatsnew/2.0.html#list-comprehensions" target="_blank" rel="external">列表推导</a>）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = filter(<span class="keyword">lambda</span> x: x &gt;= <span class="number">0</span>, myList)</span><br></pre></td></tr></table></figure>
+<p><code>C++11</code>引入了<a href="http://en.cppreference.com/w/cpp/algorithm/copy" target="_blank" rel="external">std::copy_if</a>，它使我们可以使用相似的，几乎是函数式的风格：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> result = <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&#123;&#125;;</span><br><span class="line"><span class="built_in">std</span>::copy_if(mylist.begin(), myList.end(), <span class="built_in">std</span>::back_inserter(result), [](<span class="keyword">int</span> x)&#123;<span class="keyword">return</span> x &gt;= <span class="number">0</span>;&#125;);</span><br></pre></td></tr></table></figure>
+<p>其它C++<a href="http://en.cppreference.com/w/cpp/algorithm" target="_blank" rel="external">算法</a>借鉴了Python内建的<code>transform</code>，<code>any_of</code>，<code>all_of</code>，<code>min</code>和<code>max</code>函数。即将到来的<a href="https://github.com/ericniebler/range-v3/blob/master/doc/D4128.md" target="_blank" rel="external">rangs提议</a>将更进一步的简化这些表达式。</p>
+<h2 id="Parameter_Packs">Parameter Packs</h2><p>Python在<a href="https://docs.python.org/release/1.5/tut/node29.html" target="_blank" rel="external">1998</a>年开始支持任意参数列表。你可以定义一个函数，它可以接受可变数量的参数。这些参数表现为一个<code>tuple</code>，当把它们传给另一个<br>函数时<code>tuple</code>会被展开：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(*args)</span>:</span></span><br><span class="line">  <span class="keyword">return</span> tuple(*args)</span><br><span class="line">...</span><br><span class="line">triple = foo(<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+<p><code>C++11</code>添加了对<a href="http://www.stroustrup.com/C++11FAQ.html#variadic-templates" target="_blank" rel="external">参数包</a>的支持。不同于C风格的可变参数，它和Python的任意参数列表很像，参数包有一个名字来代表整个参数序列。一个重要的区别在于：C++的参数包在运行时并不表现为一个单一的对象。你只有通过模板元编程技术在在编译时来操纵它们。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... T&gt; <span class="function"><span class="keyword">auto</span> <span class="title">foo</span><span class="params">(T&amp;&amp;... args)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">std</span>::<span class="keyword">make_t</span>uple(args...);</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">auto</span> triple = foo(<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>);</span><br></pre></td></tr></table></figure>
+<p>并非所有<code>C++11</code>和<code>C++14</code>的新特性都借鉴于Python，但其中很大一部分看起来似乎如此。Python被认为是一个友好的、平易近人的编程语言，或许它的一些魅力已经开始暗淡了？</p>
+<p>你觉得如何？C++的这些新特性是否使C++变得更简单、更平易近人或者更富有表达力呢？</p>
+
+      
+  </div>
+  <footer>
+    
+      
+<div class="pagepart clearfix">
+  
+    <a href="/当DP遇见Py/当DP遇见Py(十四) -- 备忘录模式/" class="alignleft prev" title="当DP遇见Py(十四) -- 备忘录模式">当DP遇见Py(十四) -- 备忘录模式</a>
+  
+  
+    <a href="/Elements-of-Modern-C-Style/" class="alignright next" title="Elements of Modern C++ Style">Elements of Modern C++ Style</a>
+    
+</div>
+
+
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/C-C/">C/C++</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/C-11/">C++11</a>, <a class="tags-link" href="/tags/Python/">Python</a>, <a class="tags-link" href="/tags/翻译/">翻译</a>
+  </div>
+
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-thread-key="C-Has-Become-More-Pythonic/" data-title="C++ Has Become More Pythonic" data-url="http://lyhopq.github.io/C-Has-Become-More-Pythonic/"></div>
+</section>
+
+</div>
+  </div>
+  
+  <div id="sidebar" class="widgets-bottom">
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C-C/">C/C++</a><small>5</small></li>
+  
+    <li><a href="/categories/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/categories/Golang/">Golang</a><small>2</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>3</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>22</small></li>
+  
+    <li><a href="/categories/UML/">UML</a><small>1</small></li>
+  
+    <li><a href="/categories/Vim/">Vim</a><small>1</small></li>
+  
+    <li><a href="/categories/业余/">业余</a><small>1</small></li>
+  
+    <li><a href="/categories/机器学习/">机器学习</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/ArchLinux/" style="font-size: 10px;">ArchLinux</a> <a href="/tags/Boot/" style="font-size: 10px;">Boot</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/C-11/" style="font-size: 16.67px;">C++11</a> <a href="/tags/Coding-Style/" style="font-size: 10px;">Coding Style</a> <a href="/tags/DP/" style="font-size: 18.33px;">DP</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Gtest/" style="font-size: 10px;">Gtest</a> <a href="/tags/Inkscape/" style="font-size: 10px;">Inkscape</a> <a href="/tags/Linux/" style="font-size: 11.67px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine Learning</a> <a href="/tags/MinGW/" style="font-size: 10px;">MinGW</a> <a href="/tags/PlantUML/" style="font-size: 10px;">PlantUML</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/Utf-8/" style="font-size: 10px;">Utf-8</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/encode/" style="font-size: 10px;">encode</a> <a href="/tags/godef/" style="font-size: 10px;">godef</a> <a href="/tags/shell/" style="font-size: 11.67px;">shell</a> <a href="/tags/vim/" style="font-size: 11.67px;">vim</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/分类器/" style="font-size: 16.67px;">分类器</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a> <a href="/tags/命令行解析/" style="font-size: 10px;">命令行解析</a> <a href="/tags/概率论/" style="font-size: 15px;">概率论</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/结构体对齐/" style="font-size: 10px;">结构体对齐</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最近发布</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记3/">《Effective Modern C++》条款3</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记2/">《Effective Modern C++》条款2</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记1/">《Effective Modern C++》条款1</a>
+      </li>
+    
+      <li>
+        <a href="/PEP-0008-Python代码风格指南/">PEP 0008 -- Python代码风格指南</a>
+      </li>
+    
+      <li>
+        <a href="/当DP遇见Py/当DP遇见Py(二十) -- 职责链模式/">当DP遇见Py(二十) -- 职责链模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+</div>
+  
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2016 <a href="/">Lyh</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://blog.dafengning.com/" target="_blank">Chong Zi</a>
+</div>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<div class="clearfix"></div>
+<script async src="http://78rbbi.com1.z0.glb.clouddn.com/busuanzi.pure.mini.js">
+</script>
+</footer>
+  <script src="//lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lyhopq"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<div id="rightfix" style="display:none;">
+
+<a href="#comment" id="gocomm" class="fix_btn" title="提问/评论"><i><i></i></i></a>
+
+
+<a href="javascript:void(0)" id="gotop" class="fix_btn" onclick="gotop();" title="回到顶部"><i></i></a>
+<script>
+  function gotop(){
+    $('html,body').animate({
+        scrollTop : '0px'
+      }, 800);
+  }
+  $(function(){
+    _rightfix = $('#rightfix');
+    $(window).scroll(function(){
+      $sollTop = document.documentElement.scrollTop + document.body.scrollTop;
+      if($sollTop > 350){
+        _rightfix.show();
+      }else{
+        _rightfix.hide();
+      }
+    });
+  });
+</script>
+
+</div>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+
+
+
+<script>
+var option = {
+  engineKey: '70e393f447ec0686ffba'
+};
+(function(w,d,t,u,n,s,e){
+  s = d.createElement(t);
+  s.src = u;
+  s.async = 1;
+  w[n] = function(r){
+    w[n].opts = r;
+  };
+  e = d.getElementsByTagName(t)[0];
+  e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+_ts(option);
+
+$("#ts-search-input").mouseenter(function(){
+  $("#ts-search-input").animate({width:'+=150px',opacity:'+=0.4'},"slow")}).stop().mouseleave(function(){
+  $("#ts-search-input").animate({width:'-=150px',opacity:'-=0.4'},"slow")});
+</script>
+
+</body>
+</html>

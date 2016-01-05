@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="OACP69rYUO" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>Linux实用集 | 沧海一粟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="Lyh">
+  
+  
+    <meta name="description" content="Linux下实现合并PDF文件使用Gost Script和 PDFtk运行如下命令：
+1#gs -q -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=Linuxidc.pdf -dBATCH *.pdf
+合并结果：把当前目录下所有的 pdf 文件全部合并到 Linuxidc.pdf 中。
+杀掉僵尸12$ps -ef | grep defunct    # 列出僵尸">
+  
+  <meta name="description" content="Linux下实现合并PDF文件使用Gost Script和 PDFtk运行如下命令：
+1#gs -q -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=Linuxidc.pdf -dBATCH *.pdf
+合并结果：把当前目录下所有的 pdf 文件全部合并到 Linuxidc.pdf 中。
+杀掉僵尸12$ps -ef | grep defunct    # 列出僵尸">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux实用集">
+<meta property="og:url" content="http://lyhopq.github.io/Linux实用集/index.html">
+<meta property="og:site_name" content="沧海一粟">
+<meta property="og:description" content="Linux下实现合并PDF文件使用Gost Script和 PDFtk运行如下命令：
+1#gs -q -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=Linuxidc.pdf -dBATCH *.pdf
+合并结果：把当前目录下所有的 pdf 文件全部合并到 Linuxidc.pdf 中。
+杀掉僵尸12$ps -ef | grep defunct    # 列出僵尸">
+<meta property="og:updated_time" content="2016-01-05T12:20:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux实用集">
+<meta name="twitter:description" content="Linux下实现合并PDF文件使用Gost Script和 PDFtk运行如下命令：
+1#gs -q -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=Linuxidc.pdf -dBATCH *.pdf
+合并结果：把当前目录下所有的 pdf 文件全部合并到 Linuxidc.pdf 中。
+杀掉僵尸12$ps -ef | grep defunct    # 列出僵尸">
+  
+    <link rel="alternate" href="/atom.xml" title="沧海一粟" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- //插入统计代码 -->
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">沧海一粟</a></h1>
+    <p><a href="/">在知识的海洋中翱翔</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      <li>
+    <form><input type="text" id="ts-search-input" class="ts-search-input" /></form>
+    </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/Linux实用集/">
+  <time datetime="2013-06-18T06:33:33.000Z">
+    6月 18 2013
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">Linux实用集</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+        
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux下实现合并PDF文件"><span class="toc-text">Linux下实现合并PDF文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#杀掉僵尸"><span class="toc-text">杀掉僵尸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看_TCP/IP_链接状况"><span class="toc-text">查看 TCP/IP 链接状况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统备份与还原"><span class="toc-text">系统备份与还原</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#合并文本行"><span class="toc-text">合并文本行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#smplayer双字幕制作"><span class="toc-text">smplayer双字幕制作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#制作ISO文件，并刻录"><span class="toc-text">制作ISO文件，并刻录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程登录"><span class="toc-text">远程登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看系统中文字体"><span class="toc-text">查看系统中文字体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu_系统备份"><span class="toc-text">Ubuntu 系统备份</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件分割"><span class="toc-text">文件分割</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#转换jpg图片为pdf"><span class="toc-text">转换jpg图片为pdf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vim去掉_^M"><span class="toc-text">vim去掉 ^M</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编码转换"><span class="toc-text">编码转换</span></a></li></ol>
+        </div>
+    
+      <h2 id="Linux下实现合并PDF文件">Linux下实现合并PDF文件</h2><p>使用Gost Script和 PDFtk运行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#gs -q -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=Linuxidc.pdf -dBATCH *.pdf</span></span><br></pre></td></tr></table></figure>
+<p>合并结果：把当前目录下所有的 pdf 文件全部合并到 Linuxidc.pdf 中。</p>
+<h2 id="杀掉僵尸">杀掉僵尸</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ps</span> -ef | grep defunct    <span class="comment"># 列出僵尸(defunct)进程</span></span><br><span class="line"><span class="variable">$kill</span> -<span class="number">9</span> ppid     <span class="comment"># 杀掉僵尸进程的父进程(ppid)</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="查看_TCP/IP_链接状况">查看 TCP/IP 链接状况</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -n | awk <span class="string">'/^tcp/&#123;++S[$NF]&#125; END &#123;for(a in S) print a, S[a]&#125;'</span></span><br></pre></td></tr></table></figure>
+<h2 id="系统备份与还原">系统备份与还原</h2><ul>
+<li>备份</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cd /</span></span><br><span class="line"><span class="comment">#tar -cvpzf /home/lyh/Backup/xxx.tgz / </span></span><br><span class="line">     --exclude=/media --exclude=/proc --exclude=/mnt </span><br><span class="line">     --exclude=/lost+found --exclude=/tmp </span><br><span class="line">     --exclude=/sys --exclude=/home</span><br></pre></td></tr></table></figure>
+<ul>
+<li>还原</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#tar -xvzf /home/lyh/xxx.tgz -C /</span></span><br></pre></td></tr></table></figure>
+<h2 id="合并文本行">合并文本行</h2><ul>
+<li>合并相邻两行（奇偶合并）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'&#123;if(NR%2==0) &#123;print $0&#125; else &#123;printf $0 "   "&#125;&#125;'</span> filename</span><br></pre></td></tr></table></figure>
+<p>或<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">sed</span> <span class="string">'&#123;N;s/\n/   /&#125;'</span> filename</span><br></pre></td></tr></table></figure></p>
+<h2 id="smplayer双字幕制作">smplayer双字幕制作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ls -<span class="number">1</span> *.srt &gt; tmpg</span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> l1 &amp;&amp; <span class="built_in">read</span> l2;dog</span><br><span class="line">    file=<span class="variable">$&#123;l1%.*.*&#125;</span>.srt  <span class="comment"># 模式匹配g</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$fileg</span></span><br><span class="line">    cat <span class="variable">$l1</span> <span class="variable">$l2</span> &gt; <span class="variable">$fileg</span></span><br><span class="line"><span class="keyword">done</span> &lt; tmpg</span><br></pre></td></tr></table></figure>
+<p>模式匹配运算符号：</p>
+<ul>
+<li>${var#pattern}最短匹配开头处，并删除该部分。</li>
+<li>${var##pattern}最长匹配开头处，并删除该部分。</li>
+<li>${var%pattern}最短匹配结尾处，并删除该部分。</li>
+<li>${var%%pattern}最长匹配结尾处，并删除该部分。</li>
+</ul>
+<h2 id="制作ISO文件，并刻录">制作ISO文件，并刻录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$mkisofs</span> -r -o myISOFile.ISO folderOrFilename</span><br><span class="line"><span class="variable">$cdrecord</span> --devic=cdwriter-device -tao -eject myISOFile.ISO</span><br></pre></td></tr></table></figure>
+<h2 id="远程登录">远程登录</h2><p>rdesktop<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rdesktop -f -r <span class="string">sound:</span>local -r <span class="string">clipboard:</span>PRIMARYCLIPBOARD </span><br><span class="line">    -r <span class="string">disk:</span>MyDisk=<span class="regexp">/home/</span>lyh/Downloads -a <span class="number">24</span> </span><br><span class="line">    -u administrator -p <span class="number">203</span> <span class="number">192.168</span>.0.1</span><br></pre></td></tr></table></figure></p>
+<p>X<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X :<span class="number">1.0</span> -query <span class="number">192.168</span>.<span class="number">0.1</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="查看系统中文字体">查看系统中文字体</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$fc</span>-list :lang=zh-cn</span><br></pre></td></tr></table></figure>
+<h2 id="Ubuntu_系统备份">Ubuntu 系统备份</h2><ul>
+<li>备份</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br><span class="line">sudo tar -cvpzf /home/lyh/Backup/Ubuntu_2009.<span class="number">3.7</span>.tgz / </span><br><span class="line">    --exclude=/media --exclude=/proc --exclude=/mnt </span><br><span class="line">    --exclude=/lost+found --exclude=/tmp </span><br><span class="line">    --exclude=/sys --exclude=/home</span><br></pre></td></tr></table></figure>
+<ul>
+<li>恢复</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvzf /home/lyh/Backup/Ubuntu_2009.<span class="number">3.7</span>.tgz -C /</span><br></pre></td></tr></table></figure>
+<ul>
+<li>得到已安装软件列表文件 </li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -–get-selections | grep -v deinstall &gt; ubuntu.files</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从备份的安装包的列表文件恢复所有包 </li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg --set-selections &lt; ubuntu.files;sudo dselect</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将列表文件发到邮箱中</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dpkg -–get-selections | grep -v deinstall &gt; ubuntu-files </span><br><span class="line">cat ubuntu-files | mailx <span class="operator">-s</span> <span class="string">"ubuntu-files"</span> 自己的email地址</span><br></pre></td></tr></table></figure>
+<h2 id="文件分割">文件分割</h2><ul>
+<li>分割</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ split –b500m myBigFile mySmallFIles.</span><br></pre></td></tr></table></figure>
+<ul>
+<li>合并</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat mySmallFiles.* &gt; myBigFile</span><br></pre></td></tr></table></figure>
+<h2 id="转换jpg图片为pdf">转换jpg图片为pdf</h2><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">find</span> *.jpg -exec <span class="built_in">convert</span> &#123;&#125; &#123;&#125;.pdf \;</span><br></pre></td></tr></table></figure>
+<h2 id="vim去掉_^M">vim去掉 <code>^M</code></h2><p>在vim中显示的 `^M<code>其实是</code>\r`` ，因此使用如下命令去掉： </p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">:%s/</span>\r/g</span><br></pre></td></tr></table></figure>
+<h2 id="编码转换">编码转换</h2><p>查看文件编码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enca filename</span><br></pre></td></tr></table></figure></p>
+<p>把文件名由utf-8转到gbk<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">convmv <span class="operator">-f</span> UTF-<span class="number">8</span> -t GBK --notest filename</span><br></pre></td></tr></table></figure></p>
+<p>把文件内容转换为utf-8<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enca -x utf-<span class="number">8</span> filename</span><br></pre></td></tr></table></figure></p>
+<p>把文件内容由gbk转到utf-8<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iconv <span class="operator">-f</span> GBK -t UTF-<span class="number">8</span> file1 -o file2</span><br></pre></td></tr></table></figure></p>
+<p>将当前目录下的文件由GBK编码转换为UTF-8编码，目录结构不变，转码后的文件保存在utf/default目录下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -exec iconv <span class="operator">-f</span> GBK -t UTF-<span class="number">8</span> &#123;&#125; -o utf/&#123;&#125; \;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>说明：<br> -exec 参数后面跟的是command命令，注意点如下：<br>    command命令的终止，使用 ‘;’ (分号）来判定，在后面必须有一个 ‘;’。特别强调，对于不同的系统，直接使用分号可能会有不同的意义，使用转义符’\’在分号前明确说明。<br>    使用{}来表示文件名，也就是find前面处理过程中过滤出来的文件，用于command命令进行处理。</p>
+</blockquote>
+
+      
+  </div>
+  <footer>
+    
+      
+<div class="pagepart clearfix">
+  
+    <a href="/Linux启动过程/" class="alignleft prev" title="Linux 启动过程">Linux 启动过程</a>
+  
+  
+    <a href="/vim集锦/" class="alignright next" title="vim 集锦">vim 集锦</a>
+    
+</div>
+
+
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/Linux/">Linux</a>, <a class="tags-link" href="/tags/command/">command</a>, <a class="tags-link" href="/tags/shell/">shell</a>
+  </div>
+
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-thread-key="Linux实用集/" data-title="Linux实用集" data-url="http://lyhopq.github.io/Linux实用集/"></div>
+</section>
+
+</div>
+  </div>
+  
+  <div id="sidebar" class="widgets-bottom">
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C-C/">C/C++</a><small>5</small></li>
+  
+    <li><a href="/categories/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/categories/Golang/">Golang</a><small>2</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>3</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>22</small></li>
+  
+    <li><a href="/categories/UML/">UML</a><small>1</small></li>
+  
+    <li><a href="/categories/Vim/">Vim</a><small>1</small></li>
+  
+    <li><a href="/categories/业余/">业余</a><small>1</small></li>
+  
+    <li><a href="/categories/机器学习/">机器学习</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/ArchLinux/" style="font-size: 10px;">ArchLinux</a> <a href="/tags/Boot/" style="font-size: 10px;">Boot</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/C-11/" style="font-size: 16.67px;">C++11</a> <a href="/tags/Coding-Style/" style="font-size: 10px;">Coding Style</a> <a href="/tags/DP/" style="font-size: 18.33px;">DP</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Gtest/" style="font-size: 10px;">Gtest</a> <a href="/tags/Inkscape/" style="font-size: 10px;">Inkscape</a> <a href="/tags/Linux/" style="font-size: 11.67px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine Learning</a> <a href="/tags/MinGW/" style="font-size: 10px;">MinGW</a> <a href="/tags/PlantUML/" style="font-size: 10px;">PlantUML</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/Utf-8/" style="font-size: 10px;">Utf-8</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/encode/" style="font-size: 10px;">encode</a> <a href="/tags/godef/" style="font-size: 10px;">godef</a> <a href="/tags/shell/" style="font-size: 11.67px;">shell</a> <a href="/tags/vim/" style="font-size: 11.67px;">vim</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/分类器/" style="font-size: 16.67px;">分类器</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a> <a href="/tags/命令行解析/" style="font-size: 10px;">命令行解析</a> <a href="/tags/概率论/" style="font-size: 15px;">概率论</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/结构体对齐/" style="font-size: 10px;">结构体对齐</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最近发布</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记3/">《Effective Modern C++》条款3</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记2/">《Effective Modern C++》条款2</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记1/">《Effective Modern C++》条款1</a>
+      </li>
+    
+      <li>
+        <a href="/PEP-0008-Python代码风格指南/">PEP 0008 -- Python代码风格指南</a>
+      </li>
+    
+      <li>
+        <a href="/当DP遇见Py/当DP遇见Py(二十) -- 职责链模式/">当DP遇见Py(二十) -- 职责链模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+</div>
+  
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2016 <a href="/">Lyh</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://blog.dafengning.com/" target="_blank">Chong Zi</a>
+</div>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<div class="clearfix"></div>
+<script async src="http://78rbbi.com1.z0.glb.clouddn.com/busuanzi.pure.mini.js">
+</script>
+</footer>
+  <script src="//lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lyhopq"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<div id="rightfix" style="display:none;">
+
+<a href="#comment" id="gocomm" class="fix_btn" title="提问/评论"><i><i></i></i></a>
+
+
+<a href="javascript:void(0)" id="gotop" class="fix_btn" onclick="gotop();" title="回到顶部"><i></i></a>
+<script>
+  function gotop(){
+    $('html,body').animate({
+        scrollTop : '0px'
+      }, 800);
+  }
+  $(function(){
+    _rightfix = $('#rightfix');
+    $(window).scroll(function(){
+      $sollTop = document.documentElement.scrollTop + document.body.scrollTop;
+      if($sollTop > 350){
+        _rightfix.show();
+      }else{
+        _rightfix.hide();
+      }
+    });
+  });
+</script>
+
+</div>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+
+
+
+<script>
+var option = {
+  engineKey: '70e393f447ec0686ffba'
+};
+(function(w,d,t,u,n,s,e){
+  s = d.createElement(t);
+  s.src = u;
+  s.async = 1;
+  w[n] = function(r){
+    w[n].opts = r;
+  };
+  e = d.getElementsByTagName(t)[0];
+  e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+_ts(option);
+
+$("#ts-search-input").mouseenter(function(){
+  $("#ts-search-input").animate({width:'+=150px',opacity:'+=0.4'},"slow")}).stop().mouseleave(function(){
+  $("#ts-search-input").animate({width:'-=150px',opacity:'-=0.4'},"slow")});
+</script>
+
+</body>
+</html>

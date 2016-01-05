@@ -1,0 +1,490 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="OACP69rYUO" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>沧海一粟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="Lyh">
+  
+  
+  <meta name="description" content="C/C++ | Python">
+<meta property="og:type" content="website">
+<meta property="og:title" content="沧海一粟">
+<meta property="og:url" content="http://lyhopq.github.io/index.html">
+<meta property="og:site_name" content="沧海一粟">
+<meta property="og:description" content="C/C++ | Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="沧海一粟">
+<meta name="twitter:description" content="C/C++ | Python">
+  
+    <link rel="alternate" href="/atom.xml" title="沧海一粟" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- //插入统计代码 -->
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">沧海一粟</a></h1>
+    <p><a href="/">在知识的海洋中翱翔</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      <li>
+    <form><input type="text" id="ts-search-input" class="ts-search-input" /></form>
+    </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+
+    <div class="content">
+
+
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/《Effective-Modern-C-》学习笔记3/">
+  <time datetime="2015-09-21T08:12:54.000Z">
+    9月 21 2015
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/《Effective-Modern-C-》学习笔记3/">《Effective Modern C++》条款3</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h2 id="条款3：理解decltype(Understand_decltype)">条款3：理解<code>decltype</code>(Understand <code>decltype</code>)</h2><p><code>decltype</code>可以告诉你一个变量或一个表达式的类型。</p>
+<h3 id="一般情况下，decltype返回的类型和你所给变量或表达式的类型一模一样">一般情况下，<code>decltype</code>返回的类型和你所给变量或表达式的类型一模一样</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> i = <span class="number">0</span>;          <span class="comment">// decltype(i) is const int</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">f</span><span class="params">(<span class="keyword">const</span> Widget&amp; w)</span></span>;  <span class="comment">// decltype(w) is const Widget&amp;</span></span><br><span class="line">                          <span class="comment">// decltype(f) is bool(const Widget&amp;)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> Point &#123;</span><br><span class="line"><span class="keyword">int</span> x, y;</span><br><span class="line">&#125;;                        <span class="comment">// decltype(Point::x) is int</span></span><br><span class="line">                          <span class="comment">// decltype(Point::y) is int</span></span><br><span class="line"></span><br><span class="line">Widget w;                 <span class="comment">// decltype(w) is Widget</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(f(w)) ...              <span class="comment">// decltype(f(w)) is bool</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;      <span class="comment">// simplified version of std::vector</span></span><br><span class="line"><span class="keyword">class</span> <span class="built_in">vector</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ...</span><br><span class="line">    T&amp; <span class="keyword">operator</span>[](<span class="built_in">std</span>::<span class="keyword">size_t</span> index);</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;           <span class="comment">// decltype(v) is vector&lt;int&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">if</span> (v[<span class="number">0</span>] == <span class="number">0</span>) ...       <span class="comment">// decltype(v[0]) is int&amp;</span></span><br></pre></td></tr></table></figure>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/《Effective-Modern-C-》学习笔记3/#more" class="more-link">阅读全文</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/《Effective-Modern-C-》学习笔记2/">
+  <time datetime="2015-09-17T08:54:06.000Z">
+    9月 17 2015
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/《Effective-Modern-C-》学习笔记2/">《Effective Modern C++》条款2</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h2 id="条款2：理解auto类型推导(Understand_auto_type_deduction)">条款2：理解<code>auto</code>类型推导(Understand <code>auto</code> type deduction)</h2><p>除了在一种情况下，<code>auto</code>类型推导和模板类型推导是一样的。</p>
+<p>在<a href="/《Effective-Modern-C++》学习笔记1">条款1</a>中，使用以下统一的函数模板：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(ParamType param)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>和统一调用方式：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f(expr);</span><br></pre></td></tr></table></figure></p>
+<p>在函数是<code>f</code>的调用过程中，编译器使用<code>expr</code>来推断<code>T</code>和<code>ParamType</code>。</p>
+<p>当一个<strong>变量</strong>使用<code>auto</code>来声明时，<code>auto</code>扮演了模板中<code>T</code>的角色，且该<strong>变量</strong>的类型说明符扮演了<code>ParamType</code>的角色。因此，同<a href="/《Effective-Modern-C++》学习笔记1">条款1</a>中一样，根据<strong>变量</strong>的类型说明符的形式分三种情况：</p>
+<ul>
+<li>情况1：类型说明符是一个引用或指针，但不是一个万能引用(Universal Reference)</li>
+<li>情况2：类型说明符是一个万能引用(Universal Reference)</li>
+<li>情况3：类型说明符既不是指针也不是引用</li>
+</ul>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/《Effective-Modern-C-》学习笔记2/#more" class="more-link">阅读全文</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/《Effective-Modern-C-》学习笔记1/">
+  <time datetime="2015-09-14T12:57:12.000Z">
+    9月 14 2015
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/《Effective-Modern-C-》学习笔记1/">《Effective Modern C++》条款1</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h2 id="条款1：理解模板类型推导(Understand_template_type_deduction)">条款1：理解模板类型推导(Understand template type deduction)</h2><p>模板的类型推导是现代<code>C++</code>最引人注目的特性之一<code>auto</code>的基础，因此要真正理解模板类型推导的各个方面。</p>
+<p>函数模板：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(ParamType param)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>调用方式：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f(expr);  <span class="comment">// call f with some expression</span></span><br></pre></td></tr></table></figure></p>
+<p>在编译过程中，编译器使用<code>expr</code>来推导两个类型：<code>T</code>、<code>ParamType</code>。被推导出的<code>T</code>的类型不仅取决于<code>expr</code>的类型，还取决于<code>ParamType</code>的形式。有三种情形：</p>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/《Effective-Modern-C-》学习笔记1/#more" class="more-link">阅读全文</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/PEP-0008-Python代码风格指南/">
+  <time datetime="2015-09-11T14:50:21.000Z">
+    9月 11 2015
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/PEP-0008-Python代码风格指南/">PEP 0008 -- Python代码风格指南</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>译自：<a href="https://www.python.org/dev/peps/pep-0008/">https://www.python.org/dev/peps/pep-0008/</a></p>
+<table>
+<thead>
+<tr>
+<th>PEP:</th>
+<th>8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title:</td>
+<td>Style Guide for Python Code</td>
+</tr>
+<tr>
+<td>Author:</td>
+<td>Guido van Rossum <guido at python.org>, Barry Warsaw <barry at python.org>, Nick Coghlan <ncoghlan at gmail.com></td>
+</tr>
+<tr>
+<td>Status:</td>
+<td>Active</td>
+</tr>
+<tr>
+<td>Type:</td>
+<td>Process</td>
+</tr>
+<tr>
+<td>Created:</td>
+<td>05-Jul-2001</td>
+</tr>
+<tr>
+<td>Post-History:</td>
+<td>05-Jul-2001, 01-Aug-2013</td>
+</tr>
+</tbody>
+</table>
+<h2 id="介绍">介绍</h2><p>本文对<code>Python</code>的主要发行版本的标准库代码给出了编码约定。关于<code>Python</code>的<code>C</code>实现中的<code>C</code>风格指南请见相关的PEP<a href="#id1">[1]</a>。 </p>
+<p>本文和<a href="https://www.python.org/dev/peps/pep-0257">PEP 257</a>（<code>文档字符串约定</code>）改编于<code>Guido</code>最初的<code>Python</code>风格指南文章，并从<code>Barry</code>的风格指南中汲取了一些内容<a href="#id2">[2]</a>。</p>
+<p>因为语言本身的变化，本风格指南也随着时间的推移而演变，更多的约定被发现，过时的约定被淘汰。</p>
+<p>许多的项目有他们自己的编码风格指南。如果和本指南发生了冲突，项目应该居先考虑项目特定的指南。</p>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/PEP-0008-Python代码风格指南/#more" class="more-link">阅读全文</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/当DP遇见Py/当DP遇见Py(二十) -- 职责链模式/">
+  <time datetime="2015-09-04T06:24:51.000Z">
+    9月 4 2015
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/当DP遇见Py/当DP遇见Py(二十) -- 职责链模式/">当DP遇见Py(二十) -- 职责链模式</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h2 id="定义：">定义：</h2><blockquote>
+<p>使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这个对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。</p>
+</blockquote>
+<h2 id="类图：">类图：</h2><p><img src="http://78rbbi.com1.z0.glb.clouddn.com/chain.png" alt=""></p>
+<h2 id="类型：行为型">类型：行为型</h2><h2 id="实例：">实例：</h2><blockquote>
+<p>请假由谁批要看天数？</p>
+</blockquote>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/当DP遇见Py/当DP遇见Py(二十) -- 职责链模式/#more" class="more-link">阅读全文</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+  
+
+  <nav id="pagination">
+  
+  
+    <a href="/page/2/" class="next">下一页</a>
+  
+  <div class="clearfix"></div>
+</nav>
+
+</div>
+  </div>
+  
+  <div id="sidebar" class="widgets-bottom">
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C-C/">C/C++</a><small>5</small></li>
+  
+    <li><a href="/categories/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/categories/Golang/">Golang</a><small>2</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>3</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>22</small></li>
+  
+    <li><a href="/categories/UML/">UML</a><small>1</small></li>
+  
+    <li><a href="/categories/Vim/">Vim</a><small>1</small></li>
+  
+    <li><a href="/categories/业余/">业余</a><small>1</small></li>
+  
+    <li><a href="/categories/机器学习/">机器学习</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/ArchLinux/" style="font-size: 10px;">ArchLinux</a> <a href="/tags/Boot/" style="font-size: 10px;">Boot</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/C-11/" style="font-size: 16.67px;">C++11</a> <a href="/tags/Coding-Style/" style="font-size: 10px;">Coding Style</a> <a href="/tags/DP/" style="font-size: 18.33px;">DP</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Gtest/" style="font-size: 10px;">Gtest</a> <a href="/tags/Inkscape/" style="font-size: 10px;">Inkscape</a> <a href="/tags/Linux/" style="font-size: 11.67px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine Learning</a> <a href="/tags/MinGW/" style="font-size: 10px;">MinGW</a> <a href="/tags/PlantUML/" style="font-size: 10px;">PlantUML</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/Utf-8/" style="font-size: 10px;">Utf-8</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/encode/" style="font-size: 10px;">encode</a> <a href="/tags/godef/" style="font-size: 10px;">godef</a> <a href="/tags/shell/" style="font-size: 11.67px;">shell</a> <a href="/tags/vim/" style="font-size: 11.67px;">vim</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/分类器/" style="font-size: 16.67px;">分类器</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a> <a href="/tags/命令行解析/" style="font-size: 10px;">命令行解析</a> <a href="/tags/概率论/" style="font-size: 15px;">概率论</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/结构体对齐/" style="font-size: 10px;">结构体对齐</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最近发布</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记3/">《Effective Modern C++》条款3</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记2/">《Effective Modern C++》条款2</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记1/">《Effective Modern C++》条款1</a>
+      </li>
+    
+      <li>
+        <a href="/PEP-0008-Python代码风格指南/">PEP 0008 -- Python代码风格指南</a>
+      </li>
+    
+      <li>
+        <a href="/当DP遇见Py/当DP遇见Py(二十) -- 职责链模式/">当DP遇见Py(二十) -- 职责链模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+</div>
+  
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2016 <a href="/">Lyh</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://blog.dafengning.com/" target="_blank">Chong Zi</a>
+</div>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<div class="clearfix"></div>
+<script async src="http://78rbbi.com1.z0.glb.clouddn.com/busuanzi.pure.mini.js">
+</script>
+</footer>
+  <script src="//lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lyhopq"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<div id="rightfix" style="display:none;">
+
+
+<a href="javascript:void(0)" id="gotop" class="fix_btn" onclick="gotop();" title="回到顶部"><i></i></a>
+<script>
+  function gotop(){
+    $('html,body').animate({
+        scrollTop : '0px'
+      }, 800);
+  }
+  $(function(){
+    _rightfix = $('#rightfix');
+    $(window).scroll(function(){
+      $sollTop = document.documentElement.scrollTop + document.body.scrollTop;
+      if($sollTop > 350){
+        _rightfix.show();
+      }else{
+        _rightfix.hide();
+      }
+    });
+  });
+</script>
+
+</div>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+
+
+
+<script>
+var option = {
+  engineKey: '70e393f447ec0686ffba'
+};
+(function(w,d,t,u,n,s,e){
+  s = d.createElement(t);
+  s.src = u;
+  s.async = 1;
+  w[n] = function(r){
+    w[n].opts = r;
+  };
+  e = d.getElementsByTagName(t)[0];
+  e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+_ts(option);
+
+$("#ts-search-input").mouseenter(function(){
+  $("#ts-search-input").animate({width:'+=150px',opacity:'+=0.4'},"slow")}).stop().mouseleave(function(){
+  $("#ts-search-input").animate({width:'-=150px',opacity:'-=0.4'},"slow")});
+</script>
+
+</body>
+</html>

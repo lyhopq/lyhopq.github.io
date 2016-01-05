@@ -1,0 +1,476 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="OACP69rYUO" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>沧海一粟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="Lyh">
+  
+  
+  <meta name="description" content="C/C++ | Python">
+<meta property="og:type" content="website">
+<meta property="og:title" content="沧海一粟">
+<meta property="og:url" content="http://lyhopq.github.io/page/3/index.html">
+<meta property="og:site_name" content="沧海一粟">
+<meta property="og:description" content="C/C++ | Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="沧海一粟">
+<meta name="twitter:description" content="C/C++ | Python">
+  
+    <link rel="alternate" href="/atom.xml" title="沧海一粟" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- //插入统计代码 -->
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">沧海一粟</a></h1>
+    <p><a href="/">在知识的海洋中翱翔</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      <li>
+    <form><input type="text" id="ts-search-input" class="ts-search-input" /></form>
+    </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+
+    <div class="content">
+
+
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/Eclipse-MinGW-Gtest-进行C-C-单元测试/">
+  <time datetime="2015-07-03T11:47:25.000Z">
+    7月 3 2015
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/Eclipse-MinGW-Gtest-进行C-C-单元测试/">Eclipse + MinGW + Gtest 进行C/C++单元测试</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h2 id="Step_1：_下载_gtest">Step 1： 下载 gtest</h2><p>最新版本gtest-1.7.0</p>
+<h2 id="Step_2：_解压gtest-1-7-0">Step 2： 解压gtest-1.7.0</h2><p>解压gtest-1.7.0，打开文件夹gtest-1.7.0。其中”samples”包含了10个gtest的例子；”src”是gtest的源码。</p>
+<p><img src="http://78rbbi.com1.z0.glb.clouddn.com/s1.png" alt=""></p>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/Eclipse-MinGW-Gtest-进行C-C-单元测试/#more" class="more-link">阅读全文</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/Elements-of-Modern-C-Style/">
+  <time datetime="2015-06-26T05:45:28.000Z">
+    6月 26 2015
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/Elements-of-Modern-C-Style/">Elements of Modern C++ Style</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>译自：<a href="http://herbsutter.com/elements-of-modern-c-style">http://herbsutter.com/elements-of-modern-c-style</a></p>
+<blockquote>
+<p>“C++11 feels like a new language.” — Bjarne Stroustrup</p>
+</blockquote>
+<p><code>C++11</code>标准提供了<a href="http://www2.research.att.com/~bs/C++0xFAQ.html">很多新特性</a>。本文特别的而且仅仅专注于那些使得<code>C++11</code>相比于<code>C++98</code>来说确实感觉像一门新语言的特性，因为：</p>
+<ul>
+<li>它们改变了编写C++代码时所要使用的风格和惯用手法，通常还包括设计C++库的方式。例如，你将会看到更多的智能指针作为参数和返回值，函数也会通过值的方式返回大对象。</li>
+<li>它们被如此普遍的使用，以至于你会在大多数的代码示例中看见它们。例如，几乎在每5行的现代C++代码示例中你就会看见<code>auto</code>的身影。</li>
+</ul>
+<p><code>C++11</code>的特性也要好好的使用，但先使用好这些，因为它们是使得<code>C++11</code>代码整洁、安全（和现代主流语言一样整洁和安全）和快速的最普遍的特性，再加上C++的传统的，如金属般的性能，使之一如既往的强大。</p>
+<p>说明：</p>
+<ul>
+<li>如同<code>Strunk &amp; White</code>，本文特意专注于简洁的总结指导，而不是为了提供详尽的原理阐述和<code>pro/con</code>分析；这将在其它的文章中探究。</li>
+<li>这是一份保持更新的文档。你可以在最后随时间变化和添加的列表中看见。</li>
+</ul>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/Elements-of-Modern-C-Style/#more" class="more-link">阅读全文</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/C-Has-Become-More-Pythonic/">
+  <time datetime="2015-06-25T11:14:33.000Z">
+    6月 25 2015
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/C-Has-Become-More-Pythonic/">C++ Has Become More Pythonic</a></h1>
+  
+
+  </header>
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      
+        <img src="http://preshing.com/images/pythonic_cpp.png">
+      
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="entry">
+    
+      <p>译自：<a href="http://preshing.com/20141202/cpp-has-become-more-pythonic">http://preshing.com/20141202/cpp-has-become-more-pythonic</a></p>
+<p>近些年C++ 发生了很多变化。最新的两个版本，<code>C++11</code> 和 <code>C++14</code>引入了如此多的新特性，正如<code>Bjarne Stroustrup</code>所说的：<a href="http://www.stroustrup.com/C++11FAQ.html#think">“它感觉就像一门新的语言”</a>。</p>
+<p>确实是这样。现代C++形成了一种全新的编程风格——使我不得不注意到它带有的更多<code>Python</code>的味道。基范围的<code>for</code>循环、类型推导、vector和map的初始化、lambda表达式。随着你更深入的探索现代C++，你越会发现Python的痕迹在里面。</p>
+<p>现代C++直接受Python的影响吗？或者仅仅是Python在C++之前使用了这些设计？由你来判断。</p>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/C-Has-Become-More-Pythonic/#more" class="more-link">阅读全文</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/当DP遇见Py/当DP遇见Py(十四) -- 备忘录模式/">
+  <time datetime="2015-03-27T16:00:00.000Z">
+    3月 28 2015
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/当DP遇见Py/当DP遇见Py(十四) -- 备忘录模式/">当DP遇见Py(十四) -- 备忘录模式</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h2 id="定义：">定义：</h2><blockquote>
+<p>在不破坏封装性的前提下捕获一个对象的内部状态，并在该对象之外保存这个状态，这样以后可以将对象恢复到原先保存的状态。</p>
+</blockquote>
+<h2 id="类图：">类图：</h2><p><img src="http://78rbbi.com1.z0.glb.clouddn.com/o_ch14.备忘录模式.png" alt=""></p>
+<h2 id="类型：行为型">类型：行为型</h2>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/当DP遇见Py/当DP遇见Py(十四) -- 备忘录模式/#more" class="more-link">阅读全文</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/当DP遇见Py/当DP遇见Py(十三) -- 适配器模式/">
+  <time datetime="2015-03-21T16:00:00.000Z">
+    3月 22 2015
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/当DP遇见Py/当DP遇见Py(十三) -- 适配器模式/">当DP遇见Py(十三) -- 适配器模式</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h2 id="定义：">定义：</h2><blockquote>
+<p>将一个类的接口转换为客户需要的另外一个接口。<code>Adapter</code>模式使得原本由于接口不兼容而不能在一起工作的那些类可以在一起工作。</p>
+</blockquote>
+<h2 id="类图：">类图：</h2><p><img src="http://78rbbi.com1.z0.glb.clouddn.com/适配器模式.png" alt=""></p>
+<h2 id="类型：结构型">类型：结构型</h2>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/当DP遇见Py/当DP遇见Py(十三) -- 适配器模式/#more" class="more-link">阅读全文</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+  
+
+  <nav id="pagination">
+  
+    <a href="/page/2/" class="prev">上一页</a>
+  
+  
+    <a href="/page/4/" class="next">下一页</a>
+  
+  <div class="clearfix"></div>
+</nav>
+
+</div>
+  </div>
+  
+  <div id="sidebar" class="widgets-bottom">
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C-C/">C/C++</a><small>5</small></li>
+  
+    <li><a href="/categories/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/categories/Golang/">Golang</a><small>2</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>3</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>22</small></li>
+  
+    <li><a href="/categories/UML/">UML</a><small>1</small></li>
+  
+    <li><a href="/categories/Vim/">Vim</a><small>1</small></li>
+  
+    <li><a href="/categories/业余/">业余</a><small>1</small></li>
+  
+    <li><a href="/categories/机器学习/">机器学习</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/ArchLinux/" style="font-size: 10px;">ArchLinux</a> <a href="/tags/Boot/" style="font-size: 10px;">Boot</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/C-11/" style="font-size: 16.67px;">C++11</a> <a href="/tags/Coding-Style/" style="font-size: 10px;">Coding Style</a> <a href="/tags/DP/" style="font-size: 18.33px;">DP</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Gtest/" style="font-size: 10px;">Gtest</a> <a href="/tags/Inkscape/" style="font-size: 10px;">Inkscape</a> <a href="/tags/Linux/" style="font-size: 11.67px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine Learning</a> <a href="/tags/MinGW/" style="font-size: 10px;">MinGW</a> <a href="/tags/PlantUML/" style="font-size: 10px;">PlantUML</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/Utf-8/" style="font-size: 10px;">Utf-8</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/encode/" style="font-size: 10px;">encode</a> <a href="/tags/godef/" style="font-size: 10px;">godef</a> <a href="/tags/shell/" style="font-size: 11.67px;">shell</a> <a href="/tags/vim/" style="font-size: 11.67px;">vim</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/分类器/" style="font-size: 16.67px;">分类器</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a> <a href="/tags/命令行解析/" style="font-size: 10px;">命令行解析</a> <a href="/tags/概率论/" style="font-size: 15px;">概率论</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/结构体对齐/" style="font-size: 10px;">结构体对齐</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最近发布</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记3/">《Effective Modern C++》条款3</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记2/">《Effective Modern C++》条款2</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记1/">《Effective Modern C++》条款1</a>
+      </li>
+    
+      <li>
+        <a href="/PEP-0008-Python代码风格指南/">PEP 0008 -- Python代码风格指南</a>
+      </li>
+    
+      <li>
+        <a href="/当DP遇见Py/当DP遇见Py(二十) -- 职责链模式/">当DP遇见Py(二十) -- 职责链模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+</div>
+  
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2016 <a href="/">Lyh</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://blog.dafengning.com/" target="_blank">Chong Zi</a>
+</div>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<div class="clearfix"></div>
+<script async src="http://78rbbi.com1.z0.glb.clouddn.com/busuanzi.pure.mini.js">
+</script>
+</footer>
+  <script src="//lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lyhopq"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<div id="rightfix" style="display:none;">
+
+
+<a href="javascript:void(0)" id="gotop" class="fix_btn" onclick="gotop();" title="回到顶部"><i></i></a>
+<script>
+  function gotop(){
+    $('html,body').animate({
+        scrollTop : '0px'
+      }, 800);
+  }
+  $(function(){
+    _rightfix = $('#rightfix');
+    $(window).scroll(function(){
+      $sollTop = document.documentElement.scrollTop + document.body.scrollTop;
+      if($sollTop > 350){
+        _rightfix.show();
+      }else{
+        _rightfix.hide();
+      }
+    });
+  });
+</script>
+
+</div>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+
+
+
+<script>
+var option = {
+  engineKey: '70e393f447ec0686ffba'
+};
+(function(w,d,t,u,n,s,e){
+  s = d.createElement(t);
+  s.src = u;
+  s.async = 1;
+  w[n] = function(r){
+    w[n].opts = r;
+  };
+  e = d.getElementsByTagName(t)[0];
+  e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+_ts(option);
+
+$("#ts-search-input").mouseenter(function(){
+  $("#ts-search-input").animate({width:'+=150px',opacity:'+=0.4'},"slow")}).stop().mouseleave(function(){
+  $("#ts-search-input").animate({width:'-=150px',opacity:'-=0.4'},"slow")});
+</script>
+
+</body>
+</html>

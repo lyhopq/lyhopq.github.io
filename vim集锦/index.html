@@ -1,0 +1,560 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="OACP69rYUO" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>vim 集锦 | 沧海一粟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="Lyh">
+  
+  
+    <meta name="description" content="&lt;!-- toc --&gt;">
+  
+  <meta name="description" content="&amp;lt;!-- toc --&amp;gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim 集锦">
+<meta property="og:url" content="http://lyhopq.github.io/vim集锦/index.html">
+<meta property="og:site_name" content="沧海一粟">
+<meta property="og:description" content="&amp;lt;!-- toc --&amp;gt;">
+<meta property="og:updated_time" content="2016-01-05T12:20:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vim 集锦">
+<meta name="twitter:description" content="&amp;lt;!-- toc --&amp;gt;">
+  
+    <link rel="alternate" href="/atom.xml" title="沧海一粟" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- //插入统计代码 -->
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">沧海一粟</a></h1>
+    <p><a href="/">在知识的海洋中翱翔</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      <li>
+    <form><input type="text" id="ts-search-input" class="ts-search-input" /></form>
+    </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/vim集锦/">
+  <time datetime="2013-07-21T07:20:16.000Z">
+    7月 21 2013
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">vim 集锦</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+        
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#记忆"><span class="toc-text">记忆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#当前行上移动光标"><span class="toc-text">当前行上移动光标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可视化选择：v,_V,_ctrl+v"><span class="toc-text">可视化选择：v, V, ctrl+v</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分屏：split_和_vsplit"><span class="toc-text">分屏：split 和 vsplit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#宏录制"><span class="toc-text">宏录制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#替换"><span class="toc-text">替换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#替换多个文件中的目标"><span class="toc-text">替换多个文件中的目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部分交换"><span class="toc-text">部分交换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#排序"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反转行序"><span class="toc-text">反转行序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目管理"><span class="toc-text">项目管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找一个word在何处被引用"><span class="toc-text">查找一个word在何处被引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加密"><span class="toc-text">加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二进制文件"><span class="toc-text">二进制文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自动补全"><span class="toc-text">自动补全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缩写"><span class="toc-text">缩写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文本对齐"><span class="toc-text">文本对齐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对多个文件做同样的改动"><span class="toc-text">对多个文件做同样的改动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搜索"><span class="toc-text">搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#之于程序"><span class="toc-text">之于程序</span></a></li></ol>
+        </div>
+    
+      <!-- toc -->
+<a id="more"></a>
+<h2 id="记忆">记忆</h2><ul>
+<li><code>*</code> 和 <code>#</code> 对对当前光标所在的单词进行搜索</li>
+<li>选择光标所在的单词：viw （v进入visual模式，然后iw）</li>
+<li>复制光标所在的单词：yiw</li>
+<li>% 匹配括号移动，包括 <code>(, {, [)</code></li>
+<li><code>K</code> 查看man手册</li>
+<li><code>:Man xxx</code> 在新窗口中查看man手册</li>
+<li><code>ga</code> 查看ascii值</li>
+<li><code>g CTRL-G</code> 统计字数，使用Visual模式选取统计部分</li>
+<li><code>q:</code> 打开历史记录窗口</li>
+<li><code>:marks</code> 打开编辑标记窗口 </li>
+<li><code>`0</code> 准确回到上一次退出vim的位置</li>
+<li><code>gf</code> 打开光标下的指定文件 </li>
+<li><code>CTRL-W f</code> 在新窗口中打开</li>
+<li>格式转换： <code>:set fileformat=unix</code></li>
+<li>断行： <code>:set textwidth=70</code></li>
+<li>重新格式化： <code>gq</code> 如： <code>gqap</code> 格式化一段， <code>gggqG</code> 格式化整个文档</li>
+<li>增加/减少缩进： <code>&gt;&gt;/&lt;&lt;</code></li>
+<li>块编辑： <code>:set virtualedit=all</code> ， 退出 <code>:set virtualedit=</code>. 特别适用于表格编辑</li>
+<li><code>gv</code> 再次选定上次选择的Visual区域</li>
+<li><code>CTRL-A</code> ， <code>CTRL-X</code> 对数字加/减</li>
+<li><code>ls | vim -</code> 从标准输入读取要编辑的内容</li>
+<li><code>\c, \C</code> 忽略/不忽略大小写匹配</li>
+<li><code>/</code> 重复前一次搜索</li>
+<li><code>zM</code> 关闭所有折行， <code>zR</code> 打开所有折行， <code>zo, zc</code> 打开，关闭某个折行</li>
+<li>剪切版： <code>&quot;xy</code> 复制到x缓冲区， <code>&quot;xp</code> 粘贴x缓冲区， <code>&quot;+y</code><br>复制到系统剪贴板， <code>&quot;+p</code> 从系统剪切板粘贴</li>
+</ul>
+<h2 id="当前行上移动光标">当前行上移动光标</h2><ul>
+<li>0 到行头</li>
+<li>^ 到本行的第一个非blank字符</li>
+<li>$ 到行尾</li>
+<li>g_ 到本行最后一个不是blank字符的位置</li>
+<li>fa 到下一个为a的字符位置</li>
+<li>ta 到a前一个字符处</li>
+<li>3fa 在当前行查找第三个出现的a</li>
+<li>F和T 和f和t一样，只不过方向向反</li>
+</ul>
+<h2 id="可视化选择：v,_V,_ctrl+v">可视化选择：v, V, ctrl+v</h2><ul>
+<li>J 把所有的选择连接起来（变成一行）</li>
+<li>&lt; 或 &gt; 左右缩进</li>
+<li>= 自动缩进</li>
+</ul>
+<h2 id="分屏：split_和_vsplit">分屏：split 和 vsplit</h2><ul>
+<li>:split 水平分屏</li>
+<li>:vsplit 垂直分屏</li>
+<li><code>ctrl+w+dir</code> dir就是方向，可以是 hjkl 或是 ←↓中的一个，用来切换分屏</li>
+<li><code>ctrl+w+_/|</code>: 最大化尺寸 （_： 水平，|： 垂直）</li>
+<li><code>ctrl+w++/-</code>: 增加/减小尺寸</li>
+</ul>
+<h2 id="宏录制">宏录制</h2><ul>
+<li>qa 把你的操作记录在寄存器a</li>
+<li>@a 会replay被录制的宏</li>
+<li>@@ 是一个快捷键，用来replay最新录制的宏</li>
+</ul>
+<h2 id="替换">替换</h2><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:20,100s/bc/a&amp;<span class="keyword">d</span>/<span class="keyword">g</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>解释：<br>    <code>&amp;</code> 是一个特殊字符，表示被替换的内容。结果为把bc替换成abcd<br>    如果要替换成”a&amp;d”的话，需要用 <code>\&amp;</code> 将&amp;转义</p>
+</blockquote>
+<figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">%</span>s/<span class="params">(\<span class="params">(\d+\)</span>)</span>/\=<span class="string">"("</span>.<span class="params">(submatch<span class="params">(<span class="number">1</span>)</span>+<span class="number">1</span>)</span>.<span class="string">")"</span>/g</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>作用：<br>   将”(1), …., (2), ….,(100)”替换成”(2), …., (3), …., (101)”，即括号里的序号数字都加一。</p>
+<p>解释：<br>   %               全文（”%”是”1，$”范围的缩写）<br>   s               替换<br>   /               搜索字符串开始<br>   (               左括号<br>   (              开始记录匹配<br>   \d+             一个或多个数字<br>   )              结束记录匹配<br>   )               右括号<br>   /               搜索字符串结束<br>   \=              把后面的表达式计算出来作为替换字符串<br>   “(“             左括号<br>   .               字符串连接运算符<br>   (submatch(1)+1) 把第一个匹配的结果加1作为一个整体返回<br>   .”)”    添上右括号<br>   /g      替换字符串结束，g表示替换每一行的所有匹配结果。</p>
+</blockquote>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">:%s/</span>\s\+<span class="variable">$/</span>/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>作用：<br>   消除多余空格<br>解释：<br>   \s+$ 位于行尾的一个或多个空白字符</p>
+</blockquote>
+<h2 id="替换多个文件中的目标">替换多个文件中的目标</h2><p>案例：将所有cpp文件中的”aaaa”替换为”bbb”</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vim *.cpp          <span class="comment"># 启动vim，同时指定了要编辑的文件列表</span></span><br><span class="line">qa                 <span class="comment"># 开始宏记录</span></span><br><span class="line"><span class="symbol">:%s/</span>\&lt;aaa\&gt;<span class="regexp">/bbb/ge</span> <span class="comment"># 在第一个文件中执行替换操作。使用'e'在没有匹配目标时也不会报错</span></span><br><span class="line"><span class="symbol">:wnext</span>             <span class="comment"># 保存该文件并转到下一个文件进行编辑</span></span><br><span class="line">q                  <span class="comment"># 停止宏记录</span></span><br><span class="line"><span class="variable">@a</span>                 <span class="comment"># 执行名为a的宏。看看整个过程有没有错</span></span><br><span class="line"><span class="number">999</span><span class="variable">@a</span>              <span class="comment"># 对其余文件执行同样操作</span></span><br></pre></td></tr></table></figure>
+<h2 id="部分交换">部分交换</h2><p>案例：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Doe</span>, John       ====&gt;        John <span class="keyword">Doe</span></span><br><span class="line">Smith, Peter                 Peter Smith</span><br></pre></td></tr></table></figure>
+<p>在vim中只需一条命令：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">:%s/</span>\([^,]*\), \(.*\)/\<span class="number">2</span> \<span class="number">1</span>/</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>解释：<br> 可以使用的反向引用为9个，”\0”特指整个匹配到的内容</p>
+</blockquote>
+<h2 id="排序">排序</h2><p>通过外部程序 <code>sort</code> 对行排序:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:.,<span class="regexp">/^$/</span>-<span class="number">1</span>!<span class="keyword">sort</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>解释：<br><code>.,/^$/-1</code> 选取的范围是自当前行直至下一个空行。也可以在Visual模式下选取要排序的行</p>
+</blockquote>
+<h2 id="反转行序">反转行序</h2><p>将所有行移到第0行后面:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">:g/^/m</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>将连续行移到某一行的后面:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mt                  <span class="comment"># 标记“某一行”</span></span><br><span class="line">[n]j                <span class="comment"># 移到“连续行”的最后一行</span></span><br><span class="line"><span class="symbol">:`t+</span><span class="number">1</span>,.g/^<span class="regexp">/m `t</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>解释：<br>  g 对范围内的所有行进行操作<br>  ^ 匹配一行的开头<br>  m 0 或 m <code>t 移到第0（</code>t）行之后</p>
+</blockquote>
+<h2 id="项目管理">项目管理</h2><p>会话：session</p>
+<ul>
+<li>保存当前会话：<code>:wa</code>后<code>:mks</code><ul>
+<li>会在当前目录下生成”Session.vim”脚本文件</li>
+<li><code>:mks filename</code> 产生”filename”脚本文件</li>
+</ul>
+</li>
+<li>恢复会话：<code>:so Session.vim</code>或<code>vim -S Session.vim</code></li>
+<li>切换会话：<pre><code><span class="symbol">:wall</span>
+<span class="symbol">:mks!</span> ~<span class="regexp">/.vim/secret</span>.vim
+<span class="symbol">:so</span> ~<span class="regexp">/.vim/boring</span>.vim
+</code></pre></li>
+</ul>
+<p>记住编辑信息：viminfo</p>
+<ul>
+<li>保存信息：<code>:wviminfo ~/tmp/test.viminfo</code></li>
+<li>读取信息： <code>:rviminfo ~/tmp/test.viminfo</code></li>
+</ul>
+<p>视图：view</p>
+<ul>
+<li>保存视图： <code>:mkview 1</code> 或 <code>:mkview ~/.vim/main.vim</code></li>
+<li>恢复视图： <code>:loadview 1</code> 或 <code>:so ~/.vim/main.vim</code></li>
+</ul>
+<p>缓冲区：buffer</p>
+<ul>
+<li><p>显示缓冲区列表： <code>:buffer</code> 或 <code>:ls</code> , <code>:ls!</code></p>
+<pre><code>输出为：
+    :<span class="keyword">ls</span>
+       1  <span class="keyword">h</span>   <span class="string">"[未命名]"</span>                     第 1 行
+       2 %a + <span class="string">"Proj/Uliweb/mysite/apps/Notes/files/Ubuntu/vim.rst"</span> 第 145 行
+       3 #<span class="keyword">h</span>   <span class="string">"Proj/Uliweb/mysite/apps/Notes/files/Ubuntu/imagemagick.rst"</span> 第 23 行
+       4  <span class="keyword">h</span>   <span class="string">"im"</span>                           第 0 行
+</code></pre></li>
+<li><p>编辑一个缓冲区：</p>
+<ul>
+<li><code>:buffer 2</code></li>
+<li><code>:buffer im</code></li>
+<li><code>:sbuffer 3</code> # 新窗口</li>
+</ul>
+</li>
+<li>遍历缓冲区：<ul>
+<li><code>：bnext</code> 下一个缓冲区</li>
+<li><code>：bprevious</code> 前一个缓冲区</li>
+<li><code>：bfirst</code> 第一个缓冲区</li>
+<li><code>：blast</code> 最后一个缓冲区</li>
+</ul>
+</li>
+<li>删除缓冲区：<code>:bdelete 3</code></li>
+</ul>
+<h2 id="查找一个word在何处被引用">查找一个word在何处被引用</h2><p>案例：希望编辑所有包含了”frame_counter”的c文件：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">vim</span> `grep -<span class="number">1</span> frame_counter <span class="regexp">*.c</span>`</span><br></pre></td></tr></table></figure>
+<p>或<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="pseudo">:grep</span> <span class="tag">frame_counter</span> *<span class="class">.c</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>解释：</p>
+<p> -1 使grep的输出只包含文件名而不显示匹配的行<br> ` 反向引用符号，运行其中的命令，并将命令的结果作为当前命令的一部分<br> <code>:next</code>和<code>:first</code>来遍历文件列表<br> 结合<code>:cnext, :cprev, :clist</code> 遍历所有匹配</p>
+</blockquote>
+<h2 id="加密">加密</h2><p>加密：</p>
+<ul>
+<li>方法一： <code>vim -x test.txt</code></li>
+<li>方法二： <code>:X</code></li>
+</ul>
+<p>解密：<code>:set key=</code></p>
+<h2 id="二进制文件">二进制文件</h2><ul>
+<li><p><code>vim -b datafile</code></p>
+<p>  <code>:set display=uhex</code> 以十六进制格式显示</p>
+</li>
+<li><p>使用xxd程序 :</p>
+<p>  vim -b datafile<br>  :%!xxd</p>
+</li>
+</ul>
+<h2 id="自动补全">自动补全</h2><ul>
+<li>补全单词：<code>CTRL-P</code>，<code>CTRL-N</code></li>
+<li><p>补全特殊的文档元素：</p>
+<figure class="highlight tp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CTRL-<span class="keyword">X</span> CTRL-F 文件名</span><br><span class="line">CTRL-<span class="keyword">X</span> CTRL-L 整行内容</span><br><span class="line">CTRL-<span class="keyword">X</span> CTRL-D 宏定义(也包括那些在include文件里定义的宏)</span><br><span class="line">CTRL-<span class="keyword">X</span> CTRL-I 当前文件和被当前文件include的文件</span><br><span class="line">CTRL-<span class="keyword">X</span> CTRL-K 来自一个字典文件的word</span><br><span class="line">CTRL-<span class="keyword">X</span> CTRL-T 来自一个thesaurus的word</span><br><span class="line">CTRL-<span class="keyword">X</span> CTRL-] tags</span><br><span class="line">CTRL-<span class="keyword">X</span> CTRL-V Vim的命令行</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>智能补全： <code>CTRL-X CTRL-O</code> 常用在c源码中:w</p>
+</li>
+</ul>
+<h2 id="缩写">缩写</h2><ul>
+<li>定义缩写：<code>:iabbrev lyh lyhopq@gmail.com</code></li>
+<li>列出以定义缩写：<code>abbreviate</code></li>
+<li>删除缩写： <code>unabbreviate lyh</code></li>
+<li>更正打字错误： <code>abbreviate teh the</code></li>
+<li>移除所有缩写： <code>:abclear</code></li>
+</ul>
+<h2 id="文本对齐">文本对齐</h2><ul>
+<li>居中对齐： <code>:{range}center [width]</code> 例： <code>:1,5center 40</code></li>
+<li>左/右对齐： <code>:left/right</code></li>
+<li>左右对齐：<ul>
+<li>使用宏： <code>:runtime macros/justify.vim</code><br>| 在Visual模式下选定格式化文本，然后执行 <code>_j</code></li>
+<li>使用外部程序： <code>:%!fmt</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="对多个文件做同样的改动">对多个文件做同样的改动</h2><p>案例1：把多个c文件中名为”x_cnt”的变量都改为”X_counter” :<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">:args</span> *.c</span><br><span class="line"><span class="symbol">:argdo</span> %s/\&lt;x_cnt\&gt;<span class="regexp">/x_counter/ge</span> | update</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>解释：<br>  <code>args *.c</code> 把所有要改的文件放到参数列表上<br>  <code>:argdo</code> 以另一个命令为参数，该命令将对所有待编辑的文件都执行一次<br>  <code>|</code> 用来分割两个命令<br>  <code>update</code> 在文件有所改变时进行保存<br>  类似于 <code>:argdo</code><br>     <code>:windo</code> 对所有窗口执行同样的操作<br>     <code>:bufdo</code> 对所有缓冲区进行操作， <code>这个要小心使用</code> ，最好用<code>:ls</code> 看一下有哪些缓冲区会被改动</p>
+</blockquote>
+<p>案例二：将多个文件中的”-person-“都改为”Jones”其后打印出来</p>
+<ol>
+<li>将要执行的vim命令（Ex模式）放入”change.vim”中 :</li>
+</ol>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">%s/-<span class="keyword">person</span>-/Jones/g</span><br><span class="line">write tempfile</span><br><span class="line">quit</span><br></pre></td></tr></table></figure>
+<ol>
+<li>以批处理模式运行vim</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> \*.txt; <span class="keyword">do</span></span><br><span class="line">  vim <span class="operator">-e</span> <span class="operator">-s</span> <span class="variable">$file</span> &lt; change.vim <span class="comment"># "-e"Ex模式， "-s"告诉vim安静地运行</span></span><br><span class="line">  lpr -r tempfile              <span class="comment"># 打印"tempfile"的内容，然后删除它("-r")</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<h2 id="搜索">搜索</h2><ul>
+<li><p>偏移</p>
+<ul>
+<li><code>/words/2</code>   将光标停留在目标行向下的第二行</li>
+<li><code>/words/e-1</code> “e”使光标在找到目标串后以它的结尾作为移动的起始处</li>
+<li><code>/words/b+2</code> “b”目标串开头为起始处</li>
+<li><code>//e</code>        重复前一次搜索使用不同的偏移</li>
+<li><code>?words?e-2</code> 反向搜索必须以”?”来分割命令的不同部分</li>
+</ul>
+</li>
+<li><p>多次匹配</p>
+<ul>
+<li><code>/ab*</code> “*“匹配任意个（零个或多个）b</li>
+<li><code>/\(ab\)*</code> “ab”作为整体</li>
+<li><code>/ab\+</code> “+”至少一次</li>
+<li><code>/folders\=</code> “=”一次或零次</li>
+<li><code>/ab\{m,n}</code> 匹配至少m次，至多n次</li>
+<li><code>/foo\|bar</code> “|”模式中的或操作</li>
+</ul>
+</li>
+<li><p>字符范围：</p>
+<ul>
+<li><code>/[a-z]</code> ，使用”\^”指定补集</li>
+<li>预定义字符集 :<br>  \d 数字 [0-9]<br>  \D 非数字 [^0-9]<br>  \x 十六进制数 [0-9a-fA-F]<br>  \X 非十六进制数 [^0-9a-fA-F]<br>  \s 空白字符 [ ] (<tab> 和<space>)<br>  \S 非空白字符 [^ ] (除 <tab> 和 <space>之外)<br>  \l 小写字母 [a-z]<br>  \L 非小写字母 [^a-z]<br>  \u 大写字母 [A-Z]<br>  \U 非大写字母 [^A-Z] </space></tab></space></tab></li>
+</ul>
+</li>
+<li><p>匹配一个断行：通过前缀”_“来同时包括断行，例： <code>/the\_s\+word</code>匹配断行或多个空白字符</p>
+</li>
+</ul>
+<h2 id="之于程序">之于程序</h2><ul>
+<li><p>tags</p>
+<ul>
+<li>跳转： <code>CTRL-W ]</code> 分割当前窗口并跳转到光标下的tag， </li>
+<li><code>:tnext</code> 下一个符合条件的地方</li>
+<li><code>:tselect tagname</code> 列出所有符合条件的地方</li>
+<li>搜索：<code>:tag /xxx</code> ，然后按Tab</li>
+<li>预览窗口：<code>ptag tagname</code></li>
+<li>关闭窗口<code>:pclose</code></li>
+<li><code>:pedit defs.h</code> 在预览窗口中编辑一个文件</li>
+<li><code>:psearch popen</code>在预览窗口中显示搜索内容</li>
+</ul>
+</li>
+<li><p>程序中的移动</p>
+<ul>
+<li><code>[#,]#</code> <code>#if</code> 内的移动</li>
+<li><code>[[,]]</code> <code>{}</code> 内的移动</li>
+<li><code>[(,])</code> <code>()</code> 内的移动</li>
+<li><code>[/,]/</code> 注释内的移动</li>
+</ul>
+</li>
+<li><p>查找标识符</p>
+<ul>
+<li><code>[I</code> 查找全局标识符，光标放在要查找的标识符上</li>
+<li><code>[Tab</code> 同 <code>[I</code> ，但它跳转到第一个匹配项</li>
+<li><code>[D</code> 只查找以”#define”定义的</li>
+<li><code>gD</code> 搜索限制在当前文件， <code>gd</code> 当前函数</li>
+</ul>
+</li>
+<li><p>编译</p>
+<ul>
+<li>编译：<code>:make {arguments}</code></li>
+<li>错误：<code>:cnext</code>, <code>:cc</code>, <code>:clist</code>, <code>:clist!</code>, <code>:cprevious</code>, <code>:cfirst</code>, <code>:clast</code>, <code>:cc [n]</code></li>
+<li>错误列表：<code>:colder</code>, <code>:cnewer</code></li>
+</ul>
+</li>
+<li><p>缩进： <code>==</code> ， <code>=a{</code> ， <code>gg=G</code></p>
+</li>
+</ul>
+
+      
+  </div>
+  <footer>
+    
+      
+<div class="pagepart clearfix">
+  
+    <a href="/Linux实用集/" class="alignleft prev" title="Linux实用集">Linux实用集</a>
+  
+  
+    <a href="/MachineLearning/何谓机器学习/" class="alignright next" title="何谓机器学习">何谓机器学习</a>
+    
+</div>
+
+
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/Vim/">Vim</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/vim/">vim</a>
+  </div>
+
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-thread-key="vim集锦/" data-title="vim 集锦" data-url="http://lyhopq.github.io/vim集锦/"></div>
+</section>
+
+</div>
+  </div>
+  
+  <div id="sidebar" class="widgets-bottom">
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C-C/">C/C++</a><small>5</small></li>
+  
+    <li><a href="/categories/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/categories/Golang/">Golang</a><small>2</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>3</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>22</small></li>
+  
+    <li><a href="/categories/UML/">UML</a><small>1</small></li>
+  
+    <li><a href="/categories/Vim/">Vim</a><small>1</small></li>
+  
+    <li><a href="/categories/业余/">业余</a><small>1</small></li>
+  
+    <li><a href="/categories/机器学习/">机器学习</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/ArchLinux/" style="font-size: 10px;">ArchLinux</a> <a href="/tags/Boot/" style="font-size: 10px;">Boot</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/C-11/" style="font-size: 16.67px;">C++11</a> <a href="/tags/Coding-Style/" style="font-size: 10px;">Coding Style</a> <a href="/tags/DP/" style="font-size: 18.33px;">DP</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Gtest/" style="font-size: 10px;">Gtest</a> <a href="/tags/Inkscape/" style="font-size: 10px;">Inkscape</a> <a href="/tags/Linux/" style="font-size: 11.67px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine Learning</a> <a href="/tags/MinGW/" style="font-size: 10px;">MinGW</a> <a href="/tags/PlantUML/" style="font-size: 10px;">PlantUML</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/Utf-8/" style="font-size: 10px;">Utf-8</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/encode/" style="font-size: 10px;">encode</a> <a href="/tags/godef/" style="font-size: 10px;">godef</a> <a href="/tags/shell/" style="font-size: 11.67px;">shell</a> <a href="/tags/vim/" style="font-size: 11.67px;">vim</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/分类器/" style="font-size: 16.67px;">分类器</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a> <a href="/tags/命令行解析/" style="font-size: 10px;">命令行解析</a> <a href="/tags/概率论/" style="font-size: 15px;">概率论</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/结构体对齐/" style="font-size: 10px;">结构体对齐</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最近发布</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记3/">《Effective Modern C++》条款3</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记2/">《Effective Modern C++》条款2</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记1/">《Effective Modern C++》条款1</a>
+      </li>
+    
+      <li>
+        <a href="/PEP-0008-Python代码风格指南/">PEP 0008 -- Python代码风格指南</a>
+      </li>
+    
+      <li>
+        <a href="/当DP遇见Py/当DP遇见Py(二十) -- 职责链模式/">当DP遇见Py(二十) -- 职责链模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+</div>
+  
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2016 <a href="/">Lyh</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://blog.dafengning.com/" target="_blank">Chong Zi</a>
+</div>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<div class="clearfix"></div>
+<script async src="http://78rbbi.com1.z0.glb.clouddn.com/busuanzi.pure.mini.js">
+</script>
+</footer>
+  <script src="//lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lyhopq"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<div id="rightfix" style="display:none;">
+
+<a href="#comment" id="gocomm" class="fix_btn" title="提问/评论"><i><i></i></i></a>
+
+
+<a href="javascript:void(0)" id="gotop" class="fix_btn" onclick="gotop();" title="回到顶部"><i></i></a>
+<script>
+  function gotop(){
+    $('html,body').animate({
+        scrollTop : '0px'
+      }, 800);
+  }
+  $(function(){
+    _rightfix = $('#rightfix');
+    $(window).scroll(function(){
+      $sollTop = document.documentElement.scrollTop + document.body.scrollTop;
+      if($sollTop > 350){
+        _rightfix.show();
+      }else{
+        _rightfix.hide();
+      }
+    });
+  });
+</script>
+
+</div>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+
+
+
+<script>
+var option = {
+  engineKey: '70e393f447ec0686ffba'
+};
+(function(w,d,t,u,n,s,e){
+  s = d.createElement(t);
+  s.src = u;
+  s.async = 1;
+  w[n] = function(r){
+    w[n].opts = r;
+  };
+  e = d.getElementsByTagName(t)[0];
+  e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+_ts(option);
+
+$("#ts-search-input").mouseenter(function(){
+  $("#ts-search-input").animate({width:'+=150px',opacity:'+=0.4'},"slow")}).stop().mouseleave(function(){
+  $("#ts-search-input").animate({width:'-=150px',opacity:'-=0.4'},"slow")});
+</script>
+
+</body>
+</html>

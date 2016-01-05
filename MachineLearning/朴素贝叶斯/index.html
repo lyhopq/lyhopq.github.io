@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="OACP69rYUO" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>朴素贝叶斯 | 沧海一粟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="Lyh">
+  
+  
+    <meta name="description" content="K-近邻和决策树分类器对数据实例有明确的分类答案，但是有时会产生错误的结果。而基于贝叶斯的分类器给出一个最优的类别猜测结果，同时给出这个猜测结果的概率估计值。
+基于贝叶斯决策理论的分类方法
+优点：在数据较少的情况下任然有效，可以处理多类别问题。
+缺点：对于输入数据的准备方式较为敏感。
+适用数据类型：标称型数据。
+
+贝叶斯定理贝叶斯定理描述两个事件的条件概率之间的关系。
+$$P(H|E) = P(H">
+  
+  <meta name="description" content="K-近邻和决策树分类器对数据实例有明确的分类答案，但是有时会产生错误的结果。而基于贝叶斯的分类器给出一个最优的类别猜测结果，同时给出这个猜测结果的概率估计值。
+基于贝叶斯决策理论的分类方法
+优点：在数据较少的情况下任然有效，可以处理多类别问题。
+缺点：对于输入数据的准备方式较为敏感。
+适用数据类型：标称型数据。
+
+贝叶斯定理贝叶斯定理描述两个事件的条件概率之间的关系。
+$$P(H|E) = P(H">
+<meta property="og:type" content="article">
+<meta property="og:title" content="朴素贝叶斯">
+<meta property="og:url" content="http://lyhopq.github.io/MachineLearning/朴素贝叶斯/index.html">
+<meta property="og:site_name" content="沧海一粟">
+<meta property="og:description" content="K-近邻和决策树分类器对数据实例有明确的分类答案，但是有时会产生错误的结果。而基于贝叶斯的分类器给出一个最优的类别猜测结果，同时给出这个猜测结果的概率估计值。
+基于贝叶斯决策理论的分类方法
+优点：在数据较少的情况下任然有效，可以处理多类别问题。
+缺点：对于输入数据的准备方式较为敏感。
+适用数据类型：标称型数据。
+
+贝叶斯定理贝叶斯定理描述两个事件的条件概率之间的关系。
+$$P(H|E) = P(H">
+<meta property="og:updated_time" content="2016-01-05T12:20:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="朴素贝叶斯">
+<meta name="twitter:description" content="K-近邻和决策树分类器对数据实例有明确的分类答案，但是有时会产生错误的结果。而基于贝叶斯的分类器给出一个最优的类别猜测结果，同时给出这个猜测结果的概率估计值。
+基于贝叶斯决策理论的分类方法
+优点：在数据较少的情况下任然有效，可以处理多类别问题。
+缺点：对于输入数据的准备方式较为敏感。
+适用数据类型：标称型数据。
+
+贝叶斯定理贝叶斯定理描述两个事件的条件概率之间的关系。
+$$P(H|E) = P(H">
+  
+    <link rel="alternate" href="/atom.xml" title="沧海一粟" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- //插入统计代码 -->
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">沧海一粟</a></h1>
+    <p><a href="/">在知识的海洋中翱翔</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      <li>
+    <form><input type="text" id="ts-search-input" class="ts-search-input" /></form>
+    </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/MachineLearning/朴素贝叶斯/">
+  <time datetime="2013-09-07T16:00:00.000Z">
+    9月 8 2013
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">朴素贝叶斯</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+        
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基于贝叶斯决策理论的分类方法"><span class="toc-text">基于贝叶斯决策理论的分类方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#贝叶斯定理"><span class="toc-text">贝叶斯定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#训练算法：从词向量计算概率"><span class="toc-text">训练算法：从词向量计算概率</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法修正"><span class="toc-text">算法修正</span></a></li></ol></li></ol>
+        </div>
+    
+      <p>K-近邻和决策树分类器对数据实例有明确的分类答案，但是有时会产生错误的结果。而基于贝叶斯的分类器给出一个最优的类别猜测结果，同时给出这个猜测结果的概率估计值。</p>
+<h2 id="基于贝叶斯决策理论的分类方法">基于贝叶斯决策理论的分类方法</h2><ul>
+<li>优点：在数据较少的情况下任然有效，可以处理多类别问题。</li>
+<li>缺点：对于输入数据的准备方式较为敏感。</li>
+<li>适用数据类型：标称型数据。</li>
+</ul>
+<h2 id="贝叶斯定理">贝叶斯定理</h2><p>贝叶斯定理描述两个事件的条件概率之间的关系。</p>
+<p>$$P(H|E) = P(H)\frac{P(E|H)}{P(E)}$$</p>
+<p>贝叶斯定理通常用于解释某一特定现象的证据$E$如何影响假设$H$的概率。</p>
+<p>其中，$P(H)$称为<em>先验概率</em>，$P(H|E)$称为<em>后验概率</em>。$P(E|H)$是证据的<em>似然值</em>，$P(E)$是<em>归一化常量</em>。</p>
+<a id="more"></a>
+<h2 id="训练算法：从词向量计算概率">训练算法：从词向量计算概率</h2><p>词向量$w$定义为文档中每个单词在<strong>单词列表</strong>中的位置向量（出现为1,不出现为0）。那么，根据贝叶斯理论，该文档属于分类$i$的条件概率为：</p>
+<p>$$p(c_i|w) = \frac{p(w|c_i)p(c_i)}{p(w)}$S</p>
+<p>如果将$w$展开为一个个独立特征，那么：</p>
+<p align="center">$p(w|c_i) = p(w_0,w_1,w_2,…,w_N|c_i)$</p>
+
+<p>假设所有的词都独立（条件独立性假设），那么，$P(w|c_i)$简化为：</p>
+<p align="center">$p(w_0|c_i)p(w_1|c_i)…p(w_N|c_i)$</p>
+
+<p>这就是朴素贝叶斯的<strong>朴素</strong>所在。</p>
+<h3 id="算法修正">算法修正</h3><ol>
+<li>计算$p(w_0|c_i)p(w_1|c_i)…p(w_N|c_i)$时，如果其中一个概率值为0,那么最后乘积值也为0。为了降低这种影响，可以将所有词的出现数初始化为1.</li>
+<li>计算$p(w_0|c_i)p(w_1|c_i)…p(w_N|c_i)$时，由于大部分因子都比较小，所以会出现下益或得不到正确答案。解决方法是对乘积取自然对数：<br> $$\ln(a*b) = ln(a) + ln(b)$$</li>
+</ol>
+
+      
+  </div>
+  <footer>
+    
+      
+<div class="pagepart clearfix">
+  
+    <a href="/MachineLearning/Logistic回归/" class="alignleft prev" title="Logistic回归">Logistic回归</a>
+  
+  
+    <a href="/flag/" class="alignright next" title="go flag">go flag</a>
+    
+</div>
+
+
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/机器学习/">机器学习</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/Machine-Learning/">Machine Learning</a>, <a class="tags-link" href="/tags/分类器/">分类器</a>, <a class="tags-link" href="/tags/概率论/">概率论</a>
+  </div>
+
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-thread-key="MachineLearning/朴素贝叶斯/" data-title="朴素贝叶斯" data-url="http://lyhopq.github.io/MachineLearning/朴素贝叶斯/"></div>
+</section>
+
+</div>
+  </div>
+  
+  <div id="sidebar" class="widgets-bottom">
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C-C/">C/C++</a><small>5</small></li>
+  
+    <li><a href="/categories/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/categories/Golang/">Golang</a><small>2</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>3</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>22</small></li>
+  
+    <li><a href="/categories/UML/">UML</a><small>1</small></li>
+  
+    <li><a href="/categories/Vim/">Vim</a><small>1</small></li>
+  
+    <li><a href="/categories/业余/">业余</a><small>1</small></li>
+  
+    <li><a href="/categories/机器学习/">机器学习</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/ArchLinux/" style="font-size: 10px;">ArchLinux</a> <a href="/tags/Boot/" style="font-size: 10px;">Boot</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/C-11/" style="font-size: 16.67px;">C++11</a> <a href="/tags/Coding-Style/" style="font-size: 10px;">Coding Style</a> <a href="/tags/DP/" style="font-size: 18.33px;">DP</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Gtest/" style="font-size: 10px;">Gtest</a> <a href="/tags/Inkscape/" style="font-size: 10px;">Inkscape</a> <a href="/tags/Linux/" style="font-size: 11.67px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine Learning</a> <a href="/tags/MinGW/" style="font-size: 10px;">MinGW</a> <a href="/tags/PlantUML/" style="font-size: 10px;">PlantUML</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/Utf-8/" style="font-size: 10px;">Utf-8</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/encode/" style="font-size: 10px;">encode</a> <a href="/tags/godef/" style="font-size: 10px;">godef</a> <a href="/tags/shell/" style="font-size: 11.67px;">shell</a> <a href="/tags/vim/" style="font-size: 11.67px;">vim</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/分类器/" style="font-size: 16.67px;">分类器</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a> <a href="/tags/命令行解析/" style="font-size: 10px;">命令行解析</a> <a href="/tags/概率论/" style="font-size: 15px;">概率论</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/结构体对齐/" style="font-size: 10px;">结构体对齐</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最近发布</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记3/">《Effective Modern C++》条款3</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记2/">《Effective Modern C++》条款2</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记1/">《Effective Modern C++》条款1</a>
+      </li>
+    
+      <li>
+        <a href="/PEP-0008-Python代码风格指南/">PEP 0008 -- Python代码风格指南</a>
+      </li>
+    
+      <li>
+        <a href="/当DP遇见Py/当DP遇见Py(二十) -- 职责链模式/">当DP遇见Py(二十) -- 职责链模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+</div>
+  
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2016 <a href="/">Lyh</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://blog.dafengning.com/" target="_blank">Chong Zi</a>
+</div>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<div class="clearfix"></div>
+<script async src="http://78rbbi.com1.z0.glb.clouddn.com/busuanzi.pure.mini.js">
+</script>
+</footer>
+  <script src="//lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lyhopq"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<div id="rightfix" style="display:none;">
+
+<a href="#comment" id="gocomm" class="fix_btn" title="提问/评论"><i><i></i></i></a>
+
+
+<a href="javascript:void(0)" id="gotop" class="fix_btn" onclick="gotop();" title="回到顶部"><i></i></a>
+<script>
+  function gotop(){
+    $('html,body').animate({
+        scrollTop : '0px'
+      }, 800);
+  }
+  $(function(){
+    _rightfix = $('#rightfix');
+    $(window).scroll(function(){
+      $sollTop = document.documentElement.scrollTop + document.body.scrollTop;
+      if($sollTop > 350){
+        _rightfix.show();
+      }else{
+        _rightfix.hide();
+      }
+    });
+  });
+</script>
+
+</div>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    }); 
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<script>
+var option = {
+  engineKey: '70e393f447ec0686ffba'
+};
+(function(w,d,t,u,n,s,e){
+  s = d.createElement(t);
+  s.src = u;
+  s.async = 1;
+  w[n] = function(r){
+    w[n].opts = r;
+  };
+  e = d.getElementsByTagName(t)[0];
+  e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+_ts(option);
+
+$("#ts-search-input").mouseenter(function(){
+  $("#ts-search-input").animate({width:'+=150px',opacity:'+=0.4'},"slow")}).stop().mouseleave(function(){
+  $("#ts-search-input").animate({width:'-=150px',opacity:'-=0.4'},"slow")});
+</script>
+
+</body>
+</html>

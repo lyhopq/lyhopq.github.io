@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="OACP69rYUO" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>C语言结构体对齐算法 | 沧海一粟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="Lyh">
+  
+  
+    <meta name="description" content="最近做了一个关于结构体补齐填充的东西，补了一下关于结构体对齐方面的知识（以前也研究过，不过都忘了，所以在这记录一下）。
+首先看一下结构体对齐的三个概念值： 
+1    数据类型的默认对齐值（自身对齐）
+
+基本数据类型：为指定平台上基本类型的长度。如在32位机器中，char对齐值为1，short为2，int,float为4，double为8；
+结构体：其数据成员中默认对齐值最大的那个值。
+
+2">
+  
+  <meta name="description" content="最近做了一个关于结构体补齐填充的东西，补了一下关于结构体对齐方面的知识（以前也研究过，不过都忘了，所以在这记录一下）。
+首先看一下结构体对齐的三个概念值： 
+1    数据类型的默认对齐值（自身对齐）
+
+基本数据类型：为指定平台上基本类型的长度。如在32位机器中，char对齐值为1，short为2，int,float为4，double为8；
+结构体：其数据成员中默认对齐值最大的那个值。
+
+2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言结构体对齐算法">
+<meta property="og:url" content="http://lyhopq.github.io/C语言结构体对齐算法/index.html">
+<meta property="og:site_name" content="沧海一粟">
+<meta property="og:description" content="最近做了一个关于结构体补齐填充的东西，补了一下关于结构体对齐方面的知识（以前也研究过，不过都忘了，所以在这记录一下）。
+首先看一下结构体对齐的三个概念值： 
+1    数据类型的默认对齐值（自身对齐）
+
+基本数据类型：为指定平台上基本类型的长度。如在32位机器中，char对齐值为1，short为2，int,float为4，double为8；
+结构体：其数据成员中默认对齐值最大的那个值。
+
+2">
+<meta property="og:updated_time" content="2016-01-05T12:20:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C语言结构体对齐算法">
+<meta name="twitter:description" content="最近做了一个关于结构体补齐填充的东西，补了一下关于结构体对齐方面的知识（以前也研究过，不过都忘了，所以在这记录一下）。
+首先看一下结构体对齐的三个概念值： 
+1    数据类型的默认对齐值（自身对齐）
+
+基本数据类型：为指定平台上基本类型的长度。如在32位机器中，char对齐值为1，short为2，int,float为4，double为8；
+结构体：其数据成员中默认对齐值最大的那个值。
+
+2">
+  
+    <link rel="alternate" href="/atom.xml" title="沧海一粟" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- //插入统计代码 -->
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">沧海一粟</a></h1>
+    <p><a href="/">在知识的海洋中翱翔</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      <li>
+    <form><input type="text" id="ts-search-input" class="ts-search-input" /></form>
+    </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/C语言结构体对齐算法/">
+  <time datetime="2013-10-23T07:20:16.000Z">
+    10月 23 2013
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">C语言结构体对齐算法</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+        
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+        
+        </div>
+    
+      <p>最近做了一个关于结构体补齐填充的东西，补了一下关于结构体对齐方面的知识（以前也研究过，不过都忘了，所以在这记录一下）。</p>
+<p>首先看一下结构体对齐的三个概念值： </p>
+<p>1    数据类型的<em>默认对齐值</em>（自身对齐）</p>
+<ul>
+<li>基本数据类型：为指定平台上基本类型的长度。如在32位机器中，char对齐值为1，short为2，int,float为4，double为8；</li>
+<li>结构体：其数据成员中默认对齐值最大的那个值。</li>
+</ul>
+<p>2    <em>指定对齐值</em>：#pragma pack (value)时的指定对齐值value。<br>3    数据类型的<em>有效对齐值</em>：默认对齐值和指定对齐值中小的那个值。</p>
+<p>有了这些值，我们就可以很方便的来讨论具体数据结构的成员和其自身的对齐方式。有效对齐值N是最终用来决定数据存放地址方式的值，最重要。有效对齐N，就是表示“对齐在N上”，也就是说该数据的<code>偏移量</code>%N=0”。而数据结构中的数据变量都是按定义的先后顺序来排放的。第一个数据变量的起始地址就是数据结构的起始地址。结构体的成员变量要对齐排放（对于非对齐成员需要在其前面填充一些字节，保证其在对齐位置上），结构体本身也要根据自身的有效对齐值圆整(就是结<code>构体总长度</code>需要是结构体有效对齐值的整数倍)。</p>
+<a id="more"></a>
+<p>通过上面的分析，对结构体进行字节对齐，我们需要知道四个值：<br>1    指定对齐值：代码中指定的对齐值，记为packLen；<br>2    默认对齐值：结构体中每个数据成员及结构体本身都有默认对齐值，记为defaultLen；<br>3    成员偏移量：即相对于结构体起始位置的长度，记为offset；<br>4    成员长度：结构体中每个数据成员的长度（注结构体成员为补齐之后的长度），记为memberLen。</p>
+<p>及两个规则：<br>1    对齐规则：<code>offset % vaildLen = 0</code>，其中vaildLen为有效对齐值<code>vaildLen = min(packLen, defaultLen)</code>；<br>2    填充规则：如成员变量不遵守对齐规则，则需要对其补齐；在其前面填充一些字节保证该成员对齐。需填充的字节数记为padLen：</p>
+<pre><code><span class="comment"><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">padLen = getPadLen(offset , defaultLen);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getPadLen</span><span class="params">(<span class="keyword">int</span> offsetLen, <span class="keyword">int</span> defaultLen)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> vaildLen = min(packLen,defaultLen);</span><br><span class="line">    <span class="keyword">if</span>(<span class="number">0</span> == vaildLen || <span class="number">0</span> == offsetLen % vaildLen)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> vaildLen - (offsetLen % vaildLen);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
+</code></pre><p>结构体对齐算法思想：深度优先填充<br>1    先对齐内层结构体；<br>2    对每个数据成员计算其<code>defaultLen</code>、<code>memberLen</code>和<code>offset</code>；<br>    a    在遍历每个数据成员时计算；<br>    b    对于基本数据类型成员<code>defaultLen=memberLen</code>；对于结构体成员<code>defaultLen</code>等于它的所有成员的最大的<code>memberLen</code>；<br>    c    遍历时对成员的<code>memberLen</code>进行累加，得到当前成员的<code>offsetLen</code>；<br>3    运用对齐及填充规则：在当前结构体成员前填充padLen个字节；</p>
+
+      
+  </div>
+  <footer>
+    
+      
+<div class="pagepart clearfix">
+  
+    <a href="/PlantUML/" class="alignleft prev" title="PlantUML">PlantUML</a>
+  
+  
+    <a href="/vim之godef/" class="alignright next" title="vim之godef">vim之godef</a>
+    
+</div>
+
+
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/C-C/">C/C++</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/算法/">算法</a>, <a class="tags-link" href="/tags/结构体对齐/">结构体对齐</a>
+  </div>
+
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-thread-key="C语言结构体对齐算法/" data-title="C语言结构体对齐算法" data-url="http://lyhopq.github.io/C语言结构体对齐算法/"></div>
+</section>
+
+</div>
+  </div>
+  
+  <div id="sidebar" class="widgets-bottom">
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C-C/">C/C++</a><small>5</small></li>
+  
+    <li><a href="/categories/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/categories/Golang/">Golang</a><small>2</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>3</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>22</small></li>
+  
+    <li><a href="/categories/UML/">UML</a><small>1</small></li>
+  
+    <li><a href="/categories/Vim/">Vim</a><small>1</small></li>
+  
+    <li><a href="/categories/业余/">业余</a><small>1</small></li>
+  
+    <li><a href="/categories/机器学习/">机器学习</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/ArchLinux/" style="font-size: 10px;">ArchLinux</a> <a href="/tags/Boot/" style="font-size: 10px;">Boot</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/C-11/" style="font-size: 16.67px;">C++11</a> <a href="/tags/Coding-Style/" style="font-size: 10px;">Coding Style</a> <a href="/tags/DP/" style="font-size: 18.33px;">DP</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Gtest/" style="font-size: 10px;">Gtest</a> <a href="/tags/Inkscape/" style="font-size: 10px;">Inkscape</a> <a href="/tags/Linux/" style="font-size: 11.67px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine Learning</a> <a href="/tags/MinGW/" style="font-size: 10px;">MinGW</a> <a href="/tags/PlantUML/" style="font-size: 10px;">PlantUML</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/Utf-8/" style="font-size: 10px;">Utf-8</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/encode/" style="font-size: 10px;">encode</a> <a href="/tags/godef/" style="font-size: 10px;">godef</a> <a href="/tags/shell/" style="font-size: 11.67px;">shell</a> <a href="/tags/vim/" style="font-size: 11.67px;">vim</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/分类器/" style="font-size: 16.67px;">分类器</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a> <a href="/tags/命令行解析/" style="font-size: 10px;">命令行解析</a> <a href="/tags/概率论/" style="font-size: 15px;">概率论</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/结构体对齐/" style="font-size: 10px;">结构体对齐</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最近发布</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记3/">《Effective Modern C++》条款3</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记2/">《Effective Modern C++》条款2</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记1/">《Effective Modern C++》条款1</a>
+      </li>
+    
+      <li>
+        <a href="/PEP-0008-Python代码风格指南/">PEP 0008 -- Python代码风格指南</a>
+      </li>
+    
+      <li>
+        <a href="/当DP遇见Py/当DP遇见Py(二十) -- 职责链模式/">当DP遇见Py(二十) -- 职责链模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+</div>
+  
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2016 <a href="/">Lyh</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://blog.dafengning.com/" target="_blank">Chong Zi</a>
+</div>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<div class="clearfix"></div>
+<script async src="http://78rbbi.com1.z0.glb.clouddn.com/busuanzi.pure.mini.js">
+</script>
+</footer>
+  <script src="//lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lyhopq"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<div id="rightfix" style="display:none;">
+
+<a href="#comment" id="gocomm" class="fix_btn" title="提问/评论"><i><i></i></i></a>
+
+
+<a href="javascript:void(0)" id="gotop" class="fix_btn" onclick="gotop();" title="回到顶部"><i></i></a>
+<script>
+  function gotop(){
+    $('html,body').animate({
+        scrollTop : '0px'
+      }, 800);
+  }
+  $(function(){
+    _rightfix = $('#rightfix');
+    $(window).scroll(function(){
+      $sollTop = document.documentElement.scrollTop + document.body.scrollTop;
+      if($sollTop > 350){
+        _rightfix.show();
+      }else{
+        _rightfix.hide();
+      }
+    });
+  });
+</script>
+
+</div>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+
+
+
+<script>
+var option = {
+  engineKey: '70e393f447ec0686ffba'
+};
+(function(w,d,t,u,n,s,e){
+  s = d.createElement(t);
+  s.src = u;
+  s.async = 1;
+  w[n] = function(r){
+    w[n].opts = r;
+  };
+  e = d.getElementsByTagName(t)[0];
+  e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+_ts(option);
+
+$("#ts-search-input").mouseenter(function(){
+  $("#ts-search-input").animate({width:'+=150px',opacity:'+=0.4'},"slow")}).stop().mouseleave(function(){
+  $("#ts-search-input").animate({width:'-=150px',opacity:'-=0.4'},"slow")});
+</script>
+
+</body>
+</html>

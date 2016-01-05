@@ -1,0 +1,1187 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="OACP69rYUO" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>Linux 命令手册 | 沧海一粟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="Lyh">
+  
+  
+    <meta name="description" content="&lt;!-- toc --&gt;">
+  
+  <meta name="description" content="&amp;lt;!-- toc --&amp;gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 命令手册">
+<meta property="og:url" content="http://lyhopq.github.io/Linux命令手册/index.html">
+<meta property="og:site_name" content="沧海一粟">
+<meta property="og:description" content="&amp;lt;!-- toc --&amp;gt;">
+<meta property="og:updated_time" content="2016-01-05T12:20:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux 命令手册">
+<meta name="twitter:description" content="&amp;lt;!-- toc --&amp;gt;">
+  
+    <link rel="alternate" href="/atom.xml" title="沧海一粟" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- //插入统计代码 -->
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">沧海一粟</a></h1>
+    <p><a href="/">在知识的海洋中翱翔</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      <li>
+    <form><input type="text" id="ts-search-input" class="ts-search-input" /></form>
+    </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/Linux命令手册/">
+  <time datetime="2012-08-18T07:20:16.000Z">
+    8月 18 2012
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">Linux 命令手册</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+        
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件管理"><span class="toc-text">文件管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cat"><span class="toc-text">cat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chattr"><span class="toc-text">chattr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chgrp"><span class="toc-text">chgrp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chmod"><span class="toc-text">chmod</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chown"><span class="toc-text">chown</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cksum"><span class="toc-text">cksum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cmp"><span class="toc-text">cmp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cp"><span class="toc-text">cp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cut"><span class="toc-text">cut</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#diff"><span class="toc-text">diff</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file"><span class="toc-text">file</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find"><span class="toc-text">find</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ln"><span class="toc-text">ln</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#patch"><span class="toc-text">patch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rm"><span class="toc-text">rm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#split"><span class="toc-text">split</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tee"><span class="toc-text">tee</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#touch"><span class="toc-text">touch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#umask"><span class="toc-text">umask</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#whereis"><span class="toc-text">whereis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#which"><span class="toc-text">which</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bye"><span class="toc-text">bye</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ftp"><span class="toc-text">ftp</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文档编辑"><span class="toc-text">文档编辑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#egrep"><span class="toc-text">egrep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fgrep"><span class="toc-text">fgrep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#grep"><span class="toc-text">grep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#look"><span class="toc-text">look</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sed"><span class="toc-text">sed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sort"><span class="toc-text">sort</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tr"><span class="toc-text">tr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uniq"><span class="toc-text">uniq</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wc"><span class="toc-text">wc</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘管理"><span class="toc-text">磁盘管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cd"><span class="toc-text">cd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#df"><span class="toc-text">df</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dirs"><span class="toc-text">dirs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#du"><span class="toc-text">du</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls"><span class="toc-text">ls</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mkdir"><span class="toc-text">mkdir</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mount"><span class="toc-text">mount</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwd"><span class="toc-text">pwd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rmdir"><span class="toc-text">rmdir</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stat"><span class="toc-text">stat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tree"><span class="toc-text">tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#umount"><span class="toc-text">umount</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘维护"><span class="toc-text">磁盘维护</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dd"><span class="toc-text">dd</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络通讯"><span class="toc-text">网络通讯</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ping"><span class="toc-text">ping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#telnet"><span class="toc-text">telnet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#netstat"><span class="toc-text">netstat</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统管理"><span class="toc-text">系统管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#adderuser"><span class="toc-text">adderuser</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chsh"><span class="toc-text">chsh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#date"><span class="toc-text">date</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#finger"><span class="toc-text">finger</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#free"><span class="toc-text">free</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#groupdel"><span class="toc-text">groupdel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#halt"><span class="toc-text">halt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#id"><span class="toc-text">id</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kill"><span class="toc-text">kill</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#last"><span class="toc-text">last</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nice"><span class="toc-text">nice</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ps"><span class="toc-text">ps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#screen"><span class="toc-text">screen</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shutdown"><span class="toc-text">shutdown</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#top"><span class="toc-text">top</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uname"><span class="toc-text">uname</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#userdel"><span class="toc-text">userdel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vlock"><span class="toc-text">vlock</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#w"><span class="toc-text">w</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#who"><span class="toc-text">who</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统设置"><span class="toc-text">系统设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#alias"><span class="toc-text">alias</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chroot"><span class="toc-text">chroot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#crontab"><span class="toc-text">crontab</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dmesg"><span class="toc-text">dmesg</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eval"><span class="toc-text">eval</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#export"><span class="toc-text">export</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#passwd"><span class="toc-text">passwd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#resize"><span class="toc-text">resize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-text">set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unalias"><span class="toc-text">unalias</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unset"><span class="toc-text">unset</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#备份压缩"><span class="toc-text">备份压缩</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bunzip2"><span class="toc-text">bunzip2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bzip2"><span class="toc-text">bzip2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cpio"><span class="toc-text">cpio</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dump"><span class="toc-text">dump</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gunzip"><span class="toc-text">gunzip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gzip"><span class="toc-text">gzip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tar"><span class="toc-text">tar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unzip"><span class="toc-text">unzip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zip"><span class="toc-text">zip</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#电子邮件与新闻组"><span class="toc-text">电子邮件与新闻组</span></a></li></ol>
+        </div>
+    
+      <!-- toc -->
+<a id="more"></a>
+<h2 id="文件管理">文件管理</h2><h3 id="cat">cat</h3><p>说明：</p>
+<blockquote>
+<p>把档案串连接后传到基本输出。</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-n 由 1 开始对所有的输出行进行编号</li>
+<li>-b 和 -n 相似，只不过对空白行不编号</li>
+<li>-s 把连续两行以上的空白行替换为一行的空白行</li>
+</ul>
+</blockquote>
+<p>范例：</p>
+<blockquote>
+<ul>
+<li>cat -n file1 > file2</li>
+<li>cat -b file1 file2 >> file3</li>
+<li>cat \&lt;\&lt; EOF > file</li>
+</ul>
+</blockquote>
+<h3 id="chattr">chattr</h3><p>说明：</p>
+<blockquote>
+<p>改变文件属性</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-R 递归处理</li>
+<li><ul>
+<li>\&lt;属性> 开启该项属性</li>
+</ul>
+</li>
+<li><ul>
+<li>\&lt;属性> 关闭该项属性</li>
+</ul>
+</li>
+<li>= \&lt;属性> 指定属性</li>
+</ul>
+</blockquote>
+<!-- more -->
+<h3 id="chgrp">chgrp</h3><p>说明：</p>
+<blockquote>
+<p>变更所属群组</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-c 效果类似”-v”参数，但仅回报更改的部分</li>
+<li>—reference=\&lt;参考文件或目录><br>把指定文件的所属群组设成和参考的相同</li>
+</ul>
+</blockquote>
+<p>范例：<br>:   -   chgrp -c —reference=file1 file2</p>
+<h3 id="chmod">chmod</h3><p>说明：</p>
+<blockquote>
+<p>更改权限</p>
+<p>权限范围表示如下： * u: User * g: Group * o: Other * a: All</p>
+<p>权限代号如下： * r: 读，”4” * w: 写，”2” * x: 执行，”1” * -:<br>不具任何权限，”0” * s: 特殊功能</p>
+</blockquote>
+<p>范例：</p>
+<blockquote>
+<ul>
+<li>chmod -v u+x file</li>
+<li>chmod -R 744 doc</li>
+</ul>
+</blockquote>
+<h3 id="chown">chown</h3><p>说明：</p>
+<blockquote>
+<p>变更拥有者或所属群组</p>
+</blockquote>
+<h3 id="cksum">cksum</h3><p>说明：</p>
+<blockquote>
+<p>检查文件的 CRC 是否正确</p>
+</blockquote>
+<h3 id="cmp">cmp</h3><p>说明：</p>
+<blockquote>
+<p>比较两个文件是否有差异。预设会标示出第一个不同之处的字符和列数编号。</p>
+</blockquote>
+<h3 id="cp">cp</h3><p>说明：</p>
+<blockquote>
+<p>复制</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-a 此参数的效果和同时指定”-dpR”参数相同</li>
+<li>-d 复制符号链接</li>
+<li>-f 强制复制</li>
+<li>-i 复制文件之前询问</li>
+<li>-p 保留原属性</li>
+</ul>
+</blockquote>
+<h3 id="cut">cut</h3><p>说明：<br>:   显示每行指定的字符</p>
+<p>用法：</p>
+<blockquote>
+<p>cut -xn1-n2 filename</p>
+<blockquote>
+<p><strong>note</strong></p>
+<p>n1 从1开始！<br>:   x 取值为 b,c,f</p>
+<p>参数：</p>
+</blockquote>
+<ul>
+<li>-b 只输出这些字节</li>
+<li>-c 只输出这些字母</li>
+<li>-f 只输出这些域</li>
+<li>-d 指定分隔符</li>
+</ul>
+</blockquote>
+<p>范例：</p>
+<blockquote>
+<ul>
+<li>date | cut -d ‘ ‘ -f5 | cut -d : -f1</li>
+</ul>
+</blockquote>
+<h3 id="diff">diff</h3><p>说明：</p>
+<blockquote>
+<p>比较文件的差异。以逐行的方式，比较文本文件的异同处。若比较目录，则会比较目录中相同文件名的文件，但不会比较其中的子目录。</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-b 不检查空行字符的不同</li>
+<li>-B 不检查空白行</li>
+<li>-c 显示全部内文，标出不同处</li>
+<li>-i 不检查大小写的不同</li>
+<li>-l 结果交由pr程序来分页</li>
+<li>-r 比较子目录中的文件</li>
+</ul>
+</blockquote>
+<h3 id="file">file</h3><p>说明：</p>
+<blockquote>
+<p>识别文件类型</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-b 不显示文件名称</li>
+<li>-L 跟踪链接</li>
+<li>-f\<file\> 从文件 ‘’file’’ 中读取要分析的文件名列表</file\></li>
+<li>-z 探测压缩过的文件类型</li>
+</ul>
+</blockquote>
+<h3 id="find">find</h3><p>说明：</p>
+<blockquote>
+<p>查找。查找符合条件的文件。任何位于参数之前的字符串都被视为欲查找的目录。</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-a/cmin [+/-]n “+”之前，”-“之后，分钟</li>
+<li>-a/ctime [+/-]n 天</li>
+<li>-a/cnewer\&lt;参考文件或目录> a 的意思为“存取”，c 的意思为“更改”</li>
+<li>-expty 空文件或空目录</li>
+<li>-exec\&lt;执行命令> 假设find指令的返回值为true，就执行该命令</li>
+<li>-size\&lt;文件大小> 符合文件大小的文件</li>
+<li>-type\&lt;文件类型> 指定的文件类型</li>
+</ul>
+</blockquote>
+<p>范例：</p>
+<blockquote>
+<ul>
+<li>find ~/doc -ctime -1 ＃在 ~/doc 下查找更改时间小于1天的文件</li>
+<li>find /tmp -name core -type f -print | xargs /bin/rm -f</li>
+<li>find /usr/lib -name *.so</li>
+</ul>
+</blockquote>
+<h3 id="ln">ln</h3><p>其它文件</p>
+<h3 id="patch">patch</h3><p>说明：</p>
+<blockquote>
+<p>修补文件。利用设置修补文件的方式，修改，更新原始文件。</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-p0 从当前目录查找目的文件（夹）</li>
+<li>-p1 忽略掉第一层目录</li>
+<li>-E 如果发现了新文件，就删除它</li>
+<li>-R<br>在补丁文件中的“新”文件和“旧”文件现在要调换过来（实际上就是给新版本打补丁，让它变成老版本）</li>
+</ul>
+</blockquote>
+<p>示例：</p>
+<blockquote>
+<ul>
+<li>patch -p0 \&lt; test.path % 使用test.path 文件在当前目录打补丁</li>
+<li>patch -RE -p0 \&lt; test.path % 去掉补丁，恢复旧版本</li>
+</ul>
+</blockquote>
+<h3 id="rm">rm</h3><p>说明：</p>
+<blockquote>
+<p>删除文件或目录。如欲删除目录必须加上参数”-r”。</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-r 递归处理，指定文件目录下的所有文件及子目录一并处理</li>
+<li>-f 强制删除</li>
+<li>-i 删除既有文件或目录之前询问用户</li>
+</ul>
+</blockquote>
+<h3 id="split">split</h3><p>说明：</p>
+<blockquote>
+<p>切割文件，预设每1000行会切成一个小文件。</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-\&lt;行数> 指定小文件的行数</li>
+<li>-b\&lt;字节> 指定小文件的字节数</li>
+<li>-C\&lt;字节> 与的-b参数类似，当切割尽量维持每行的完整性</li>
+<li>[输出文件名]<br>设置切割后文件的前置文件名，split会自动在前置文件名后加上编号</li>
+</ul>
+</blockquote>
+<p>示例：<br>:   -   split -b500m myBigFile mySmallFiles</p>
+<h3 id="tee">tee</h3><p>说明：</p>
+<blockquote>
+<p>读取标准输入的数据，将其内容输出到标准输出和每个文件。</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-a 追加到文件后面</li>
+<li>-i 忽略中断信号</li>
+</ul>
+</blockquote>
+<p>示例：</p>
+<blockquote>
+<ul>
+<li>echo “same words” | tee -a file</li>
+<li>prog1 \&lt; infile | tee fifo | prpg2</li>
+</ul>
+</blockquote>
+<h3 id="touch">touch</h3><p>说明：</p>
+<blockquote>
+<p>改变文件或目录的时间</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-a 只更改存取时间</li>
+<li>-c 不建立任何文件</li>
+<li>-d\&lt;日期> 使用指定的日期，而非现在</li>
+<li>-m 只更改修改时间</li>
+<li>-t\&lt;时间> 使用指定的时间</li>
+</ul>
+</blockquote>
+<h3 id="umask">umask</h3><p>说明：</p>
+<blockquote>
+<p>指定在建立文件时预设的权限掩码。权限掩码是由3个八进制的数字所组成，将现有的存储权限减掉权限掩码后，即可产生建立文件时预设的权限。</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-S 以文字方式来表示权限掩码</li>
+</ul>
+</blockquote>
+<h3 id="whereis">whereis</h3><p>说明：</p>
+<blockquote>
+<p>在特定目录中查找符合条件的文件。</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-b 只查找二进制文件</li>
+<li>-B\&lt;目录> 只在设置的目录下查找二进制文件</li>
+<li>-m 只查找说明文件</li>
+<li>-M\&lt;目录></li>
+<li>-s 只查找原始代码文件</li>
+<li>-S\&lt;目录></li>
+</ul>
+</blockquote>
+<h3 id="which">which</h3><p>说明：</p>
+<blockquote>
+<p>在环境变量\$PATH设置的目录里查找符合条件的文件。</p>
+</blockquote>
+<p>文件传输</p>
+<h3 id="bye">bye</h3><p>说明：</p>
+<blockquote>
+<p>中断FTP连线并结束程序</p>
+</blockquote>
+<h3 id="ftp">ftp</h3><p>说明：</p>
+<blockquote>
+<p>—(待续)—。。。</p>
+</blockquote>
+<hr>
+<h2 id="文档编辑">文档编辑</h2><h3 id="egrep">egrep</h3><p>说明：</p>
+<blockquote>
+<p>在文件内查找指定的字符串。egrep执行效果如grep<br>-E，使用的语法及参数可参照 [[#grep|grep]]<br>指令，与grep不同点在于解读字符串的方法，egrep使用extended regular<br>experssion语法来解读，二grep则是用basic regular expression语法来解读。</p>
+</blockquote>
+<h3 id="fgrep">fgrep</h3><p>说明：</p>
+<blockquote>
+<p>本指令相当与执行grep -F，详见 [[#grep|grep]] 指令</p>
+</blockquote>
+<h3 id="grep">grep</h3><p>\&lt;\<anchor(grep)\>></anchor(grep)\></p>
+<p>说明：</p>
+<blockquote>
+<p>查找文件里符合条件的字符串。</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-\&lt;行数> 显示匹配行的前后行</li>
+<li>-a 不要忽略二进制数据</li>
+<li>-A\&lt;显示列数>或—after-context=\&lt;显示列数><br>除了显示符合范本样式的那一列之外,并显示该列之后的内容</li>
+<li>-B\&lt;显示列数>或—before-context=\&lt;显示列数></li>
+<li>-c 打印匹配的列数，不显示匹配的内容</li>
+<li>-e\&lt;范本样式>或—regexp=\&lt;范本样式><br>定字符串做为查找文件内容的范本样式。</li>
+<li>-E或—extended-regexp 将范本样式为延伸的普通表示法来使用。</li>
+<li>-f\&lt;范本文件>或—file=\&lt;范本文件><br>指定范本文件,其内容含有一个或多个范本样式,让grep查找符合范本条件的文件内容,格式为每列一个范本样式。</li>
+<li>-h 当搜索多个文件时，不显示匹配文件名前缀</li>
+<li>-i 忽略大小写的差别</li>
+<li>-n 表示出列编号</li>
+<li>-v 反转检索，只显示不匹配的行</li>
+<li>-w 如果被\&lt;和>引用，就把表达式作为一个单词搜索</li>
+</ul>
+</blockquote>
+<p>示例：</p>
+<blockquote>
+<ul>
+<li><p>ls -l | grep ‘\^a’<br>:   显示以a开头的行</p>
+</li>
+<li><p>grep ‘test’ d*<br>:   显示所有以d开头的文件中包含test的行</p>
+</li>
+<li><p>grep ‘w(es)t.<em>1’ aa<br>如果west被匹配,则es就被存储到内存中,并标记为1,然后搜索任意个字符(.</em>),这些字符后面紧跟着另外一个es(1),找到就显示该行。如果用egrep或grep<br>-E,就不用””号进行转义,直接写成’w(es)t.*1’就可以了。</p>
+</li>
+<li>grep ‘[0-9]{3}.[0-9]{3}.’ ipfile</li>
+</ul>
+</blockquote>
+<h3 id="look">look</h3><p>说明：</p>
+<blockquote>
+<p>用于查询英文单词</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-f 忽略大小写</li>
+<li>-t\&lt;字尾字符串> 设置字尾字符串</li>
+</ul>
+</blockquote>
+<h3 id="sed">sed</h3><p>说明：</p>
+<blockquote>
+<p>利用script来处理文本文件</p>
+<p>sed<br>:   是一种在线编辑器，它一次处理一行内容。</p>
+<p>定址<br>:   可以通过定址来定位你所希望编辑的行，该地址用数字构成，用逗号分割的两个行数表示起至行的范围。</p>
+<p>命令：</p>
+<p>a<br> 在当前行后面加入一行文本 b lable<br>分支到脚本中带有标记的地方，如果分支不存在则分支到脚本的末尾 c<br> 用新的文本改变本行的文本 d 从模板块位置删除行 D 删除模板块的第一行 i<br> 在当前行上面插入文本 g 获取内存缓冲区的内容，并替代当前模板块中的文本<br>p 打印模板块的行 r file 从file中读行 w file 写并追加模板块到file末尾 !<br> 表示后面的命令对所用没有被选定的行发生作用 s/re/string<br> 用string替换正则表达式re =<br> 打印当前行号码 #<br> 把注释扩展到下一个换行符以前</p>
+</blockquote>
+<p>以下是替换标记：</p>
+<blockquote>
+<ul>
+<li>g 表示行内全面替换</li>
+<li>p 表示打印行</li>
+<li>w 表示把行写入一个文件</li>
+<li>x 表示互换模板块中的文本和缓冲区的文本</li>
+<li>y 表示把一个字符翻译为另外的字符</li>
+</ul>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-e\<script\> 以选项中指定的script来处理输入的文本文件</script\></li>
+<li>-f\<script文件\> 以选项中指定的script文件来处理输入的文本文件</script文件\></li>
+<li>-n 取消默认输出</li>
+</ul>
+</blockquote>
+<p>元字符集：</p>
+<blockquote>
+<p>\^<br>:   锚定行的开始</p>
+<p>\$<br>:   锚定行的结束</p>
+<p>‘’.’’<br>:   匹配一个非换行符的字符</p>
+<p><code>*</code><br>:   匹配零个或国歌字符</p>
+<p>[]<br>:   匹配一个指定范围内的字符</p>
+<p>[\^]<br>:   匹配一个不在指定范围内的字符</p>
+<p>(..)<br>:   保留匹配的字符，如s/(love)able/1rs，loveable被替换成lovers</p>
+<p>&amp;<br>:   保留搜索字符用来替换其他的字符，如s/love/<strong>&amp;</strong>/，结果为*<em>love</em>*</p>
+<p>\&lt;<br>:   锚定单词的开始</p>
+<p>><br>:   锚定单词的结束</p>
+<p>x{m}<br>:   重复x，m次</p>
+<p>x{m,}<br>:   重复x，至少m次</p>
+<p>x{m,n}<br>:   重复x，至少m次，不多于n次</p>
+<p>示例：</p>
+<p>删除：d命令<br>:   -   sed ‘2d’ example # 删除example文件的第二行</p>
+<pre><code>-<span class="ruby">   sed <span class="string">'2,\$d'</span> example \<span class="comment"># 删除example文件的第二行到末尾所有行</span>
+</span>-<span class="ruby">   sed <span class="string">'\$d'</span> example \<span class="comment"># 删除example文件的最后一行</span>
+</span>-<span class="ruby">   sed <span class="string">'/test/'</span>d example \<span class="comment"># 删除example文件所有包含test的行</span></span>
+</code></pre><p>替换：s命令<br>:   -   sed ‘s/test/mytest/g’ example #<br>        在整行(g)范围内把test替换为mytest。</p>
+<pre><code>-<span class="ruby">   sed -n <span class="string">'s/\^test/mystes/p'</span> example \<span class="comment">#</span>
+</span>    (-n)选项和p标志一起使用表示只打印那些发生替换的行。
+-<span class="ruby">   sed <span class="string">'s/\^192.168.0.1/&amp;localhost/'</span> example \<span class="comment">#</span>
+</span>    &amp;符号表示替换字符串中被找到的部分。所有以192.168.0.1开头的行都会在该"192.168.0.1"后添加localhost。
+-<span class="ruby">   sed <span class="string">'s\#10\#100\#g'</span> example \<span class="comment">#</span>
+</span>    以'\#'作为分隔符。不论什么字符，紧跟这s命令的都被认为是新的分隔符。
+</code></pre><p>指定行的范围：逗号<br>:   -   sed -n ‘/test/,/check/p’ example #<br>        所有在test和check所确定的范围内的行都被打印。</p>
+<pre><code>-<span class="ruby">   sed -n <span class="string">'5,/\^test/p'</span> example \<span class="comment">#</span>
+</span>    打印从第五行开始到第一个包含以test开始的行之间的所有行。
+-<span class="ruby">   sed <span class="string">'/test/,/check/s/\$/sed test/'</span> example \<span class="comment">#</span>
+</span>    对于test和west之间的行，每行的末尾用字符串sed test替换。
+</code></pre><p>多点编辑：e命令<br>:   -   sed -e ‘1,5d’ -e ‘s/test/check/‘ example</p>
+<p>从文件读入：r命令<br>:   -   sed ‘/test/r file’ example #<br>        file里的内容读进来，显示在与test匹配的行后面。</p>
+<p>写入文件：w命令<br>:   -   sed -n ‘/test/w file’ example #<br>        在example中所有包含test的行都被写入file里。</p>
+<p>追加命令：a命令<br>:   -   sed ‘/\^test/athis is a example’ example # ‘this is a<br>        example’被追加到example文件中以test开头的行的后面，sed要求命令a后面有一个反斜杠。</p>
+<p>插入：i命令<br>:   -   sed ‘/\^aaa/ithis’ test #<br>        在test文件中把”this”插入到以”aaa”开头的行的前面</p>
+<p>下一个：n命令<br>:   -   sed ‘/test/{n; s/aa/bb/;}’ example #<br>        如果test被匹配，则移动到匹配行的下一行，替换这一行的aa，变为bb，并打印该行，然后继续。</p>
+<p>变形命令：y命令<br>:   -   sed ‘1,10y/abcde/ABCDE/‘ example #<br>        把1—10行内所有abcde转换为大写。注意：正则表达式元字符不能使用这个命令。</p>
+<p>退出：q命令<br>:   -   sed ‘10q’ # 打印完地10行后，退出sed。</p>
+<p>保持和获取：h命令和G命令<br>:   -   sed -e ‘/test/h’ -e ‘\$G’ example #<br>        在sed处理文件的时候,每一行都被保存在一个叫模式空间的临时缓冲区中,除非行被删除或者输出被取消,否则所有被处理的行都将<br>        打印在屏幕上。接着模式空间被清空,并存入新的一行等待处理。在这个例子里,匹配test的行被找到后,将存入模式空间,h命令将其复制并存入一个称为保<br>        持缓存区的特殊缓冲区内。第二条语句的意思是,当到达最后一行后,G命令取出保持缓冲区的行,然后把它放回模式空间中,且追加到现在已经存在于模式空间中的行的末尾。在这个例子中就把最后一个包含test的行并追加到该文件的末尾。’h’换为’H’则把所有包含test的行追加到该文件的末尾。</p>
+<p>保持和互换：h命令和x命令<br>:   -   sed -e ‘/test/h’ -e ‘/check/x’ example #<br>        互换模式空间和保持缓冲区的内容。也就是把包含test与check的行互换。</p>
+<h3 id="sort">sort</h3></blockquote>
+<p>说明：</p>
+<blockquote>
+<p>将文本文件内容加以排序,以行为单位。</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-b 忽略每行前面开始的空格字符</li>
+<li>-c 检查文件是否已经按照顺序排序</li>
+<li>-f 排序时，将小写字母视为大写字母，即忽略大小写</li>
+<li>-k\<p1[,p2]\><br>以p1开始p2结束作为键值。注：如果不指定”p2”则默认为行尾</p1[,p2]\></li>
+<li>-m 将几个排序好的文件进行合并</li>
+<li>-n 依照数值大小排序</li>
+<li>-o\&lt;输出文件> 结果存入指定文件</li>
+<li>-r 以相反的顺序来排序</li>
+<li>-t\&lt;分割字符> 指定排序时所用的栏位分割字符</li>
+<li>-u 删除重复项</li>
+</ul>
+</blockquote>
+<p>示例：</p>
+<blockquote>
+<ul>
+<li>sort -n -k 2 -t : example #<br>以冒号作为分隔符，并对第二列来进行数值升序排序</li>
+<li>sort -n -t ‘ ‘ -k 2 -k 3 example # 对第二个域和第三个域排序</li>
+<li>sort -n -t ‘ ‘ -k 3r -k 2 example # 对第三个域逆序</li>
+<li>sort -t ‘ ‘ -k 1.2,1.2 -k 3,3nr example #<br>“1.2,1.2”第一个域的第二个字母到第一个域的第二个字母</li>
+</ul>
+</blockquote>
+<h3 id="tr">tr</h3><p>说明：</p>
+<blockquote>
+<p>转换字符</p>
+</blockquote>
+<p>语法：</p>
+<blockquote>
+<p>tr [-cdst][—help][—version][第一字符集][第二字符集]</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-c 取代所有不属于第一字符集的字符</li>
+<li>-d 删除所有属于第一字符集的字符</li>
+<li>-s 把连续的字符以单独的字符表示</li>
+<li>-t 删除第一字符集较第二字符集多出的字符</li>
+</ul>
+</blockquote>
+<p>示例：</p>
+<blockquote>
+<ul>
+<li>tr -d ‘r’ \&lt; dos-file > unix-file % 删除回车</li>
+<li>cat file | tr u n % 把u替换为n</li>
+<li>cat file | tr -d abc % 删除a或b或c字符</li>
+<li>cat file | tr [:lower:] [:upper:] % 小写转换为大写</li>
+</ul>
+</blockquote>
+<h3 id="uniq">uniq</h3><p>说明：</p>
+<blockquote>
+<p>检查及删除文本文件中重复出现的行列。注：先要对文件进行排序。</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-c 在每列旁边显示改行重复出现的次数</li>
+<li>-d 仅显示重复出现的行列</li>
+<li>-f\&lt;栏位> 忽略比较指定的栏位</li>
+<li>-s\&lt;字符位置> 忽略比较指定的字符</li>
+<li>-u 仅显示出现一次的行列</li>
+<li>-w\&lt;字符位置> 指定要比较的字符</li>
+</ul>
+</blockquote>
+<p>示例：</p>
+<blockquote>
+<ul>
+<li>sort example | uniq -u % 只显示唯一的行</li>
+</ul>
+</blockquote>
+<h3 id="wc">wc</h3><p>说明：</p>
+<blockquote>
+<p>计算文件的Byte数、字数、或是列数。</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-c 只显示Bytes数</li>
+<li>-l 只显示列数</li>
+<li>-w 只显示字数</li>
+</ul>
+</blockquote>
+<h2 id="磁盘管理">磁盘管理</h2><h3 id="cd">cd</h3><p>说明：</p>
+<blockquote>
+<p>切换目录。用户要有足够的权限进入目录。</p>
+</blockquote>
+<h3 id="df">df</h3><p>说明：</p>
+<blockquote>
+<p>显示磁盘的相关信息。</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-a 显示所有文件系统的磁盘使用情况</li>
+<li>-h 以可读性较高的方式来显示信息</li>
+<li>-H 与-h参数相同，但以1000Bytes为单位</li>
+<li>-i 显示inode的信息</li>
+<li>-k 指定区块大小为1024字节(默认)</li>
+<li>-l 仅显示本地端的文件系统</li>
+<li>-m 指定区块大小为1mb</li>
+<li>-t\&lt;文件系统类型> 仅显示指定的文件系统类型的磁盘信息</li>
+<li>-T 显示文件系统的类型</li>
+<li>-x\&lt;文件系统类型> 不显示指定的</li>
+</ul>
+</blockquote>
+<p>示例：</p>
+<blockquote>
+<ul>
+<li>df -t ext4 -h % 以可读性较高的方式只显示ext4文件系统的磁盘使用情况</li>
+<li>df -i /dev/sda1 % 显示/dev/sda1磁盘的使用情况</li>
+</ul>
+</blockquote>
+<h3 id="dirs">dirs</h3><p>说明：</p>
+<blockquote>
+<p>显示目录堆栈中的记录</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>+n 显示从左边算起第n笔的目录</li>
+<li>-n 显示从右边算起第n笔的目录</li>
+<li>-l 显示完整的记录</li>
+</ul>
+</blockquote>
+<h3 id="du">du</h3><p>说明：</p>
+<blockquote>
+<p>显示目录或文件的大小</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-a -b -h -H -K -m 同 df_ 命令</li>
+<li>-c 一同显示中和</li>
+<li>-s 仅显示总计</li>
+<li>—exclude=\&lt;目录或文件> 略过指定的目录或文件</li>
+<li>-max-depth=\&lt;怒怒层数> 超过指定的层数后，予以忽略</li>
+</ul>
+</blockquote>
+<h3 id="ls">ls</h3><p>说明：</p>
+<blockquote>
+<p>列出怒怒内容</p>
+</blockquote>
+<h3 id="mkdir">mkdir</h3><p>说明：</p>
+<blockquote>
+<p>建立目录</p>
+</blockquote>
+<p>参数：<br>:   -   -m\&lt;模式> 设定模式权限</p>
+<pre><code>-   -<span class="tag">p</span> 需要时创建上层目录
+</code></pre><h3 id="mount">mount</h3><p>说明：</p>
+<blockquote>
+<p>挂载文件系统</p>
+</blockquote>
+<h3 id="pwd">pwd</h3><p>说明：</p>
+<blockquote>
+<p>显示工作目录</p>
+</blockquote>
+<h3 id="rmdir">rmdir</h3><p>说明：</p>
+<blockquote>
+<p>删除目录</p>
+</blockquote>
+<h3 id="stat">stat</h3><p>说明：</p>
+<blockquote>
+<p>显示文件或目录状态</p>
+</blockquote>
+<h3 id="tree">tree</h3><p>说明：</p>
+<blockquote>
+<p>以树状图列出目录的内容</p>
+</blockquote>
+<h3 id="umount">umount</h3><p>说明：</p>
+<blockquote>
+<p>卸载文件系统</p>
+</blockquote>
+<h2 id="磁盘维护">磁盘维护</h2><h3 id="dd">dd</h3><p>说明：<br>:   读取，转换并输出数据</p>
+<p>参数：<br>:   -   if=\<file\> 输入文件名，缺省为标准输入</file\></p>
+<pre><code>-<span class="ruby">   of=\&lt;file\&gt; 输出文件名，缺省为标准输出
+</span>-<span class="ruby">   ibs=\&lt;bytes\&gt; 一次读入 <span class="string">''</span>bytes<span class="string">''</span> 个字节
+</span>-<span class="ruby">   obs=\&lt;bytes\&gt; 一次写 <span class="string">''</span>bytes<span class="string">''</span> 个字节
+</span>-<span class="ruby">   bs=\&lt;bytes\&gt; 同时设置读写块大小为 <span class="string">''</span>bytes<span class="string">''</span>
+</span>-<span class="ruby">   count=\&lt;blocks\&gt; 拷贝 <span class="string">''</span>blocks<span class="string">''</span> 个块</span>
+</code></pre><p>示例：<br>:   -   dd if=/dev/fd0 of=disk.img bs=1440k # 建立软盘镜像</p>
+<pre><code>-   dd <span class="keyword">if</span>=<span class="regexp">/dev/</span>hda of=disk.mbr bs=<span class="number">512</span> <span class="keyword">count</span>=<span class="number">1</span> \# 拷贝 <span class="string">''</span><span class="string">'MBR'</span><span class="string">''</span>
+</code></pre><h2 id="网络通讯">网络通讯</h2><h3 id="ping">ping</h3><p>说明：<br>:   检测主机。ping 指令会使用 ICMP 传输协议，发出要求回应的信息。</p>
+<p>参数：<br>:   -   -c\&lt;次数> 设置完成要求回应的次数</p>
+<pre><code>-   -i<span class="command">\&lt;</span>间隔秒数<span class="command">\&gt;</span> 指定守法信息的间隔时间
+</code></pre><h3 id="telnet">telnet</h3><p>说明：<br>:   远程登入，交互式</p>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-a 尝试自动登入</li>
+<li>-l\&lt;用户名> 指定要登入主机的用户名</li>
+</ul>
+</blockquote>
+<h3 id="netstat">netstat</h3><p>说明：<br>:   用于显示与 IP、TCP、UDP和 ICMP 协议相关的统计数据，检测网络链接状况</p>
+<p>参数：<br>:   -   -a 显示所有连线中的 Socket</p>
+<pre><code>-<span class="ruby">   -s 显示网络工作信息统计表
+</span>-<span class="ruby">   -r 显示路由表信息
+</span>-<span class="ruby">   -n 显示所有已建立的有效链接
+</span>-<span class="ruby">   -e 显示额外信息，使用两次显示更多信息</span>
+</code></pre><h2 id="系统管理">系统管理</h2><h3 id="adderuser">adderuser</h3><p>说明：</p>
+<blockquote>
+<p>新增用户帐号</p>
+</blockquote>
+<h3 id="chsh">chsh</h3><p>说明：</p>
+<blockquote>
+<p>更改登入系统时的shell</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-s\<shell名称\> 更改系统预设的shell环境</shell名称\></li>
+</ul>
+</blockquote>
+<h3 id="date">date</h3><p>说明：</p>
+<blockquote>
+<p>显示或设置系统时间与日期</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-d\&lt;字符串> 显示字符串指出的日期与时间</li>
+<li>-s\&lt;字符串> 根据字符串来设置日期与时间</li>
+</ul>
+</blockquote>
+<p>示例：</p>
+<blockquote>
+<ul>
+<li>date -s 20100911 % 日期为2010.9.11，时间为00:00:00</li>
+<li>date -s 12:23:23 % 设置时间，修改日期</li>
+<li>date -s “12:12:23 2010-09-11” % 设置全部时间</li>
+</ul>
+</blockquote>
+<h3 id="finger">finger</h3><p>说明：</p>
+<blockquote>
+<p>查找并显示用户信息</p>
+</blockquote>
+<h3 id="free">free</h3><p>说明：</p>
+<blockquote>
+<p>显示内存状态</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-b/k/m 以Bytes/KB/MB显示</li>
+<li>-o 不显示缓冲区调节列</li>
+<li>-s\&lt;间隔秒数> 持续观察内存使用状况</li>
+<li>-t 显示内存总和</li>
+</ul>
+</blockquote>
+<h3 id="groupdel">groupdel</h3><p>说明：</p>
+<blockquote>
+<p>删除群组</p>
+</blockquote>
+<h3 id="halt">halt</h3><p>说明：</p>
+<blockquote>
+<p>关闭系统</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-f 强制关闭</li>
+<li>-p halt之后，执行poweroff</li>
+</ul>
+</blockquote>
+<h3 id="id">id</h3><p>说明：</p>
+<blockquote>
+<p>显示用户的ID，以及所属群组的ID</p>
+</blockquote>
+<h3 id="kill">kill</h3><p>说明：</p>
+<blockquote>
+<p>删除执行中的程序或工作</p>
+</blockquote>
+<h3 id="last">last</h3><p>说明：</p>
+<blockquote>
+<p>列出目前以过去登入系统的用户相关信息</p>
+</blockquote>
+<h3 id="nice">nice</h3><p>说明：</p>
+<blockquote>
+<p>更改程序执行的优先级</p>
+</blockquote>
+<h3 id="ps">ps</h3><p>说明：</p>
+<blockquote>
+<p>报告程序的状况</p>
+</blockquote>
+<h3 id="screen">screen</h3><p>说明：</p>
+<blockquote>
+<p>多重视窗管理程序</p>
+</blockquote>
+<h3 id="shutdown">shutdown</h3><p>说明：</p>
+<blockquote>
+<p>系统关机指令</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-h 将系统关机</li>
+<li>-k 只是送出信息给所有用户，但不实际关机</li>
+<li>-r 重启</li>
+<li>-t\&lt;秒数> 警告信息持续的时间</li>
+<li>[时间] 设置多久后执行shutdown指令</li>
+</ul>
+</blockquote>
+<h3 id="top">top</h3><p>说明：</p>
+<blockquote>
+<p>显示，管理执行中的程序</p>
+</blockquote>
+<h3 id="uname">uname</h3><p>说明：</p>
+<blockquote>
+<p>显示系统信息</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-a 全部信息</li>
+</ul>
+</blockquote>
+<h3 id="userdel">userdel</h3><p>说明：</p>
+<blockquote>
+<p>删除用户帐号</p>
+</blockquote>
+<h3 id="vlock">vlock</h3><p>说明：</p>
+<blockquote>
+<p>锁住虚拟终端</p>
+</blockquote>
+<h3 id="w">w</h3><p>说明：</p>
+<blockquote>
+<p>显示目前登入系统的用户信息</p>
+</blockquote>
+<h3 id="who">who</h3><p>说明：</p>
+<blockquote>
+<p>显示目前登入系统的用户信息</p>
+</blockquote>
+<h2 id="系统设置">系统设置</h2><h3 id="alias">alias</h3><p>说明：</p>
+<blockquote>
+<p>设置指令的别名</p>
+</blockquote>
+<p>语法：</p>
+<blockquote>
+<p>alias [别名]=[指令名]</p>
+</blockquote>
+<h3 id="chroot">chroot</h3><p>说明：</p>
+<blockquote>
+<p>改变根目录</p>
+</blockquote>
+<h3 id="crontab">crontab</h3><p>说明：</p>
+<blockquote>
+<p>设置计时器。cron是一个常驻服务,它提供计时器的功能,让用户在特定的时间得以执行预设的指令或程序。只要用户会编辑计时器的配置文件,就可以使用计时器的功能。</p>
+<p>其配置文件格式如下:<br>:   <code>Minute Hour Day Month DayOFWeek Command</code></p>
+<p>参数：</p>
+<ul>
+<li>-e 编辑该用户的计时器设置</li>
+<li>-l 列出该用户的计时器设置</li>
+<li>-r 删除该用户的计时器设置</li>
+</ul>
+</blockquote>
+<p>示例：</p>
+<blockquote>
+<ul>
+<li>0 */2 * * * /sbin/service /httpd restart %<br>每两个小时重启一次apache</li>
+<li>50 7 * * * /sbin/service sshd start % 每天7:50开启ssh服务</li>
+<li>0 0 1,15 * * fsck /home % 每月1好和15好检查/home磁盘</li>
+<li>00 03 * * 1-5 find /home “<em>.xxx” -mtime +4 -exec rm {} ; %<br>每周一至周五3点钟，在目录/home中，查找文件名为</em>.xxx的文件，并删除4天前的文件</li>
+<li>30 6 */10 * * ls % 每月的1、11、21、31日的6:30执行ls</li>
+</ul>
+</blockquote>
+<h3 id="dmesg">dmesg</h3><p>说明：</p>
+<blockquote>
+<p>显示开机信息</p>
+</blockquote>
+<h3 id="eval">eval</h3><p>说明：</p>
+<blockquote>
+<p><strong>没有明白！！！</strong></p>
+</blockquote>
+<h3 id="export">export</h3><p>说明：</p>
+<blockquote>
+<p>设置或显示环境变量。export的效力仅及与此次登录操作</p>
+</blockquote>
+<h3 id="passwd">passwd</h3><p>说明：</p>
+<blockquote>
+<p>设置密码</p>
+</blockquote>
+<h3 id="resize">resize</h3><p>说明：</p>
+<blockquote>
+<p>设置终端视窗的大小</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-s \&lt;行数> \&lt;列数> 设置垂直高度和水平宽度</li>
+</ul>
+</blockquote>
+<h3 id="set">set</h3><p>说明：</p>
+<blockquote>
+<p>—(不清楚！！！)—</p>
+</blockquote>
+<h3 id="unalias">unalias</h3><p>说明：</p>
+<blockquote>
+<p>删除别名。见：[[#alias|alias]]</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-a 删除全部别名</li>
+</ul>
+</blockquote>
+<h3 id="unset">unset</h3><p>说明：</p>
+<blockquote>
+<p>删除变量或函数</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-f 仅删除函数</li>
+<li>-v 仅删除变量</li>
+</ul>
+</blockquote>
+<h2 id="备份压缩">备份压缩</h2><h3 id="bunzip2">bunzip2</h3><p>说明：</p>
+<blockquote>
+<p>.bz2文件的解压数程序</p>
+</blockquote>
+<h3 id="bzip2">bzip2</h3><p>说明：</p>
+<blockquote>
+<p>.bz2文件的压缩程序</p>
+</blockquote>
+<h3 id="cpio">cpio</h3><p>说明：</p>
+<blockquote>
+<p>备份文件</p>
+</blockquote>
+<h3 id="dump">dump</h3><p>说明：</p>
+<blockquote>
+<p>备份文件系统</p>
+</blockquote>
+<h3 id="gunzip">gunzip</h3><p>说明：</p>
+<blockquote>
+<p>解压文件</p>
+</blockquote>
+<h3 id="gzip">gzip</h3><p>说明：</p>
+<blockquote>
+<p>压缩文件</p>
+</blockquote>
+<h3 id="tar">tar</h3><p>说明：</p>
+<blockquote>
+<p>备份/还原文件</p>
+</blockquote>
+<p>参数：</p>
+<blockquote>
+<ul>
+<li>-c 建立新的备份文件</li>
+<li>-C\&lt;目的目录> 切换到指定的目录</li>
+<li>-d 比较备份文件内和文件系统上的文件查差异</li>
+<li>-f\&lt;备份文件> 指定备份文件名，在f之后要立即接档案名</li>
+<li>-m 还原文件是，不要更改文件的更改时间</li>
+<li>-p 用原来的文件权限还原文件</li>
+<li>-r 新增文件到已存在的备份文件的结尾部分</li>
+<li>-u 仅置换较备份文件内的文件更新的文件</li>
+<li>-v 显示指令执行的过程</li>
+<li>-t 列出备份文件的内容</li>
+<li>-x 从备份文件中还原文件</li>
+<li>-z 通过 gzip 指令处理配分文件</li>
+<li>-j 通过 bzip 指令处理备份文件</li>
+<li>—delete 从备份文件中删除指定文件</li>
+<li>—exclude=\&lt;范本样式> 排除符合范本样式的文件</li>
+</ul>
+</blockquote>
+<p>示例：</p>
+<blockquote>
+<ul>
+<li>tar -cvf /tmp/etc.tar /etc % 仅打包，不压缩</li>
+<li>tar -zcvf /tmp/etc.tar /etc % 打包后，以gzip压缩</li>
+<li>tar -jcvf /tmp/etc.tar /etc % 打包后，以bzip2压缩</li>
+<li>tar -cvf - /etc | tar -xvf - %<br>将/etc/打包后直接解压在/tmp下，不产生档案</li>
+</ul>
+</blockquote>
+<h3 id="unzip">unzip</h3><p>说明：</p>
+<blockquote>
+<p>解压缩zip文件</p>
+</blockquote>
+<h3 id="zip">zip</h3><p>说明：</p>
+<blockquote>
+<p>压缩文件</p>
+</blockquote>
+<h2 id="电子邮件与新闻组">电子邮件与新闻组</h2>
+      
+  </div>
+  <footer>
+    
+      
+<div class="pagepart clearfix">
+  
+  
+    <a href="/Linux启动过程/" class="alignright next" title="Linux 启动过程">Linux 启动过程</a>
+    
+</div>
+
+
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/Linux-Command/">Linux Command</a>
+  </div>
+
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-thread-key="Linux命令手册/" data-title="Linux 命令手册" data-url="http://lyhopq.github.io/Linux命令手册/"></div>
+</section>
+
+</div>
+  </div>
+  
+  <div id="sidebar" class="widgets-bottom">
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C-C/">C/C++</a><small>5</small></li>
+  
+    <li><a href="/categories/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/categories/Golang/">Golang</a><small>2</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>3</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>22</small></li>
+  
+    <li><a href="/categories/UML/">UML</a><small>1</small></li>
+  
+    <li><a href="/categories/Vim/">Vim</a><small>1</small></li>
+  
+    <li><a href="/categories/业余/">业余</a><small>1</small></li>
+  
+    <li><a href="/categories/机器学习/">机器学习</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/ArchLinux/" style="font-size: 10px;">ArchLinux</a> <a href="/tags/Boot/" style="font-size: 10px;">Boot</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/C-11/" style="font-size: 16.67px;">C++11</a> <a href="/tags/Coding-Style/" style="font-size: 10px;">Coding Style</a> <a href="/tags/DP/" style="font-size: 18.33px;">DP</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Gtest/" style="font-size: 10px;">Gtest</a> <a href="/tags/Inkscape/" style="font-size: 10px;">Inkscape</a> <a href="/tags/Linux/" style="font-size: 11.67px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine Learning</a> <a href="/tags/MinGW/" style="font-size: 10px;">MinGW</a> <a href="/tags/PlantUML/" style="font-size: 10px;">PlantUML</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/Utf-8/" style="font-size: 10px;">Utf-8</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/encode/" style="font-size: 10px;">encode</a> <a href="/tags/godef/" style="font-size: 10px;">godef</a> <a href="/tags/shell/" style="font-size: 11.67px;">shell</a> <a href="/tags/vim/" style="font-size: 11.67px;">vim</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/分类器/" style="font-size: 16.67px;">分类器</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a> <a href="/tags/命令行解析/" style="font-size: 10px;">命令行解析</a> <a href="/tags/概率论/" style="font-size: 15px;">概率论</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/结构体对齐/" style="font-size: 10px;">结构体对齐</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最近发布</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记3/">《Effective Modern C++》条款3</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记2/">《Effective Modern C++》条款2</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记1/">《Effective Modern C++》条款1</a>
+      </li>
+    
+      <li>
+        <a href="/PEP-0008-Python代码风格指南/">PEP 0008 -- Python代码风格指南</a>
+      </li>
+    
+      <li>
+        <a href="/当DP遇见Py/当DP遇见Py(二十) -- 职责链模式/">当DP遇见Py(二十) -- 职责链模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+</div>
+  
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2016 <a href="/">Lyh</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://blog.dafengning.com/" target="_blank">Chong Zi</a>
+</div>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<div class="clearfix"></div>
+<script async src="http://78rbbi.com1.z0.glb.clouddn.com/busuanzi.pure.mini.js">
+</script>
+</footer>
+  <script src="//lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lyhopq"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<div id="rightfix" style="display:none;">
+
+<a href="#comment" id="gocomm" class="fix_btn" title="提问/评论"><i><i></i></i></a>
+
+
+<a href="javascript:void(0)" id="gotop" class="fix_btn" onclick="gotop();" title="回到顶部"><i></i></a>
+<script>
+  function gotop(){
+    $('html,body').animate({
+        scrollTop : '0px'
+      }, 800);
+  }
+  $(function(){
+    _rightfix = $('#rightfix');
+    $(window).scroll(function(){
+      $sollTop = document.documentElement.scrollTop + document.body.scrollTop;
+      if($sollTop > 350){
+        _rightfix.show();
+      }else{
+        _rightfix.hide();
+      }
+    });
+  });
+</script>
+
+</div>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+
+
+
+<script>
+var option = {
+  engineKey: '70e393f447ec0686ffba'
+};
+(function(w,d,t,u,n,s,e){
+  s = d.createElement(t);
+  s.src = u;
+  s.async = 1;
+  w[n] = function(r){
+    w[n].opts = r;
+  };
+  e = d.getElementsByTagName(t)[0];
+  e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+_ts(option);
+
+$("#ts-search-input").mouseenter(function(){
+  $("#ts-search-input").animate({width:'+=150px',opacity:'+=0.4'},"slow")}).stop().mouseleave(function(){
+  $("#ts-search-input").animate({width:'-=150px',opacity:'-=0.4'},"slow")});
+</script>
+
+</body>
+</html>

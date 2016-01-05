@@ -1,0 +1,379 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="OACP69rYUO" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>Elements of Modern C++ Style | 沧海一粟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="Lyh">
+  
+  
+    <meta name="description" content="译自：http://herbsutter.com/elements-of-modern-c-style
+
+“C++11 feels like a new language.” — Bjarne Stroustrup
+
+C++11标准提供了很多新特性。本文特别的而且仅仅专注于那些使得C++11相比于C++98来说确实感觉像一门新语言的特性，因为：
+
+它们改变了编写C++代码时所要使用的风格和惯用手法">
+  
+  <meta name="description" content="译自：http://herbsutter.com/elements-of-modern-c-style
+
+“C++11 feels like a new language.” — Bjarne Stroustrup
+
+C++11标准提供了很多新特性。本文特别的而且仅仅专注于那些使得C++11相比于C++98来说确实感觉像一门新语言的特性，因为：
+
+它们改变了编写C++代码时所要使用的风格和惯用手法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elements of Modern C++ Style">
+<meta property="og:url" content="http://lyhopq.github.io/Elements-of-Modern-C-Style/index.html">
+<meta property="og:site_name" content="沧海一粟">
+<meta property="og:description" content="译自：http://herbsutter.com/elements-of-modern-c-style
+
+“C++11 feels like a new language.” — Bjarne Stroustrup
+
+C++11标准提供了很多新特性。本文特别的而且仅仅专注于那些使得C++11相比于C++98来说确实感觉像一门新语言的特性，因为：
+
+它们改变了编写C++代码时所要使用的风格和惯用手法">
+<meta property="og:updated_time" content="2016-01-05T12:20:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Elements of Modern C++ Style">
+<meta name="twitter:description" content="译自：http://herbsutter.com/elements-of-modern-c-style
+
+“C++11 feels like a new language.” — Bjarne Stroustrup
+
+C++11标准提供了很多新特性。本文特别的而且仅仅专注于那些使得C++11相比于C++98来说确实感觉像一门新语言的特性，因为：
+
+它们改变了编写C++代码时所要使用的风格和惯用手法">
+  
+    <link rel="alternate" href="/atom.xml" title="沧海一粟" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- //插入统计代码 -->
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">沧海一粟</a></h1>
+    <p><a href="/">在知识的海洋中翱翔</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      <li>
+    <form><input type="text" id="ts-search-input" class="ts-search-input" /></form>
+    </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/Elements-of-Modern-C-Style/">
+  <time datetime="2015-06-26T05:45:28.000Z">
+    6月 26 2015
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">Elements of Modern C++ Style</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+        
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#auto"><span class="toc-text">auto</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Smart_pointers:_No_delete"><span class="toc-text">Smart pointers: No delete</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nullptr"><span class="toc-text">nullptr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Range_for"><span class="toc-text">Range for</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nonmember_begin_and_end"><span class="toc-text">Nonmember begin and end</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lambda_Functions_and_Algorithms"><span class="toc-text">Lambda Functions and Algorithms</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Move_/_&&"><span class="toc-text">Move / &&</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Uniform_Initialization_and_Initializer_Lists"><span class="toc-text">Uniform Initialization and Initializer Lists</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#And_More"><span class="toc-text">And More</span></a></li></ol>
+        </div>
+    
+      <p>译自：<a href="http://herbsutter.com/elements-of-modern-c-style" target="_blank" rel="external">http://herbsutter.com/elements-of-modern-c-style</a></p>
+<blockquote>
+<p>“C++11 feels like a new language.” — Bjarne Stroustrup</p>
+</blockquote>
+<p><code>C++11</code>标准提供了<a href="http://www2.research.att.com/~bs/C++0xFAQ.html" target="_blank" rel="external">很多新特性</a>。本文特别的而且仅仅专注于那些使得<code>C++11</code>相比于<code>C++98</code>来说确实感觉像一门新语言的特性，因为：</p>
+<ul>
+<li>它们改变了编写C++代码时所要使用的风格和惯用手法，通常还包括设计C++库的方式。例如，你将会看到更多的智能指针作为参数和返回值，函数也会通过值的方式返回大对象。</li>
+<li>它们被如此普遍的使用，以至于你会在大多数的代码示例中看见它们。例如，几乎在每5行的现代C++代码示例中你就会看见<code>auto</code>的身影。</li>
+</ul>
+<p><code>C++11</code>的特性也要好好的使用，但先使用好这些，因为它们是使得<code>C++11</code>代码整洁、安全（和现代主流语言一样整洁和安全）和快速的最普遍的特性，再加上C++的传统的，如金属般的性能，使之一如既往的强大。</p>
+<p>说明：</p>
+<ul>
+<li>如同<code>Strunk &amp; White</code>，本文特意专注于简洁的总结指导，而不是为了提供详尽的原理阐述和<code>pro/con</code>分析；这将在其它的文章中探究。</li>
+<li>这是一份保持更新的文档。你可以在最后随时间变化和添加的列表中看见。</li>
+</ul>
+<a id="more"></a>
+<h2 id="auto">auto</h2><p>只要有可能就使用<code>auto</code>。它是很有用，原因有两个。首先，很明显是它是一种便利，可以使我们避免重复一个类型的名称，即使我们已经阐明而且编译器已经知道了它的类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++98</span></span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="built_in">string</span>&gt;::iterator i = m.begin();</span><br><span class="line"><span class="keyword">double</span> <span class="keyword">const</span> xlimit = config[<span class="string">"xlimit"</span>];</span><br><span class="line">singleton&amp; s = singleton::instance();</span><br><span class="line"></span><br><span class="line"><span class="comment">// C++11</span></span><br><span class="line"><span class="keyword">auto</span> i = begin(m);</span><br><span class="line"><span class="keyword">auto</span> <span class="keyword">const</span> xlimit = config[<span class="string">"xlimit"</span>];</span><br><span class="line"><span class="keyword">auto</span>&amp; s = singleton::instance();</span><br></pre></td></tr></table></figure>
+<p>其次，当一个类型具有不可知或难以用语言表达的名称时，它就不仅仅是一个便利了。例如，多数的lambda函数你根本不能或不能轻易地拼写出它的类型名。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++98</span></span><br><span class="line">binder2nd&lt;greater&gt; x = bind2nd(greater(), <span class="number">42</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// C++11</span></span><br><span class="line"><span class="keyword">auto</span> x = [](<span class="keyword">int</span> i) &#123; <span class="keyword">return</span> i &gt; <span class="number">42</span>; &#125;;</span><br></pre></td></tr></table></figure>
+<p>注意，使用<code>auto</code>并没有改变代码的含义。代码仍然是静态类型的，而且每个表达式的类型都是清晰和明确的；语言再也不会迫使我们重申类型名。</p>
+<p>一些人刚开始的时候害怕在这里使用<code>auto</code>，因为如果不（重新）声明需要的类型的话，感觉好像我们有可能意外的得到一个不同的类型。如果你想要显示的<code>强制类型转换</code>，声明目标类型也是可以的。然而，在绝大多数时间，你只使用<code>auto</code>就可以了；很少会发生因为错误而得到一个不一样的类型的情况，而且即使在这种情况下，依靠语言的强大类型系统，编译器会让你知道：你在尝试调用一个变量的并不存在的成员方法，或者不是以正常的方式使用它。</p>
+<h2 id="Smart_pointers:_No_delete">Smart pointers: No delete</h2><p>始终使用智能指针和<em>non-owing</em>原始指针。绝不使用<em>owing</em>原始指针和<code>delete</code>，除非在在罕见的情况下，如你需要实现自己的底层数据结构（即使如此，也要在类边界里面保持良好的封装）。</p>
+<p>如果你知道你是另外一个对象的唯一拥有者，就使用<code>unique_ptr</code>来明确唯一所有权。”<code>new T</code>“表达式应该立即初始化拥有它的另一个对象，通常使用<code>unique_ptr</code>。一个典型的例子是<code>Pimpl惯用手法</code>（见 <a href="http://herbsutter.com/gotw/_100" target="_blank" rel="external">GotW #100</a>）：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++11 Pimpl idiom: header file</span></span><br><span class="line"><span class="keyword">class</span> widget &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    widget();</span><br><span class="line">    <span class="comment">// ... (see GotW #100) ...</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">class</span> impl;</span><br><span class="line">    unique_ptr&lt;impl&gt; pimpl;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// implementation file</span></span><br><span class="line"><span class="keyword">class</span> widget::impl &#123; <span class="comment">/*...*/</span> &#125;;</span><br><span class="line"></span><br><span class="line">widget::widget(): pimpl&#123; <span class="keyword">new</span> impl&#123; <span class="comment">/*...*/</span>&#125; &#125; &#123; &#125;</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+<p>使用<code>shared_ptr</code>明确共享所有权。更喜欢使用<code>make_shared</code>来有效的创建共享对象。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++98</span></span><br><span class="line">widget* pw = <span class="keyword">new</span> widget();</span><br><span class="line">...</span><br><span class="line"><span class="keyword">delete</span> pw;</span><br><span class="line"></span><br><span class="line"><span class="comment">// C++11</span></span><br><span class="line"><span class="keyword">auto</span> pw = make_shared&lt;widget&gt;();</span><br></pre></td></tr></table></figure>
+<p>使用<code>weak_ptr</code>打引用破循环和明确可选性（例：实现一个对象缓存）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.. C++<span class="number">11</span></span><br><span class="line"><span class="keyword">class</span> gadget;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> widget &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">shared_ptr</span>&lt;gadget&gt; g; <span class="comment">// if shared ownership</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> gadget &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    weak_ptr&lt;widget&gt; w;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>如果你知道另一个对象比你的生存期长，而且你需要观察它，那么使用(non-owing)原始指针。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++11</span></span><br><span class="line"><span class="keyword">class</span> node &#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;unique_ptr&lt;node&gt; &gt; children;</span><br><span class="line">    node* parent;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="nullptr">nullptr</h2><p>始终使用<code>nullptr</code>作为空指针的值，绝不使用模棱两可的字面量<code>0</code>或者<code>NULL</code>宏，因为它们可以是一个整形或指针。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++98</span></span><br><span class="line"><span class="keyword">int</span>* p = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// C++11</span></span><br><span class="line"><span class="keyword">int</span>* p = <span class="keyword">nullptr</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Range_for">Range for</h2><p>使用基于范围的<code>for</code>循环的方式来对一个范围内的元素进行顺序访问是非常方便的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++98</span></span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator i = v.begin(); i != v.end(); ++i) &#123;</span><br><span class="line">    total += *i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// C++11</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> d: v) &#123;</span><br><span class="line">    total += d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Nonmember_begin_and_end">Nonmember begin and end</h2><p>总是使用非成员的<code>begin(x)</code>和<code>end(x)</code>（而不是<code>x.begin()</code>和<code>x.end()</code>）。因为<code>begin(x)</code>和<code>end(x)</code>是可扩展的，可以和所有的容器类型（甚至是数组）一起使用，而且不仅仅是容器，还包括那些遵循<code>STL</code>风格，实现了<code>x.begin()</code>和<code>x.end()</code>成员函数的类型。</p>
+<p>如果你使用了非<code>STL</code>的集合类型，它们提供了迭代，但不是<code>STL</code>风格的<code>x.begin()</code>和<code>x.end()</code>，那么你可以编写你自己的非成员的<code>begin(x)</code>和<code>end(x)</code>来重载该类型。这样你就可以使用如上所示的<code>STL</code>容器的相同编码风格来遍历该类型。<code>C++11</code>的标准作出了榜样：C数组就是这种类型，<code>C++11</code>标准给它提供了<code>begin</code>和<code>end</code>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">100</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// C++98</span></span><br><span class="line">sort(v.begin(), v.end());</span><br><span class="line">sort(&amp;a[<span class="number">0</span>], &amp;a[<span class="number">0</span>] + <span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(a[<span class="number">0</span>]));</span><br><span class="line"></span><br><span class="line"><span class="comment">// C++11</span></span><br><span class="line">sort(begin(v), end(v));</span><br><span class="line">sort(begin(a), end(a));</span><br></pre></td></tr></table></figure>
+<h2 id="Lambda_Functions_and_Algorithms">Lambda Functions and Algorithms</h2><p>Lambda表达式是一个可以改变游戏规则的改变，它会经常会改变你写代码的方式，使之更优雅和更快速。Lambda表达式使现有的<code>STL</code>算法的可用性提升了100倍。新的C++库的设计越来越多的假设Lambda表达式是可用的（例：<code>PPL</code>），而且某些甚至要求你编写Lambda表达式来使用库（例：<code>C++ AMP</code>）。</p>
+<p>这是一个简单的例子：在<code>v</code>中找到第一个大于<code>x</code>并小于<code>y</code>的元素。在<code>C++11</code>中，最简单的和最整洁的代码是使用标准算法。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++98: write a naked loop (using std::find_if is impractically difficult)</span></span><br><span class="line"><span class="keyword">for</span>(; i != v.end(); ++i) &#123;</span><br><span class="line">  <span class="keyword">if</span>(*i &gt; x &amp;&amp; *i &lt; y) <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// C++11: use std::find_if</span></span><br><span class="line"><span class="keyword">auto</span> i = find_if(begin(v), end(v), [=](<span class="keyword">int</span> i) &#123;<span class="keyword">return</span> i &gt; x &amp;&amp; i &lt; y;&#125;);</span><br></pre></td></tr></table></figure>
+<p>你是否想要一个循环或类似的语言特性（但语言并没有提供）？并不需要付出多大的努力，只要把它写成一个模板函数（算法库），利用lambda表达式你总是可以如同使用语言特性一样便利的使用它。而且具有更大的灵活性，因为它真的只是一个库，而不是一个天生的语言特性。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C#</span></span><br><span class="line">lock(mut_x) &#123;</span><br><span class="line">  ... use x ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// C++11 without lambdas: already nice, and more flexible (e.g., can use timeouts, other options)</span></span><br><span class="line">&#123;</span><br><span class="line">  lock_guard&lt;mutex&gt; hold &#123;mut_x&#125;;</span><br><span class="line">  ... use x ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// C++11 with lambdas, and a helper algorithm: C# syntax in C++</span></span><br><span class="line"><span class="comment">// Algorithm: template&lt;typename T&gt; void lock(T&amp; t, F f) &#123;lock_guard hold(t); f();&#125;</span></span><br><span class="line">lock(mut_x, [&amp;]&#123;</span><br><span class="line">  ... use x ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>要熟悉lambda表达式，你将会大量的使用它们，不仅仅是在C++中—它们已经在几种流行的主要语言中被支持和广泛使用。一个很好的起点是我在<code>PDC 2010</code>上的演讲：<a href="http://herbsutter.com/2010/10/30/pdc-languages-panel-andshortened-lambdas-talk" target="_blank" rel="external">Lambdas, Lambdas Everywhere</a>。</p>
+<h2 id="Move_/_&amp;&amp;">Move / &amp;&amp;</h2><p>移动是作为拷贝优化的一个最好的思想，虽然它也可以做其他的事情，如：完美转发。</p>
+<p>移动语义使我们设计<code>API</code>的方式发生了改变。我们将会设计出更多的返回值对象的接口。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++98: alternatives to avoid copying</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;* make_big_vector(); <span class="comment">// option 1: return by pointer: no copy, but don't forget to delete</span></span><br><span class="line">...</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;* result = make_big_vector();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">make_big_vector</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; out)</span></span>; <span class="comment">// option2: pass out by reference: no copy, but caller needs a named object</span></span><br><span class="line">...</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result;</span><br><span class="line">make_big_vector(result);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// C++11: move</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; make_big_vector(); <span class="comment">// usuall sufficient for 'caller-allocated out' situations</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">auto</span> result = make_big_vector(); <span class="comment">// guaranteed not to copy the vector</span></span><br></pre></td></tr></table></figure>
+<p>当你要做一些比拷贝更有效率的事情的时候，为你的类型启用移动语义。</p>
+<h2 id="Uniform_Initialization_and_Initializer_Lists">Uniform Initialization and Initializer Lists</h2><p>没有改变的是：当初始化一个局部变量时，且它的类型是非<code>POD</code>或<code>auto</code>时，继续使用熟悉的 <code>=</code> 语法，而不用额外的<code>{ }</code>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++98 or C++11</span></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">42</span>;      <span class="comment">// still fine, as always</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// C++11</span></span><br><span class="line"><span class="keyword">auto</span> x = begin(v); <span class="comment">// no narrowing or non-initialization is possible</span></span><br></pre></td></tr></table></figure>
+<p>在其它情况下，特别是你以前在构造对象时经常使用<code>( )</code>时，应该使用<code>{ }</code>代替。使用大括号可以避免几个潜在的问题：你不会意外的获得变窄类型转换（例：<code>flot</code>到<code>int</code>）；你不会偶尔不小心拥有未初始化的<code>POD</code>成员变量或数组；你会避免<code>C++98</code>给你带来的偶然惊喜：由于在C++语法中声明某凌两可（Scott Meyers 的一句名言：”C++’s most vexing<br>parse.”），你实际上声明了一个函数而不是一个变量，但还是能通过编译。在新的风格中没有这样的烦恼。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++98</span></span><br><span class="line"><span class="function">rectangle <span class="title">w</span><span class="params">(origin()</span>, <span class="title">extents</span><span class="params">()</span>)</span>;  <span class="comment">// oops, declares a function, if origin and extents are types</span></span><br><span class="line"><span class="keyword">complex</span>&lt;<span class="keyword">double</span>&gt; c(<span class="number">2.71828</span>, <span class="number">3.14159</span>);</span><br><span class="line"><span class="keyword">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">4</span>; ++i) v.push_back(i);</span><br><span class="line"></span><br><span class="line"><span class="comment">// C++11</span></span><br><span class="line">rectangle w &#123;origin(), extents()&#125;;</span><br><span class="line"><span class="keyword">complex</span>&lt;<span class="keyword">double</span>&gt; c &#123;<span class="number">2.71828</span>, <span class="number">3.14159</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> a[] &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>新的<code>{ }</code>语法在每个地方都工作的很好：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++98</span></span><br><span class="line">X::X(<span class="comment">/*...*/</span>): mem1(init1), mem2(init2, init3) &#123;<span class="comment">/*...*/</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// C++11</span></span><br><span class="line">X::X(<span class="comment">/*...*/</span>): mem1&#123;init1&#125;, mem2&#123;init2, init3&#125; &#123;<span class="comment">/*...*/</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>最后，有些时候只是为了方便，在给函数传递参数时可以不需要临时的类型名。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">draw_rect</span><span class="params">(rectangle)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// C++98</span></span><br><span class="line">draw_rect(rectangle(myobj.origin, selection.extents));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// C++11</span></span><br><span class="line">draw_rect(&#123;myobj.origin, selection.extents&#125;);</span><br></pre></td></tr></table></figure>
+<p>我不使用大括号的唯一地方是在对非<code>POD</code>变量进行简单初始化的时候，如：<code>auto x = begin(v);</code>，不然它会使代码将变得不必要的丑陋。因为我知道它是一个类类型，所以我知道我不需要担心偶然的变窄类型转换，而且现代的编译器已经例行的执行优化以删去额外的拷贝（或额外的移动，如果类型启用了移动语义）。</p>
+<h2 id="And_More">And More</h2><p>现代C++还有<a href="http://www2.research.att.com/~bs/C++0xFAQ.html" target="_blank" rel="external">更多特性</a>。在将来，我打算写一些更深入的文章，关于<code>C++11</code>的这些和其它的我们要去了解和喜欢的特性。</p>
+<p>但是现在，这里是我们必须要知道的特性列表。这些特性形成的核心，定义了现代C++的风格，这使得C++代码看起来和执行起来确实如此；你会发现它们在你所将要看到或编写的每一段现代C++代码中会普遍的被使用；使得现代C++是一门整洁、安全和快速的语言，在未来的许多年里我们的行业将会继续严重依赖于它。</p>
+
+      
+  </div>
+  <footer>
+    
+      
+<div class="pagepart clearfix">
+  
+    <a href="/C-Has-Become-More-Pythonic/" class="alignleft prev" title="C++ Has Become More Pythonic">C++ Has Become More Pythonic</a>
+  
+  
+    <a href="/Eclipse-MinGW-Gtest-进行C-C-单元测试/" class="alignright next" title="Eclipse + MinGW + Gtest 进行C/C++单元测试">Eclipse + MinGW + Gtest 进行C/C++单元测试</a>
+    
+</div>
+
+
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/C-C/">C/C++</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/C-11/">C++11</a>, <a class="tags-link" href="/tags/翻译/">翻译</a>
+  </div>
+
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-thread-key="Elements-of-Modern-C-Style/" data-title="Elements of Modern C++ Style" data-url="http://lyhopq.github.io/Elements-of-Modern-C-Style/"></div>
+</section>
+
+</div>
+  </div>
+  
+  <div id="sidebar" class="widgets-bottom">
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C-C/">C/C++</a><small>5</small></li>
+  
+    <li><a href="/categories/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/categories/Golang/">Golang</a><small>2</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>3</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>22</small></li>
+  
+    <li><a href="/categories/UML/">UML</a><small>1</small></li>
+  
+    <li><a href="/categories/Vim/">Vim</a><small>1</small></li>
+  
+    <li><a href="/categories/业余/">业余</a><small>1</small></li>
+  
+    <li><a href="/categories/机器学习/">机器学习</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/ArchLinux/" style="font-size: 10px;">ArchLinux</a> <a href="/tags/Boot/" style="font-size: 10px;">Boot</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/C-11/" style="font-size: 16.67px;">C++11</a> <a href="/tags/Coding-Style/" style="font-size: 10px;">Coding Style</a> <a href="/tags/DP/" style="font-size: 18.33px;">DP</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Gtest/" style="font-size: 10px;">Gtest</a> <a href="/tags/Inkscape/" style="font-size: 10px;">Inkscape</a> <a href="/tags/Linux/" style="font-size: 11.67px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine Learning</a> <a href="/tags/MinGW/" style="font-size: 10px;">MinGW</a> <a href="/tags/PlantUML/" style="font-size: 10px;">PlantUML</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/Utf-8/" style="font-size: 10px;">Utf-8</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/encode/" style="font-size: 10px;">encode</a> <a href="/tags/godef/" style="font-size: 10px;">godef</a> <a href="/tags/shell/" style="font-size: 11.67px;">shell</a> <a href="/tags/vim/" style="font-size: 11.67px;">vim</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/分类器/" style="font-size: 16.67px;">分类器</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a> <a href="/tags/命令行解析/" style="font-size: 10px;">命令行解析</a> <a href="/tags/概率论/" style="font-size: 15px;">概率论</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/结构体对齐/" style="font-size: 10px;">结构体对齐</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最近发布</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记3/">《Effective Modern C++》条款3</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记2/">《Effective Modern C++》条款2</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记1/">《Effective Modern C++》条款1</a>
+      </li>
+    
+      <li>
+        <a href="/PEP-0008-Python代码风格指南/">PEP 0008 -- Python代码风格指南</a>
+      </li>
+    
+      <li>
+        <a href="/当DP遇见Py/当DP遇见Py(二十) -- 职责链模式/">当DP遇见Py(二十) -- 职责链模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+</div>
+  
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2016 <a href="/">Lyh</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://blog.dafengning.com/" target="_blank">Chong Zi</a>
+</div>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<div class="clearfix"></div>
+<script async src="http://78rbbi.com1.z0.glb.clouddn.com/busuanzi.pure.mini.js">
+</script>
+</footer>
+  <script src="//lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lyhopq"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<div id="rightfix" style="display:none;">
+
+<a href="#comment" id="gocomm" class="fix_btn" title="提问/评论"><i><i></i></i></a>
+
+
+<a href="javascript:void(0)" id="gotop" class="fix_btn" onclick="gotop();" title="回到顶部"><i></i></a>
+<script>
+  function gotop(){
+    $('html,body').animate({
+        scrollTop : '0px'
+      }, 800);
+  }
+  $(function(){
+    _rightfix = $('#rightfix');
+    $(window).scroll(function(){
+      $sollTop = document.documentElement.scrollTop + document.body.scrollTop;
+      if($sollTop > 350){
+        _rightfix.show();
+      }else{
+        _rightfix.hide();
+      }
+    });
+  });
+</script>
+
+</div>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+
+
+
+<script>
+var option = {
+  engineKey: '70e393f447ec0686ffba'
+};
+(function(w,d,t,u,n,s,e){
+  s = d.createElement(t);
+  s.src = u;
+  s.async = 1;
+  w[n] = function(r){
+    w[n].opts = r;
+  };
+  e = d.getElementsByTagName(t)[0];
+  e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+_ts(option);
+
+$("#ts-search-input").mouseenter(function(){
+  $("#ts-search-input").animate({width:'+=150px',opacity:'+=0.4'},"slow")}).stop().mouseleave(function(){
+  $("#ts-search-input").animate({width:'-=150px',opacity:'-=0.4'},"slow")});
+</script>
+
+</body>
+</html>

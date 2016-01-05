@@ -1,0 +1,332 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="OACP69rYUO" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>《Effective Modern C++》条款1 | 沧海一粟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="Lyh">
+  
+  
+    <meta name="description" content="条款1：理解模板类型推导(Understand template type deduction)模板的类型推导是现代C++最引人注目的特性之一auto的基础，因此要真正理解模板类型推导的各个方面。
+函数模板：12template&amp;lt;typename T&amp;gt;void f(ParamType param);
+调用方式：1f(expr);  // call f with some express">
+  
+  <meta name="description" content="条款1：理解模板类型推导(Understand template type deduction)模板的类型推导是现代C++最引人注目的特性之一auto的基础，因此要真正理解模板类型推导的各个方面。
+函数模板：12template&amp;lt;typename T&amp;gt;void f(ParamType param);
+调用方式：1f(expr);  // call f with some express">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Effective Modern C++》条款1">
+<meta property="og:url" content="http://lyhopq.github.io/《Effective-Modern-C-》学习笔记1/index.html">
+<meta property="og:site_name" content="沧海一粟">
+<meta property="og:description" content="条款1：理解模板类型推导(Understand template type deduction)模板的类型推导是现代C++最引人注目的特性之一auto的基础，因此要真正理解模板类型推导的各个方面。
+函数模板：12template&amp;lt;typename T&amp;gt;void f(ParamType param);
+调用方式：1f(expr);  // call f with some express">
+<meta property="og:updated_time" content="2016-01-05T12:20:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《Effective Modern C++》条款1">
+<meta name="twitter:description" content="条款1：理解模板类型推导(Understand template type deduction)模板的类型推导是现代C++最引人注目的特性之一auto的基础，因此要真正理解模板类型推导的各个方面。
+函数模板：12template&amp;lt;typename T&amp;gt;void f(ParamType param);
+调用方式：1f(expr);  // call f with some express">
+  
+    <link rel="alternate" href="/atom.xml" title="沧海一粟" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- //插入统计代码 -->
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">沧海一粟</a></h1>
+    <p><a href="/">在知识的海洋中翱翔</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      <li>
+    <form><input type="text" id="ts-search-input" class="ts-search-input" /></form>
+    </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/《Effective-Modern-C-》学习笔记1/">
+  <time datetime="2015-09-14T12:57:12.000Z">
+    9月 14 2015
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">《Effective Modern C++》条款1</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+        
+      <h2 id="条款1：理解模板类型推导(Understand_template_type_deduction)">条款1：理解模板类型推导(Understand template type deduction)</h2><p>模板的类型推导是现代<code>C++</code>最引人注目的特性之一<code>auto</code>的基础，因此要真正理解模板类型推导的各个方面。</p>
+<p>函数模板：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(ParamType param)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>调用方式：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f(expr);  <span class="comment">// call f with some expression</span></span><br></pre></td></tr></table></figure></p>
+<p>在编译过程中，编译器使用<code>expr</code>来推导两个类型：<code>T</code>、<code>ParamType</code>。被推导出的<code>T</code>的类型不仅取决于<code>expr</code>的类型，还取决于<code>ParamType</code>的形式。有三种情形：</p>
+<a id="more"></a>
+<ul>
+<li><p>情况1：<code>ParamType</code>是一个引用或指针，但不是一个万能引用(Universal Reference)</p>
+<p>类型推导的工作方式如下：</p>
+<ol>
+<li>忽略<code>expr</code>的类型的引用或指针部分（即去掉<code>&amp;</code>或<code>*</code>）</li>
+<li>然后，模式匹配<code>expr</code>的类型和<code>ParamType</code>来获得<code>T</code></li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T&amp; param)</span></span>;    <span class="comment">// param is a reference</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> x = <span class="number">27</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> cx = x;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; rx = x; </span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> * ptrToName = name;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> name[] = <span class="string">"J. P. Briggs"</span>; <span class="comment">// 数组衰变成指针</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">someFunc</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">double</span>)</span></span>;  <span class="comment">// 函数类型会衰变成函数指针</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f(x);    <span class="comment">// T is int, param's type is int&amp;</span></span><br><span class="line">f(cx);   <span class="comment">// T is const int, param's type is const int&amp;</span></span><br><span class="line">f(rx);   <span class="comment">// T is const int, param's type is const int&amp;</span></span><br><span class="line"></span><br><span class="line">f(name); <span class="comment">// T is const char[13], param's type is const char (&amp;)[13]</span></span><br><span class="line"></span><br><span class="line">f(someFunc); <span class="comment">// T is void (*)(int, double)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">const</span> T&amp; param)</span></span>;   <span class="comment">// param is now a ref-to-const</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> x = <span class="number">27</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> cx = x;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; rx = x;</span><br><span class="line"></span><br><span class="line">f(x);     <span class="comment">// T is int, param's type is const int&amp;</span></span><br><span class="line">f(cx);    <span class="comment">// T is int, param's type is const int&amp;</span></span><br><span class="line">f(rx);    <span class="comment">// T is int, param's type is const int&amp;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>情况2：<code>ParamType</code>是一个万能引用(Universal Reference)</p>
+<ul>
+<li>如果<code>expr</code>是一个左值(lvalue)，<code>T</code>和<code>ParamType</code>都被推导成左值引用。</li>
+<li>如果<code>expr</code>是一个右值(rvalue)，使用一般的推导规则（情况1中所示）。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T&amp;&amp; param)</span></span>;    <span class="comment">// param is now a unicersal reference</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> x = <span class="number">27</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> cx = x;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; rc = x;</span><br><span class="line"></span><br><span class="line">f(x);   <span class="comment">// x is lvalue, so T and param's type are both int&amp; </span></span><br><span class="line">f(cx);  <span class="comment">// cs is lvalue, so T and param's type are both const int&amp;</span></span><br><span class="line">f(rx);  <span class="comment">// rc is lvalue, so T and param's type as both const int&amp;</span></span><br><span class="line">f(<span class="number">27</span>);  <span class="comment">// 27 is rvalue, so T is int, param's type is int&amp;&amp;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>情况3：<code>ParamType</code>既不是指针也不是引用</p>
+<p>这种情况下，进行的是按值传递。按值传递会拷贝一个全新的对象，该对象会忽略<code>expr</code>的修饰符（<code>const</code>和<code>volatile</code>)。其推导方式如下：</p>
+<ol>
+<li>忽略<code>expr</code>类型的引用部分</li>
+<li>忽略<code>expr</code>类型的<code>const</code>或<code>volatile</code></li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T param)</span></span>;     <span class="comment">// param is passed by value</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> x = <span class="number">27</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> cx = x;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; rx = x;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span>* <span class="keyword">const</span> ptr = <span class="string">"Fun with pointers"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> * ptrToName = name;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> name[] = <span class="string">"J. P. Briggs"</span>; <span class="comment">// 数组衰变成指针</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">someFunc</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">double</span>)</span></span>;  <span class="comment">// 函数类型会衰变成函数指针</span></span><br><span class="line"></span><br><span class="line">f(x);    <span class="comment">// T is int</span></span><br><span class="line">f(cx);   <span class="comment">// T is int</span></span><br><span class="line">f(rx);   <span class="comment">// T is int</span></span><br><span class="line">f(ptr);  <span class="comment">// T is const char*</span></span><br><span class="line"></span><br><span class="line">f(name); <span class="comment">// T is const char*</span></span><br><span class="line"></span><br><span class="line">f(someFunc); <span class="comment">// T is void (&amp;)(int, double)</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="要点：">要点：</h3><ul>
+<li>在模板类型推导过程中，引用实参的引用性被忽略</li>
+<li>对万能引用(universal reference)参数进行类型推导时，左值实参产生左值引用，右值实参产生右值引用</li>
+<li>对按值传递的参数进行类型推导时，忽略实参的<code>const</code>和/或<code>volatile</code>修饰符</li>
+<li>对按值传递的参数进行类型推导时，数组和函数实参将退化为指针</li>
+</ul>
+
+      
+  </div>
+  <footer>
+    
+      
+<div class="pagepart clearfix">
+  
+    <a href="/PEP-0008-Python代码风格指南/" class="alignleft prev" title="PEP 0008 -- Python代码风格指南">PEP 0008 -- Python代码风格指南</a>
+  
+  
+    <a href="/《Effective-Modern-C-》学习笔记2/" class="alignright next" title="《Effective Modern C++》条款2">《Effective Modern C++》条款2</a>
+    
+</div>
+
+
+      
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/C-11/">C++11</a>
+  </div>
+
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-thread-key="《Effective-Modern-C-》学习笔记1/" data-title="《Effective Modern C++》条款1" data-url="http://lyhopq.github.io/《Effective-Modern-C-》学习笔记1/"></div>
+</section>
+
+</div>
+  </div>
+  
+  <div id="sidebar" class="widgets-bottom">
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C-C/">C/C++</a><small>5</small></li>
+  
+    <li><a href="/categories/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/categories/Golang/">Golang</a><small>2</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>3</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>22</small></li>
+  
+    <li><a href="/categories/UML/">UML</a><small>1</small></li>
+  
+    <li><a href="/categories/Vim/">Vim</a><small>1</small></li>
+  
+    <li><a href="/categories/业余/">业余</a><small>1</small></li>
+  
+    <li><a href="/categories/机器学习/">机器学习</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/ArchLinux/" style="font-size: 10px;">ArchLinux</a> <a href="/tags/Boot/" style="font-size: 10px;">Boot</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/C-11/" style="font-size: 16.67px;">C++11</a> <a href="/tags/Coding-Style/" style="font-size: 10px;">Coding Style</a> <a href="/tags/DP/" style="font-size: 18.33px;">DP</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Gtest/" style="font-size: 10px;">Gtest</a> <a href="/tags/Inkscape/" style="font-size: 10px;">Inkscape</a> <a href="/tags/Linux/" style="font-size: 11.67px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine Learning</a> <a href="/tags/MinGW/" style="font-size: 10px;">MinGW</a> <a href="/tags/PlantUML/" style="font-size: 10px;">PlantUML</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/Utf-8/" style="font-size: 10px;">Utf-8</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/encode/" style="font-size: 10px;">encode</a> <a href="/tags/godef/" style="font-size: 10px;">godef</a> <a href="/tags/shell/" style="font-size: 11.67px;">shell</a> <a href="/tags/vim/" style="font-size: 11.67px;">vim</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/分类器/" style="font-size: 16.67px;">分类器</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a> <a href="/tags/命令行解析/" style="font-size: 10px;">命令行解析</a> <a href="/tags/概率论/" style="font-size: 15px;">概率论</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/结构体对齐/" style="font-size: 10px;">结构体对齐</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最近发布</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记3/">《Effective Modern C++》条款3</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记2/">《Effective Modern C++》条款2</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记1/">《Effective Modern C++》条款1</a>
+      </li>
+    
+      <li>
+        <a href="/PEP-0008-Python代码风格指南/">PEP 0008 -- Python代码风格指南</a>
+      </li>
+    
+      <li>
+        <a href="/当DP遇见Py/当DP遇见Py(二十) -- 职责链模式/">当DP遇见Py(二十) -- 职责链模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+</div>
+  
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2016 <a href="/">Lyh</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://blog.dafengning.com/" target="_blank">Chong Zi</a>
+</div>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<div class="clearfix"></div>
+<script async src="http://78rbbi.com1.z0.glb.clouddn.com/busuanzi.pure.mini.js">
+</script>
+</footer>
+  <script src="//lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lyhopq"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<div id="rightfix" style="display:none;">
+
+<a href="#comment" id="gocomm" class="fix_btn" title="提问/评论"><i><i></i></i></a>
+
+
+<a href="javascript:void(0)" id="gotop" class="fix_btn" onclick="gotop();" title="回到顶部"><i></i></a>
+<script>
+  function gotop(){
+    $('html,body').animate({
+        scrollTop : '0px'
+      }, 800);
+  }
+  $(function(){
+    _rightfix = $('#rightfix');
+    $(window).scroll(function(){
+      $sollTop = document.documentElement.scrollTop + document.body.scrollTop;
+      if($sollTop > 350){
+        _rightfix.show();
+      }else{
+        _rightfix.hide();
+      }
+    });
+  });
+</script>
+
+</div>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+
+
+
+<script>
+var option = {
+  engineKey: '70e393f447ec0686ffba'
+};
+(function(w,d,t,u,n,s,e){
+  s = d.createElement(t);
+  s.src = u;
+  s.async = 1;
+  w[n] = function(r){
+    w[n].opts = r;
+  };
+  e = d.getElementsByTagName(t)[0];
+  e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+_ts(option);
+
+$("#ts-search-input").mouseenter(function(){
+  $("#ts-search-input").animate({width:'+=150px',opacity:'+=0.4'},"slow")}).stop().mouseleave(function(){
+  $("#ts-search-input").animate({width:'-=150px',opacity:'-=0.4'},"slow")});
+</script>
+
+</body>
+</html>

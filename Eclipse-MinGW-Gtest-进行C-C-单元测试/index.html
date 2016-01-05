@@ -1,0 +1,365 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="OACP69rYUO" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>Eclipse + MinGW + Gtest 进行C/C++单元测试 | 沧海一粟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="Lyh">
+  
+  
+    <meta name="description" content="Step 1： 下载 gtest最新版本gtest-1.7.0
+Step 2： 解压gtest-1.7.0解压gtest-1.7.0，打开文件夹gtest-1.7.0。其中”samples”包含了10个gtest的例子；”src”是gtest的源码。">
+  
+  <meta name="description" content="Step 1： 下载 gtest最新版本gtest-1.7.0
+Step 2： 解压gtest-1.7.0解压gtest-1.7.0，打开文件夹gtest-1.7.0。其中”samples”包含了10个gtest的例子；”src”是gtest的源码。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Eclipse + MinGW + Gtest 进行C/C++单元测试">
+<meta property="og:url" content="http://lyhopq.github.io/Eclipse-MinGW-Gtest-进行C-C-单元测试/index.html">
+<meta property="og:site_name" content="沧海一粟">
+<meta property="og:description" content="Step 1： 下载 gtest最新版本gtest-1.7.0
+Step 2： 解压gtest-1.7.0解压gtest-1.7.0，打开文件夹gtest-1.7.0。其中”samples”包含了10个gtest的例子；”src”是gtest的源码。">
+<meta property="og:image" content="http://78rbbi.com1.z0.glb.clouddn.com/s1.png">
+<meta property="og:image" content="http://78rbbi.com1.z0.glb.clouddn.com/s2.png">
+<meta property="og:image" content="http://78rbbi.com1.z0.glb.clouddn.com/s3.png">
+<meta property="og:image" content="http://78rbbi.com1.z0.glb.clouddn.com/s4.png">
+<meta property="og:image" content="http://78rbbi.com1.z0.glb.clouddn.com/s5.png">
+<meta property="og:image" content="http://78rbbi.com1.z0.glb.clouddn.com/s6.png">
+<meta property="og:image" content="http://78rbbi.com1.z0.glb.clouddn.com/s7.png">
+<meta property="og:image" content="http://78rbbi.com1.z0.glb.clouddn.com/s8.png">
+<meta property="og:image" content="http://78rbbi.com1.z0.glb.clouddn.com/s9.png">
+<meta property="og:image" content="http://78rbbi.com1.z0.glb.clouddn.com/s10.png">
+<meta property="og:image" content="http://78rbbi.com1.z0.glb.clouddn.com/s11.png">
+<meta property="og:image" content="http://78rbbi.com1.z0.glb.clouddn.com/s12.png">
+<meta property="og:image" content="http://78rbbi.com1.z0.glb.clouddn.com/s13.png">
+<meta property="og:updated_time" content="2016-01-05T12:20:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Eclipse + MinGW + Gtest 进行C/C++单元测试">
+<meta name="twitter:description" content="Step 1： 下载 gtest最新版本gtest-1.7.0
+Step 2： 解压gtest-1.7.0解压gtest-1.7.0，打开文件夹gtest-1.7.0。其中”samples”包含了10个gtest的例子；”src”是gtest的源码。">
+  
+    <link rel="alternate" href="/atom.xml" title="沧海一粟" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script><![endif]-->
+  
+  
+<!-- //插入统计代码 -->
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">沧海一粟</a></h1>
+    <p><a href="/">在知识的海洋中翱翔</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+      <li>
+    <form><input type="text" id="ts-search-input" class="ts-search-input" /></form>
+    </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/Eclipse-MinGW-Gtest-进行C-C-单元测试/">
+  <time datetime="2015-07-03T11:47:25.000Z">
+    7月 3 2015
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">Eclipse + MinGW + Gtest 进行C/C++单元测试</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+        
+        <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Step_1：_下载_gtest"><span class="toc-text">Step 1： 下载 gtest</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step_2：_解压gtest-1-7-0"><span class="toc-text">Step 2： 解压gtest-1.7.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step_3：在Eclipse中设置gtest的工作环境"><span class="toc-text">Step 3：在Eclipse中设置gtest的工作环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Step_3-1_创建测试工程"><span class="toc-text">Step 3.1 创建测试工程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step_3-2_添加gtest的库，源代码和test文件夹"><span class="toc-text">Step 3.2 添加gtest的库，源代码和test文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step_3-3_添加gtest库，被测代码和测试代码"><span class="toc-text">Step 3.3 添加gtest库，被测代码和测试代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step_4：设置运行环境"><span class="toc-text">Step 4：设置运行环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step_5：运行gtest单元测试"><span class="toc-text">Step 5：运行gtest单元测试</span></a></li></ol>
+        </div>
+    
+      <h2 id="Step_1：_下载_gtest">Step 1： 下载 gtest</h2><p>最新版本gtest-1.7.0</p>
+<h2 id="Step_2：_解压gtest-1-7-0">Step 2： 解压gtest-1.7.0</h2><p>解压gtest-1.7.0，打开文件夹gtest-1.7.0。其中”samples”包含了10个gtest的例子；”src”是gtest的源码。</p>
+<p><img src="http://78rbbi.com1.z0.glb.clouddn.com/s1.png" alt=""></p>
+<a id="more"></a>
+<h2 id="Step_3：在Eclipse中设置gtest的工作环境">Step 3：在Eclipse中设置gtest的工作环境</h2><h3 id="Step_3-1_创建测试工程">Step 3.1 创建测试工程</h3><p>打开Eclipse，点击”文件” -&gt; “新” -&gt; C++ Project<br>输入”项目名”，例如：”unit_test”</p>
+<p><img src="http://78rbbi.com1.z0.glb.clouddn.com/s2.png" alt=""></p>
+<p>在”Toolchains:”中选择”MinGW GCC”。<br>点击“下一步”，在”Select Configurations”中选择”Debug”，”Release”</p>
+<p><img src="http://78rbbi.com1.z0.glb.clouddn.com/s3.png" alt=""></p>
+<p>最后，点击”完成”。”unit_test”将会在左侧的“项目资源管理器”中显示。</p>
+<h3 id="Step_3-2_添加gtest的库，源代码和test文件夹">Step 3.2 添加gtest的库，源代码和test文件夹</h3><ol>
+<li>unt_test-&gt; “新” -&gt; “文件夹”，创建源代码(被测代码) 文件夹 “src”。</li>
+<li>unt_test-&gt; “新” -&gt; “文件夹”，创建头文件文件夹 “include”。</li>
+<li>unt_test-&gt; “新” -&gt; “文件夹”，创建文件夹 “gtest_src” 存放gtest的库文件。</li>
+<li>unt_test-&gt; “新” -&gt; “文件夹”，创建文件夹 “test” 存放测试代码。</li>
+</ol>
+<p><img src="http://78rbbi.com1.z0.glb.clouddn.com/s4.png" alt=""></p>
+<h3 id="Step_3-3_添加gtest库，被测代码和测试代码">Step 3.3 添加gtest库，被测代码和测试代码</h3><ol>
+<li>在”gtest_src”文件夹中添加gtest库<br>通过执行gtest提供的命令行工具把gtest的库添加到”gtest_src”文件夹中。</li>
+</ol>
+<p><img src="http://78rbbi.com1.z0.glb.clouddn.com/s5.png" alt=""></p>
+<p>执行上面的命令之后，工程看起来像这样：</p>
+<p><img src="http://78rbbi.com1.z0.glb.clouddn.com/s6.png" alt=""></p>
+<ol>
+<li>添加被测代码</li>
+</ol>
+<p>文件夹”include” -&gt; “新” -&gt; Header File，创建头文件”factorial.h”。</p>
+<p><img src="http://78rbbi.com1.z0.glb.clouddn.com/s7.png" alt=""></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#ifndef FACTORIAL_H_</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> FACTORIAL_H_</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">endif</span> /* FACTORIAL_H_ */</span></span><br></pre></td></tr></table></figure>
+<p>下一步，文件夹”src” -&gt; “新” -&gt; Source File，创建”factorial.cpp”源文件。</p>
+<p><img src="http://78rbbi.com1.z0.glb.clouddn.com/s8.png" alt=""></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">factorial</span><span class="params">(<span class="keyword">int</span> n)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        result *= i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>添加测试代码</li>
+</ol>
+<p>文件夹”test” -&gt; “新” -&gt; Source File，创建”test_factorial.cpp”测试文件。</p>
+<p><img src="http://78rbbi.com1.z0.glb.clouddn.com/s9.png" alt=""></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># <span class="keyword">include</span> "gtest/gtest.h"</span></span><br><span class="line"><span class="preprocessor"># <span class="keyword">include</span> "factorial.h"</span></span><br><span class="line"></span><br><span class="line">TEST(IntegerFunctionTest, negative)</span><br><span class="line">&#123;</span><br><span class="line">    EXPECT_EQ(<span class="number">1</span>, factorial(-<span class="number">5</span>));</span><br><span class="line">    EXPECT_EQ(<span class="number">1</span>, factorial(-<span class="number">1</span>));</span><br><span class="line">    EXPECT_GT(factorial(-<span class="number">10</span>), <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">TEST(IntegerFunctionTest, DISABLED_zero)</span><br><span class="line">&#123;</span><br><span class="line">    EXPECT_EQ(<span class="number">1</span>, factorial(<span class="number">0</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">TEST(IntegerFunctionTest, postive)</span><br><span class="line">&#123;</span><br><span class="line">    EXPECT_EQ(<span class="number">1</span>, factorial(<span class="number">1</span>));</span><br><span class="line">    EXPECT_EQ(<span class="number">2</span>, factorial(<span class="number">2</span>));</span><br><span class="line">    EXPECT_EQ(<span class="number">6</span>, factorial(<span class="number">3</span>));</span><br><span class="line">    EXPECT_EQ(<span class="number">40320</span>, factorial(<span class="number">8</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>添加”gtest_main.cpp”文件</p>
+<p><img src="http://78rbbi.com1.z0.glb.clouddn.com/s10.png" alt=""></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdio.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> "gtest/gtest.h"</span></span><br><span class="line"></span><br><span class="line"><span class="function">GTEST_API_ <span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Running main() from gtest_main.cc\n"</span>);</span><br><span class="line">    testing::InitGoogleTest(&amp;argc, argv);</span><br><span class="line">    <span class="keyword">return</span> RUN_ALL_TESTS();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Step_4：设置运行环境">Step 4：设置运行环境</h2><ol>
+<li>文件夹”test” -&gt; “属性” -&gt; C/C++ Build -&gt; Setting -&gt; GCC C++ Compiler -&gt; includes -&gt; Include paths (-I)<br>点击“add..” -&gt; “workspace..”, 添加文件夹 “include” 和 “gtest_src” 到包含路径。</li>
+</ol>
+<p><img src="http://78rbbi.com1.z0.glb.clouddn.com/s11.png" alt=""></p>
+<ol>
+<li>文件夹”gtest_src” -&gt; “属性” -&gt; C/C++ Build -&gt; Setting -&gt; GCC C++ Compiler -&gt; includes -&gt; Include paths (-I)<br>点击“add..” -&gt; “workspace..”, 添加文件夹“gtest_src” 到包含路径。</li>
+</ol>
+<p><img src="http://78rbbi.com1.z0.glb.clouddn.com/s12.png" alt=""></p>
+<p>到这里，我们已经设置好了运行环境，就可以开始单元测试了。</p>
+<h2 id="Step_5：运行gtest单元测试">Step 5：运行gtest单元测试</h2><p>在Eclipse中，点击”项目” -&gt; “全部构建”或者”Ctrl + B”来构建项目。</p>
+<p>点击”运行” -&gt; “运行” 或者”Ctrl + F11”来运行可执行文件。<br>运行结果如下所示：</p>
+<p><img src="http://78rbbi.com1.z0.glb.clouddn.com/s13.png" alt=""></p>
+
+      
+  </div>
+  <footer>
+    
+      
+<div class="pagepart clearfix">
+  
+    <a href="/Elements-of-Modern-C-Style/" class="alignleft prev" title="Elements of Modern C++ Style">Elements of Modern C++ Style</a>
+  
+  
+    <a href="/当DP遇见Py/当DP遇见Py(十五) -- 组合模式/" class="alignright next" title="当DP遇见Py(十四) -- 备忘录模式">当DP遇见Py(十四) -- 备忘录模式</a>
+    
+</div>
+
+
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/C-C/">C/C++</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/Eclipse/">Eclipse</a>, <a class="tags-link" href="/tags/Gtest/">Gtest</a>, <a class="tags-link" href="/tags/MinGW/">MinGW</a>, <a class="tags-link" href="/tags/单元测试/">单元测试</a>
+  </div>
+
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-thread-key="Eclipse-MinGW-Gtest-进行C-C-单元测试/" data-title="Eclipse + MinGW + Gtest 进行C/C++单元测试" data-url="http://lyhopq.github.io/Eclipse-MinGW-Gtest-进行C-C-单元测试/"></div>
+</section>
+
+</div>
+  </div>
+  
+  <div id="sidebar" class="widgets-bottom">
+  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C-C/">C/C++</a><small>5</small></li>
+  
+    <li><a href="/categories/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/categories/Golang/">Golang</a><small>2</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>3</small></li>
+  
+    <li><a href="/categories/Python/">Python</a><small>22</small></li>
+  
+    <li><a href="/categories/UML/">UML</a><small>1</small></li>
+  
+    <li><a href="/categories/Vim/">Vim</a><small>1</small></li>
+  
+    <li><a href="/categories/业余/">业余</a><small>1</small></li>
+  
+    <li><a href="/categories/机器学习/">机器学习</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/ArchLinux/" style="font-size: 10px;">ArchLinux</a> <a href="/tags/Boot/" style="font-size: 10px;">Boot</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/C-11/" style="font-size: 16.67px;">C++11</a> <a href="/tags/Coding-Style/" style="font-size: 10px;">Coding Style</a> <a href="/tags/DP/" style="font-size: 18.33px;">DP</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/GO/" style="font-size: 10px;">GO</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Gtest/" style="font-size: 10px;">Gtest</a> <a href="/tags/Inkscape/" style="font-size: 10px;">Inkscape</a> <a href="/tags/Linux/" style="font-size: 11.67px;">Linux</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Machine-Learning/" style="font-size: 16.67px;">Machine Learning</a> <a href="/tags/MinGW/" style="font-size: 10px;">MinGW</a> <a href="/tags/PlantUML/" style="font-size: 10px;">PlantUML</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/tags/Utf-8/" style="font-size: 10px;">Utf-8</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/decode/" style="font-size: 10px;">decode</a> <a href="/tags/encode/" style="font-size: 10px;">encode</a> <a href="/tags/godef/" style="font-size: 10px;">godef</a> <a href="/tags/shell/" style="font-size: 11.67px;">shell</a> <a href="/tags/vim/" style="font-size: 11.67px;">vim</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/分类器/" style="font-size: 16.67px;">分类器</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a> <a href="/tags/命令行解析/" style="font-size: 10px;">命令行解析</a> <a href="/tags/概率论/" style="font-size: 15px;">概率论</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/结构体对齐/" style="font-size: 10px;">结构体对齐</a> <a href="/tags/翻译/" style="font-size: 13.33px;">翻译</a>
+  </div>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最近发布</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记3/">《Effective Modern C++》条款3</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记2/">《Effective Modern C++》条款2</a>
+      </li>
+    
+      <li>
+        <a href="/《Effective-Modern-C-》学习笔记1/">《Effective Modern C++》条款1</a>
+      </li>
+    
+      <li>
+        <a href="/PEP-0008-Python代码风格指南/">PEP 0008 -- Python代码风格指南</a>
+      </li>
+    
+      <li>
+        <a href="/当DP遇见Py/当DP遇见Py(二十) -- 职责链模式/">当DP遇见Py(二十) -- 职责链模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+</div>
+  
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2016 <a href="/">Lyh</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://blog.dafengning.com/" target="_blank">Chong Zi</a>
+</div>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<div class="clearfix"></div>
+<script async src="http://78rbbi.com1.z0.glb.clouddn.com/busuanzi.pure.mini.js">
+</script>
+</footer>
+  <script src="//lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lyhopq"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<div id="rightfix" style="display:none;">
+
+<a href="#comment" id="gocomm" class="fix_btn" title="提问/评论"><i><i></i></i></a>
+
+
+<a href="javascript:void(0)" id="gotop" class="fix_btn" onclick="gotop();" title="回到顶部"><i></i></a>
+<script>
+  function gotop(){
+    $('html,body').animate({
+        scrollTop : '0px'
+      }, 800);
+  }
+  $(function(){
+    _rightfix = $('#rightfix');
+    $(window).scroll(function(){
+      $sollTop = document.documentElement.scrollTop + document.body.scrollTop;
+      if($sollTop > 350){
+        _rightfix.show();
+      }else{
+        _rightfix.hide();
+      }
+    });
+  });
+</script>
+
+</div>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+
+
+
+<script>
+var option = {
+  engineKey: '70e393f447ec0686ffba'
+};
+(function(w,d,t,u,n,s,e){
+  s = d.createElement(t);
+  s.src = u;
+  s.async = 1;
+  w[n] = function(r){
+    w[n].opts = r;
+  };
+  e = d.getElementsByTagName(t)[0];
+  e.parentNode.insertBefore(s, e);
+})(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+_ts(option);
+
+$("#ts-search-input").mouseenter(function(){
+  $("#ts-search-input").animate({width:'+=150px',opacity:'+=0.4'},"slow")}).stop().mouseleave(function(){
+  $("#ts-search-input").animate({width:'-=150px',opacity:'-=0.4'},"slow")});
+</script>
+
+</body>
+</html>
